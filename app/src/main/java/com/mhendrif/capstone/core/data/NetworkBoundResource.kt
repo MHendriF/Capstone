@@ -1,9 +1,10 @@
 package com.mhendrif.capstone.core.data
 
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
+import com.mhendrif.capstone.core.utils.AppExecutors
 import kotlinx.coroutines.flow.*
 
-abstract class NetworkBoundResource<ResultType, RequestType> {
+abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
     private var result: Flow<Resource<ResultType>> = flow {
         emit(Resource.Loading())
         val dbSource = loadFromDB().first()

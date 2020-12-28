@@ -15,20 +15,26 @@ class LocalDataSource @Inject constructor(private val movieDao: MovieDao, privat
 
     fun getFavoriteMovie(): Flow<List<MovieEntity>> = movieDao.getFavorite()
 
+    suspend fun insertAllMovie(movieList: List<MovieEntity>) = movieDao.insertAllMovie(movieList)
+
     suspend fun insertMovie(movieEntity: MovieEntity) = movieDao.insert(movieEntity)
 
     suspend fun updateMovie(movieEntity: MovieEntity) = movieDao.update(movieEntity)
 
     suspend fun deleteMovie(movieEntity: MovieEntity) = movieDao.delete(movieEntity)
 
-    suspend fun setFavoriteMovie(movieEntity: MovieEntity, newState: Boolean) {
+    fun setFavoriteMovie(movieEntity: MovieEntity, newState: Boolean) {
         movieEntity.isFavorite = newState
-        movieDao.update(movieEntity)
+        movieDao.updateFavorite(movieEntity)
     }
+
+    fun getDetailMovie(id: String) = movieDao.getDetailMovie(id)
 
     fun getAllTvShow(): Flow<List<TvShowEntity>> = tvShowDao.getAllTvShow()
 
     fun getFavoriteTvShow(): Flow<List<TvShowEntity>> = tvShowDao.getFavorite()
+
+    suspend fun insertAllTvShow(tvShowList: List<TvShowEntity>) = tvShowDao.insertAllTvShow(tvShowList)
 
     suspend fun insertTvShow(tvShowEntity: TvShowEntity) = tvShowDao.insert(tvShowEntity)
 
@@ -36,8 +42,10 @@ class LocalDataSource @Inject constructor(private val movieDao: MovieDao, privat
 
     suspend fun deleteTvShow(tvShowEntity: TvShowEntity) = tvShowDao.delete(tvShowEntity)
 
-    suspend fun setFavoriteTvShow(tvShowEntity: TvShowEntity, newState: Boolean) {
+    fun setFavoriteTvShow(tvShowEntity: TvShowEntity, newState: Boolean) {
         tvShowEntity.isFavorite = newState
-        tvShowDao.update(tvShowEntity)
+        tvShowDao.updateFavorite(tvShowEntity)
     }
+
+    fun getDetailTvShow(id: String) = tvShowDao.getDetailTvShow(id)
 }

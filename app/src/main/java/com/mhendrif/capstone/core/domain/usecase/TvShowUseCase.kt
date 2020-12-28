@@ -5,7 +5,8 @@ import com.mhendrif.capstone.core.domain.model.TvShow
 import kotlinx.coroutines.flow.Flow
 
 interface TvShowUseCase {
-    fun getAllMovie(): Flow<Resource<List<TvShow>>>
+    fun getAllTvShow(): Flow<Resource<List<TvShow>>>
     fun getFavorite(): Flow<List<TvShow>>
     fun setFavorite(tvShow: TvShow, state: Boolean)
+    fun getDetailTvShow(id: String): Flow<Resource<TvShow>>
 }

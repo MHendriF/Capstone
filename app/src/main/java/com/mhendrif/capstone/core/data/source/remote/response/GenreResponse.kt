@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class GenreResponse(
     @field:SerializedName("id")
-    val genre_code: Int,
+    val id: Int,
 
     @field:SerializedName("name")
     val name: String

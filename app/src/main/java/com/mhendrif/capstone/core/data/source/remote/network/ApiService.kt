@@ -14,11 +14,11 @@ interface ApiService {
 
     @GET("movie/{id}?api_key=${Constants.TMDB_API_KEY}")
     suspend fun getMovieById(
-        @Path("id") id: Int,
-    ): DetailMovieResponse
+        @Path("id") id: String
+    ): MovieResponse
 
     @GET("tv/{id}?api_key=${Constants.TMDB_API_KEY}")
     suspend fun getTvShowById(
-        @Path("id") id: Int,
-    ): DetailTvShowResponse
+        @Path("id") id: String
+    ): TvShowResponse
 }

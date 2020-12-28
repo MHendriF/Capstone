@@ -13,6 +13,9 @@ interface TvShowDao {
     fun getFavorite(): Flow<List<TvShowEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAllTvShow(tvShow: List<TvShowEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(tvShow: TvShowEntity)
 
     @Update
@@ -20,4 +23,10 @@ interface TvShowDao {
 
     @Delete
     suspend fun delete(tvShow: TvShowEntity)
+
+    @Update
+    fun updateFavorite(tvShow: TvShowEntity)
+
+    @Query("SELECT * FROM tvShows where id=:id")
+    fun getDetailTvShow(id: String): Flow<TvShowEntity>
 }

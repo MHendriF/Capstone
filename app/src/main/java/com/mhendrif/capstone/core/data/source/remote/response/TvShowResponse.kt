@@ -2,6 +2,7 @@ package com.mhendrif.capstone.core.data.source.remote.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.mhendrif.capstone.core.domain.model.Genre
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -30,6 +31,9 @@ data class TvShowResponse(
     @field:SerializedName("vote_count")
     val voteCount: Int,
 
-    @field:SerializedName("genre_ids")
-    val genre_ids: List<Int>,
+    @field:SerializedName("genres")
+    val genres: List<Genre> = listOf(),
+
+    @field:SerializedName("homepage")
+    val homepage: String
 ) : Parcelable

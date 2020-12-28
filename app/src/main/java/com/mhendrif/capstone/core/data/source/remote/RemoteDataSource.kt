@@ -2,8 +2,6 @@ package com.mhendrif.capstone.core.data.source.remote
 
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.core.data.source.remote.network.ApiService
-import com.mhendrif.capstone.core.data.source.remote.response.DetailMovieResponse
-import com.mhendrif.capstone.core.data.source.remote.response.DetailTvShowResponse
 import com.mhendrif.capstone.core.data.source.remote.response.MovieResponse
 import com.mhendrif.capstone.core.data.source.remote.response.TvShowResponse
 import kotlinx.coroutines.Dispatchers
@@ -51,7 +49,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getDetailMovie(id: Int): Flow<ApiResponse<DetailMovieResponse>> {
+    suspend fun getDetailMovie(id: String): Flow<ApiResponse<MovieResponse>> {
         return flow {
             try {
                 val response = apiService.getMovieById(id)
@@ -63,7 +61,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getDetailTvShow(id: Int): Flow<ApiResponse<DetailTvShowResponse>> {
+    suspend fun getDetailTvShow(id: String): Flow<ApiResponse<TvShowResponse>> {
         return flow {
             try {
                 val response = apiService.getTvShowById(id)
