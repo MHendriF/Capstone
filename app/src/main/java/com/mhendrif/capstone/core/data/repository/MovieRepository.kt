@@ -10,8 +10,6 @@ import com.mhendrif.capstone.core.domain.model.Movie
 import com.mhendrif.capstone.core.domain.repository.IMovieRepository
 import com.mhendrif.capstone.core.utils.AppExecutors
 import com.mhendrif.capstone.core.utils.MovieDataMapper
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

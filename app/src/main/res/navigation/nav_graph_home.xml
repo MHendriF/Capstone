@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/fragment_movie">
+
+    <fragment
+        android:id="@+id/fragment_movie"
+        android:name="com.mhendrif.capstone.home.MovieFragment"
+        tools:layout="@layout/fragment_movie"
+        android:label="@string/movie" />
+
+    <fragment
+        android:id="@+id/fragment_tv_show"
+        android:name="com.mhendrif.capstone.home.TvShowFragment"
+        tools:layout="@layout/fragment_tv_show"
+        android:label="@string/tv_show" />
+
+    <fragment
+        android:id="@+id/fragment_favorite"
+        android:name="com.mhendrif.capstone.favorite.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/fragment_favorite_movie"
+        android:name="com.mhendrif.capstone.favorite.FavoriteMovieFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_movie" />
+
+    <fragment
+        android:id="@+id/fragment_favorite_tv_show"
+        android:name="com.mhendrif.capstone.favorite.FavoriteTvShowFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_tv_show" />
+
+</navigation>
