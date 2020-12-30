@@ -20,7 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
-    factory { get<AppDatabase>().movieDao(); get<AppDatabase>().tvShowDao() }
+    factory { get<AppDatabase>().movieDao() }
+    factory { get<AppDatabase>().tvShowDao() }
     single {
         Room.databaseBuilder(
             androidContext(),
