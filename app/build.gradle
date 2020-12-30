@@ -26,6 +26,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,7 +40,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding true
+        dataBinding = true
     }
 }
 
@@ -89,9 +93,6 @@ dependencies {
     testImplementation group: 'org.mockito', name: 'mockito-core', version: "$mockito_version"
     testImplementation "org.mockito:mockito-inline:$mockito_version"
 
-    // Robolectric
-    testImplementation "org.robolectric:robolectric:$robolectric_version"
-    testImplementation "org.robolectric:shadows-multidex:$robolectric_version"
     /* END OF TESTING */
 
     /* NETWORKING */
