@@ -12,11 +12,8 @@ import com.mhendrif.capstone.core.utils.AppExecutors
 import com.mhendrif.capstone.core.utils.TvShowDataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class TvShowRepository @Inject constructor(
+class TvShowRepository(
         private val remoteDataSource: RemoteDataSource,
         private val localDataSource: LocalDataSource,
         private val appExecutors: AppExecutors

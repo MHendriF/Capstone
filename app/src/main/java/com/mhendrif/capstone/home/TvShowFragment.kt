@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class TvShowFragment : Fragment() {
 
-    private val tvShowViewModel: TvShowViewModel by viewModels()
+    private val tvShowViewModel: TvShowViewModel by viewModel()
     private var _binding: FragmentTvShowBinding? = null
     private val binding get() = _binding!!
 

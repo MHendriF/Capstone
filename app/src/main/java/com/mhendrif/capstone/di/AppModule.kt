@@ -4,18 +4,23 @@ import com.mhendrif.capstone.core.domain.usecase.MovieInteractor
 import com.mhendrif.capstone.core.domain.usecase.MovieUseCase
 import com.mhendrif.capstone.core.domain.usecase.TvShowInteractor
 import com.mhendrif.capstone.core.domain.usecase.TvShowUseCase
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import com.mhendrif.capstone.detail.DetailMovieViewModel
+import com.mhendrif.capstone.detail.DetailTvShowViewModel
+import com.mhendrif.capstone.favorite.FavoriteViewModel
+import com.mhendrif.capstone.home.MovieViewModel
+import com.mhendrif.capstone.home.TvShowViewModel
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(ActivityComponent::class)
-abstract class AppModule {
+val useCaseModule = module {
+    factory<MovieUseCase> { MovieInteractor(get()) }
+    factory<TvShowUseCase> { TvShowInteractor(get()) }
+}
 
-    @Binds
-    abstract fun provideMovieUseCase(movieInteractor: MovieInteractor): MovieUseCase
-
-    @Binds
-    abstract fun provideTvShowUseCase(tvShowInteractor: TvShowInteractor): TvShowUseCase
+val viewModelModule = module {
+    viewModel { MovieViewModel(get()) }
+    viewModel { TvShowViewModel(get()) }
+    viewModel { FavoriteViewModel(get(), get()) }
+    viewModel { DetailMovieViewModel(get()) }
+    viewModel { DetailTvShowViewModel(get()) }
 }

@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
-import com.mhendrif.capstone.databinding.FragmentTvShowBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class DetailTvShowFragment : Fragment() {
 
+    private val viewModel: DetailTvShowViewModel by viewModel()
     private var _binding: FragmentDetailTvShowBinding? = null
     private val binding get() = _binding!!
 

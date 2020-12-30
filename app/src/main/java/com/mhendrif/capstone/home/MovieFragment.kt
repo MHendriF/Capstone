@@ -7,17 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-@AndroidEntryPoint
 class MovieFragment : Fragment() {
 
-    private val movieViewModel: MovieViewModel by viewModels()
+    private val movieViewModel: MovieViewModel by viewModel()
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
 

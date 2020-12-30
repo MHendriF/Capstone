@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mhendrif.capstone.databinding.FragmentDetailMovieBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class DetailMovieFragment : Fragment() {
 
+    private val viewModel: DetailMovieViewModel by viewModel()
     private var _binding: FragmentDetailMovieBinding? = null
     private val binding get() = _binding!!
 

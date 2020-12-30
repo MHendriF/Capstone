@@ -1,4 +1,8 @@
 package com.mhendrif.capstone.favorite
 
-class FavoriteViewModel {
+import androidx.lifecycle.ViewModel
+import com.mhendrif.capstone.core.domain.usecase.MovieUseCase
+import com.mhendrif.capstone.core.domain.usecase.TvShowUseCase
+
+class FavoriteViewModel(private val movieUseCase: MovieUseCase, tvShowUseCase: TvShowUseCase): ViewModel() {
 }

@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class FavoriteMovieFragment : Fragment() {
 
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
 
