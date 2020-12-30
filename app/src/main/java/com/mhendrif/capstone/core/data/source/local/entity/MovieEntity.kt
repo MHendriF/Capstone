@@ -5,7 +5,6 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mhendrif.capstone.core.domain.model.Genre
 import com.mhendrif.capstone.core.utils.Constants
 import kotlinx.parcelize.Parcelize
 
@@ -39,7 +38,7 @@ data class MovieEntity(
     var voteCount: Int,
 
     @ColumnInfo(name = "genres")
-    var genres: List<Genre> = listOf(),
+    var genres: String?,
 
     @ColumnInfo(name = "homepage")
     var homepage: String,

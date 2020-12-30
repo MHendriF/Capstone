@@ -39,7 +39,7 @@ data class TvShowEntity(
     var voteCount: Int,
 
     @ColumnInfo(name = "genres")
-    var genres: List<Genre> = listOf(),
+    var genres: String?,
 
     @ColumnInfo(name = "homepage")
     var homepage: String,

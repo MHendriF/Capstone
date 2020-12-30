@@ -44,14 +44,17 @@ class MovieFragment : Fragment() {
                         is Resource.Loading ->  binding.pbLoading.visibility = View.VISIBLE
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
-                            Timber.d(movie.data?.size.toString())
+                            Timber.d("Size movie, %s", movie.data?.size.toString())
                             movieAdapter.setData(movie.data)
                         }
                         is Resource.Error -> {
                             binding.pbLoading.visibility = View.GONE
+                            Timber.e(movie.message)
                             activity?.toast(movie.message.toString())
                         }
                     }
+                } else {
+                    activity?.toast("Data is null")
                 }
             })
         }
