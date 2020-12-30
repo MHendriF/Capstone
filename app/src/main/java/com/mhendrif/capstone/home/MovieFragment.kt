@@ -1,15 +1,18 @@
 package com.mhendrif.capstone.home
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.mhendrif.capstone.core.data.Resource
+import com.mhendrif.capstone.core.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MovieFragment : Fragment() {
@@ -30,8 +33,32 @@ class MovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            val movieAdapter = MovieAdapter()
+            movieAdapter.onItemClick = { selectData ->
+                Timber.d(selectData.title)
+            }
 
+            movieViewModel.movie.observe(viewLifecycleOwner, { movie ->
+                if (movie != null) {
+                    when(movie) {
+                        is Resource.Loading ->  binding.pbLoading.visibility = View.VISIBLE
+                        is Resource.Success -> {
+                            binding.pbLoading.visibility = View.GONE
+                            Timber.d(movie.data?.size.toString())
+                            movieAdapter.setData(movie.data)
+                        }
+                        is Resource.Error -> {
+                            binding.pbLoading.visibility = View.GONE
+                            activity?.toast(movie.message.toString())
+                        }
+                    }
+                }
+            })
         }
+    }
+
+    private fun Context.toast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

@@ -1,12 +1,15 @@
 package com.mhendrif.capstone.core.data.source.local.entity
 
+import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.mhendrif.capstone.core.domain.model.Genre
 import com.mhendrif.capstone.core.utils.Constants
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = Constants.TV_SHOW_TABLE_NAME)
 data class TvShowEntity(
     @PrimaryKey
@@ -43,4 +46,4 @@ data class TvShowEntity(
 
     @ColumnInfo(name = "isFavorite")    
     var isFavorite: Boolean = false
-)
+) : Parcelable

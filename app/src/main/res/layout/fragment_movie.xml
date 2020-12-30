@@ -28,10 +28,11 @@
             tools:listitem="@layout/item_container" />
 
         <ProgressBar
+            android:id="@+id/pbLoading"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
