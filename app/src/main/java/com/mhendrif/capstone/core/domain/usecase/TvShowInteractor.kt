@@ -1,10 +1,10 @@
 package com.mhendrif.capstone.core.domain.usecase
 
-import com.mhendrif.capstone.core.data.repository.TvShowRepository
 import com.mhendrif.capstone.core.domain.model.TvShow
+import com.mhendrif.capstone.core.domain.repository.ITvShowRepository
 import javax.inject.Inject
 
-class TvShowInteractor @Inject constructor(private val tvShowRepository: TvShowRepository): TvShowUseCase {
+class TvShowInteractor @Inject constructor(private val tvShowRepository: ITvShowRepository): TvShowUseCase {
     override fun getAllTvShow() = tvShowRepository.getAllTvShow()
 
     override fun getFavorite() = tvShowRepository.getFavorite()

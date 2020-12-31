@@ -5,8 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.core.binding.ImageBinding
 import com.mhendrif.capstone.core.domain.model.Movie
+import com.mhendrif.capstone.core.utils.Constants
 import com.mhendrif.capstone.databinding.ItemContainerBinding
+import timber.log.Timber
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
 
@@ -21,14 +24,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_container, parent, false))
+        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_container, parent, false))
 
     override fun onBindViewHolder(holder: MovieAdapter.ListViewHolder, position: Int) {
-        val data = listData[position]
-        holder.bind(data)
+        holder.bind(listData[position])
     }
 
-    override fun getItemCount() = listData.size
+    override fun getItemCount(): Int = listData.size
 
     inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val binding = ItemContainerBinding.bind(itemView)
@@ -37,6 +39,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
                 tvTitle.text = data.title
                 tvReleaseDate.text = data.releaseDate
                 tvScore.text = data.voteAverage.toString()
+                ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH+data.posterPath)
+            }
+        }
+
+        init {
+            binding.root.setOnClickListener {
+                onItemClick?.invoke(listData[adapterPosition])
             }
         }
     }

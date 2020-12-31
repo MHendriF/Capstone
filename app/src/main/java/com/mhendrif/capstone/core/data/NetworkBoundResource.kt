@@ -3,6 +3,7 @@ package com.mhendrif.capstone.core.data
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.core.utils.AppExecutors
 import kotlinx.coroutines.flow.*
+import timber.log.Timber
 
 abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
     private var result: Flow<Resource<ResultType>> = flow {
@@ -12,13 +13,16 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecut
             emit(Resource.Loading())
             when (val apiResponse = createCall().first()) {
                 is ApiResponse.Success -> {
+                    Timber.d("Timber - success")
                     saveCallResult(apiResponse.data)
                     emitAll(loadFromDB().map { Resource.Success(it) })
                 }
                 is ApiResponse.Empty -> {
+                    Timber.d("Timber - empty")
                     emitAll(loadFromDB().map { Resource.Success(it) })
                 }
                 is ApiResponse.Error -> {
+                    Timber.d("Timber - error")
                     onFetchFailed()
                     emit(Resource.Error<ResultType>(apiResponse.errorMessage))
                 }

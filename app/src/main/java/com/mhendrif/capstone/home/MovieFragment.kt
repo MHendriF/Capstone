@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
@@ -44,7 +45,6 @@ class MovieFragment : Fragment() {
                         is Resource.Loading ->  binding.pbLoading.visibility = View.VISIBLE
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
-                            Timber.d("Size movie, %s", movie.data?.size.toString())
                             movieAdapter.setData(movie.data)
                         }
                         is Resource.Error -> {
@@ -57,6 +57,11 @@ class MovieFragment : Fragment() {
                     activity?.toast("Data is null")
                 }
             })
+
+            with(binding.rvMovie) {
+                setHasFixedSize(true)
+                adapter = movieAdapter
+            }
         }
     }
 

@@ -12,7 +12,7 @@ object MovieDataMapper {
         val movieList = ArrayList<MovieEntity>()
         input.map {
             var listGenre = ""
-            if (it.genres.isNotEmpty()) {
+            if (it.genres != null && it.genres.isNotEmpty()) {
                 listGenre = Gson().toJson(it.genres)
             }
             val movie = MovieEntity(
@@ -25,7 +25,7 @@ object MovieDataMapper {
                     voteAverage = it.voteAverage,
                     voteCount = it.voteCount,
                     genres = listGenre,
-                    homepage = it.homepage,
+                    homepage = it.homepage ?: "",
                     isFavorite = false
             )
             movieList.add(movie)
@@ -35,7 +35,7 @@ object MovieDataMapper {
 
     fun mapResponseToEntity(input: MovieResponse): MovieEntity {
         var listGenre = ""
-        if (input.genres.isNotEmpty()) {
+        if (input.genres != null && input.genres.isNotEmpty()) {
             listGenre = Gson().toJson(input.genres)
         }
         return MovieEntity(
@@ -48,7 +48,7 @@ object MovieDataMapper {
             voteAverage = input.voteAverage,
             voteCount = input.voteCount,
             genres = listGenre,
-            homepage = input.homepage,
+            homepage = input.homepage ?: "",
             isFavorite = false
         )
     }
@@ -96,7 +96,7 @@ object MovieDataMapper {
 
     fun mapDomainToEntity(input: Movie): MovieEntity {
         var listGenre = ""
-        if (input.genres.isNotEmpty()) {
+        if (input.genres != null && input.genres.isNotEmpty()) {
             listGenre = Gson().toJson(input.genres)
         }
         return MovieEntity(

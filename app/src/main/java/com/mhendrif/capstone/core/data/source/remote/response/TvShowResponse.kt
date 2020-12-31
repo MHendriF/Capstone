@@ -22,7 +22,7 @@ data class TvShowResponse(
     @field:SerializedName("backdrop_path")
     val backdropPath: String,
 
-    @field:SerializedName("release_date")
+    @field:SerializedName("first_air_date")
     val releaseDate: String,
 
     @field:SerializedName("vote_average")
@@ -32,8 +32,8 @@ data class TvShowResponse(
     val voteCount: Int,
 
     @field:SerializedName("genres")
-    val genres: List<Genre> = listOf(),
+    val genres: List<Genre>? = null,
 
     @field:SerializedName("homepage")
-    val homepage: String
+    val homepage: String? = null
 ) : Parcelable

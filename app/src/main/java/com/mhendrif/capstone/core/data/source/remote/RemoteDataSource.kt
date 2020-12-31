@@ -21,13 +21,16 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 val response = apiService.getMovies()
                 val dataArray = response.results
                 if (dataArray.isNotEmpty()) {
+                    Timber.d("Timber - succ")
                     emit(ApiResponse.Success(response.results))
                 } else {
+                    Timber.d("Timber - empt")
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
                 Timber.e(e.toString())
+                Timber.d("Timber - catch")
             }
         }.flowOn(Dispatchers.IO)
     }

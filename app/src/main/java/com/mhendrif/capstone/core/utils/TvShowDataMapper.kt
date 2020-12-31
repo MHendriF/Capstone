@@ -12,7 +12,7 @@ object TvShowDataMapper {
         val dataList = ArrayList<TvShowEntity>()
         input.map {
             var listGenre = ""
-            if (it.genres.isNotEmpty()) {
+            if (it.genres != null && it.genres.isNotEmpty()) {
                 listGenre = Gson().toJson(it.genres)
             }
             val tvShow = TvShowEntity(
@@ -25,7 +25,7 @@ object TvShowDataMapper {
                     voteAverage = it.voteAverage,
                     voteCount = it.voteCount,
                     genres = listGenre,
-                    homepage = it.homepage,
+                    homepage = it.homepage ?: "",
                     isFavorite = false
             )
             dataList.add(tvShow)
@@ -35,7 +35,7 @@ object TvShowDataMapper {
 
     fun mapResponseToEntity(input: TvShowResponse): TvShowEntity {
         var listGenre = ""
-        if (input.genres.isNotEmpty()) {
+        if (input.genres != null && input.genres.isNotEmpty()) {
             listGenre = Gson().toJson(input.genres)
         }
         return TvShowEntity(
@@ -48,7 +48,7 @@ object TvShowDataMapper {
             voteAverage = input.voteAverage,
             voteCount = input.voteCount,
             genres = listGenre,
-            homepage = input.homepage,
+            homepage = input.homepage ?: "",
             isFavorite = false
         )
     }
@@ -96,7 +96,7 @@ object TvShowDataMapper {
 
     fun mapDomainToEntity(input: TvShow): TvShowEntity {
         var listGenre = ""
-        if (input.genres.isNotEmpty()) {
+        if (input.genres != null && input.genres.isNotEmpty()) {
             listGenre = Gson().toJson(input.genres)
         }
         return TvShowEntity(

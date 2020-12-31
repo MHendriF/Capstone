@@ -13,7 +13,7 @@ data class TvShow(
     val releaseDate: String,
     val voteAverage: Double,
     val voteCount: Int,
-    val genres: List<Genre>,
+    val genres: List<Genre>?,
     val homepage: String,
     val isFavorite: Boolean
 ) : Parcelable

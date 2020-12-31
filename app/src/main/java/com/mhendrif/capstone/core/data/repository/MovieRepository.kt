@@ -31,6 +31,7 @@ class MovieRepository @Inject constructor(
                 }
 
                 override fun shouldFetch(data: List<Movie>?): Boolean = true
+                        //data == null || data.isEmpty()
 
                 override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> = remoteDataSource.getAllMovie()
 

@@ -6,10 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("discover/movie?api_key=${Constants.TMDB_API_KEY}")
+    @GET("discover/movie?api_key=${Constants.TMDB_API_KEY}&language=en-US")
     suspend fun getMovies(): ListMovieResponse
 
-    @GET("discover/tv?api_key=${Constants.TMDB_API_KEY}")
+    @GET("discover/tv?api_key=${Constants.TMDB_API_KEY}&language=en-US")
     suspend fun getTvShows(): ListTvShowResponse
 
     @GET("movie/{id}?api_key=${Constants.TMDB_API_KEY}")
