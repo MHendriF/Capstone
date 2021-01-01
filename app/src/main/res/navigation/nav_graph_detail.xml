@@ -15,10 +15,6 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/fragmentDetailMovie"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="movieId"
-            app:argType="integer"
-            android:defaultValue="0" />
     </fragment>
 
     <fragment
@@ -31,9 +27,5 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/fragmentDetailTvShow"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="tvShowId"
-            app:argType="integer"
-            android:defaultValue="0" />
     </fragment>
 </navigation>

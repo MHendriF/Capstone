@@ -30,7 +30,7 @@ class DetailMovieFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailMovieBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,11 +38,8 @@ class DetailMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ivBack.setOnClickListener { activity?.onBackPressed() }
-        Timber.d("Timber on create")
 
         val dataId = arguments?.get(DetailActivity.DATA_EXTRA_ID)
-        //val dataId = DetailMovieFragmentArgs.fromBundle(arguments as Bundle).movieId
-        Timber.d("Timber dataId: %s", dataId)
         if (dataId != 0 && dataId != null) detailViewModel.getDetailMovie(dataId as Int)
 
         if (activity != null) {

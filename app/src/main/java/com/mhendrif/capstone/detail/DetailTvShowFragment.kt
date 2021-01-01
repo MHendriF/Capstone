@@ -30,7 +30,7 @@ class DetailTvShowFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailTvShowBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -40,8 +40,6 @@ class DetailTvShowFragment : Fragment() {
         binding.ivBack.setOnClickListener { activity?.onBackPressed() }
 
         val dataId = arguments?.get(DetailActivity.DATA_EXTRA_ID)
-        //val dataId = DetailTvShowFragmentArgs.fromBundle(arguments as Bundle).tvShowId
-        Timber.d("Timber dataId: %s", dataId)
         if (dataId != 0 && dataId != null) detailViewModel.getDetailTvShow(dataId as Int)
 
         if (activity != null) {
