@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.core.binding.ImageBinding
+import com.mhendrif.capstone.core.utils.ImageBinding
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.domain.model.TvShow
 import com.mhendrif.capstone.core.utils.Constants

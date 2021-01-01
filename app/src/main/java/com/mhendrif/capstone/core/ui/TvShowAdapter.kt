@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.core.binding.ImageBinding
+import com.mhendrif.capstone.core.utils.ImageBinding
 import com.mhendrif.capstone.core.domain.model.TvShow
 import com.mhendrif.capstone.core.utils.Constants
 import com.mhendrif.capstone.databinding.ItemContainerBinding

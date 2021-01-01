@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.core.binding
+package com.mhendrif.capstone.core.utils
 
 import android.widget.ImageView
 import com.squareup.picasso.Callback
