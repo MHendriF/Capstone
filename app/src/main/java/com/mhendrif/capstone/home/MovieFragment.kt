@@ -38,7 +38,6 @@ class MovieFragment : Fragment() {
         if (activity != null) {
             val movieAdapter = MovieAdapter()
             movieAdapter.onItemClick = { selectData ->
-                activity?.toast(selectData.title)
                 val intent = Intent(activity, DetailActivity::class.java).apply {
                     putExtra(DetailActivity.DATA_EXTRA, arrayListOf(R.id.fragmentDetailMovie, selectData.id))
                 }

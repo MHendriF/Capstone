@@ -39,9 +39,10 @@ class DetailTvShowFragment : Fragment() {
         binding.ivBack.setOnClickListener { activity?.onBackPressed() }
         Timber.d("Timber on create")
 
-        val dataId = DetailTvShowFragmentArgs.fromBundle(arguments as Bundle).tvShowId
+        val dataId = arguments?.get(DetailActivity.DATA_EXTRA_ID)
+        //val dataId = DetailTvShowFragmentArgs.fromBundle(arguments as Bundle).tvShowId
         Timber.d("Timber dataId: %s", dataId)
-        if(dataId != 0) detailViewModel.getDetailTvShow(dataId)
+        if(dataId != 0 && dataId != null) detailViewModel.getDetailTvShow(dataId as Int)
 
         if (activity != null) {
             detailViewModel.tvShow.observe(viewLifecycleOwner, { tvShow ->

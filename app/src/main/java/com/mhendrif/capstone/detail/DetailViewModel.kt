@@ -20,6 +20,11 @@ class DetailViewModel @ViewModelInject constructor(
 
     var movie: LiveData<Resource<Movie>> = MutableLiveData()
     var tvShow: LiveData<Resource<TvShow>> = MutableLiveData()
+    private lateinit var dataExtra: MutableList<Int>
+
+    fun init(dataDes: Int, dataId: Int) {
+        dataExtra = mutableListOf(dataDes, dataId)
+    }
 
     fun getDetailMovie(id: Int) {
         movie = movieUseCase.getDetailMovie(id).asLiveData()
@@ -28,6 +33,8 @@ class DetailViewModel @ViewModelInject constructor(
     fun getDetailTvShow(id: Int) {
         tvShow = tvShowUseCase.getDetailTvShow(id).asLiveData()
     }
+
+    fun getExtra(data: Int) = this.dataExtra[data]
 
     fun setFavoriteMovie(movie: Movie, isFavorite: Boolean) = movieUseCase.setFavorite(movie, isFavorite)
 
