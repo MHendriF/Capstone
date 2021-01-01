@@ -29,8 +29,6 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private val detailViewModel: DetailViewModel by viewModels()
-    var destination: String = ""
-    //val toNavDestination
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,29 +37,20 @@ class DetailActivity : AppCompatActivity() {
 
         intent.getIntegerArrayListExtra(DATA_EXTRA)?.apply {
             detailViewModel.init(get(DATA_DESTINATION), get(DATA_ID))
-            Timber.d("Timber des: %s - id: %s",get(DATA_DESTINATION), get(DATA_DESTINATION))
-
-//            if (R.id.fragmentDetailMovie == get(DATA_DESTINATION)) {
-//                Timber.d("Timber movie: %s - res: %s",get(DATA_DESTINATION), R.id.fragmentDetailMovie)
-//                val toNavDestination = DetailMovieFragmentDirections.actionDetailActivityToDetailMovieFragment()
-//                toNavDestination.movieId = get(DATA_ID)
-//                Navigation.findNavController(this@DetailActivity, R.id.nav_host_detail_fragment).navigate(toNavDestination)
-//            } else {
-//                Timber.d("Timber tv: %s - res: %s",get(DATA_DESTINATION), R.id.fragmentDetailTvShow)
-//                val toNavDestination = DetailTvShowFragmentDirections.actionDetailActivityToDetailTvShowFragment()
-//                toNavDestination.tvShowId = get(DATA_ID)
-//                Navigation.findNavController(this@DetailActivity, R.id.nav_host_detail_fragment).navigate(toNavDestination)
-//            }
+            Timber.d("Timber des: %s - id: %s", get(DATA_DESTINATION), get(DATA_DESTINATION))
         }
 
-
-        val navController = Navigation.findNavController(this@DetailActivity, R.id.nav_host_detail_fragment)
+        val navController =
+            Navigation.findNavController(this@DetailActivity, R.id.nav_host_detail_fragment)
         savedInstanceState?.let {
             navController.restoreState(it)
         } ?: run {
             navController.navInflater.inflate(R.navigation.nav_graph_detail).run {
                 startDestination = detailViewModel.getExtra(DATA_DESTINATION)
-                navController.setGraph(this, bundleOf(DATA_EXTRA_ID to detailViewModel.getExtra(DATA_ID)))
+                navController.setGraph(
+                    this,
+                    bundleOf(DATA_EXTRA_ID to detailViewModel.getExtra(DATA_ID))
+                )
             }
         }
     }

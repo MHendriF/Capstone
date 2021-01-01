@@ -24,8 +24,12 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.nav_host_main_fragment)
         setupWithNavController(binding.bottomNavigationView, navController)
         setupActionBarWithNavController(
-                navController,
-                AppBarConfiguration.Builder(R.id.fragment_movie, R.id.fragment_tv_show, R.id.fragment_favorite).build()
+            navController,
+            AppBarConfiguration.Builder(
+                R.id.fragment_movie,
+                R.id.fragment_tv_show,
+                R.id.fragment_favorite
+            ).build()
         )
     }
 

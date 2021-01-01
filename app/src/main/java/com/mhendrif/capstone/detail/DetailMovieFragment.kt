@@ -28,8 +28,8 @@ class DetailMovieFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDetailMovieBinding.inflate(inflater, container, false)
         return binding.root
@@ -43,13 +43,13 @@ class DetailMovieFragment : Fragment() {
         val dataId = arguments?.get(DetailActivity.DATA_EXTRA_ID)
         //val dataId = DetailMovieFragmentArgs.fromBundle(arguments as Bundle).movieId
         Timber.d("Timber dataId: %s", dataId)
-        if(dataId != 0 && dataId != null) detailViewModel.getDetailMovie(dataId as Int)
+        if (dataId != 0 && dataId != null) detailViewModel.getDetailMovie(dataId as Int)
 
         if (activity != null) {
             detailViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null) {
-                    when(movie) {
-                        is Resource.Loading ->  binding.pbLoading.visibility = View.VISIBLE
+                    when (movie) {
+                        is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
                             visibleContent()
@@ -89,8 +89,8 @@ class DetailMovieFragment : Fragment() {
 
     private fun setUpContent(model: Movie) {
         with(binding) {
-            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH+model.posterPath)
-            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH+model.posterPath)
+            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + model.posterPath)
+            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH + model.posterPath)
             val genres = ArrayList<String>()
             for (genre in model.genres!!) {
                 genres.add(genre.name)
@@ -129,9 +129,19 @@ class DetailMovieFragment : Fragment() {
 
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (!statusFavorite) {
-            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite))
+            binding.ivFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_favorite
+                )
+            )
         } else {
-            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete))
+            binding.ivFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_delete
+                )
+            )
         }
     }
 

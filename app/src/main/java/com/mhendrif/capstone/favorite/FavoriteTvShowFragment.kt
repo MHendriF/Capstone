@@ -32,8 +32,8 @@ class FavoriteTvShowFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTvShowBinding.inflate(inflater, container, false)
         return binding.root
@@ -46,7 +46,10 @@ class FavoriteTvShowFragment : Fragment() {
             val tvShowAdapter = TvShowAdapter()
             tvShowAdapter.onItemClick = { selectData ->
                 val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.DATA_EXTRA, arrayListOf(R.id.fragmentDetailTvShow, selectData.id))
+                    putExtra(
+                        DetailActivity.DATA_EXTRA,
+                        arrayListOf(R.id.fragmentDetailTvShow, selectData.id)
+                    )
                 }
                 activity?.startActivity(intent)
             }

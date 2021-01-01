@@ -28,8 +28,8 @@ class DetailTvShowFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDetailTvShowBinding.inflate(inflater, container, false)
         return binding.root
@@ -42,13 +42,13 @@ class DetailTvShowFragment : Fragment() {
         val dataId = arguments?.get(DetailActivity.DATA_EXTRA_ID)
         //val dataId = DetailTvShowFragmentArgs.fromBundle(arguments as Bundle).tvShowId
         Timber.d("Timber dataId: %s", dataId)
-        if(dataId != 0 && dataId != null) detailViewModel.getDetailTvShow(dataId as Int)
+        if (dataId != 0 && dataId != null) detailViewModel.getDetailTvShow(dataId as Int)
 
         if (activity != null) {
             detailViewModel.tvShow.observe(viewLifecycleOwner, { tvShow ->
                 if (tvShow != null) {
-                    when(tvShow) {
-                        is Resource.Loading ->  binding.pbLoading.visibility = View.VISIBLE
+                    when (tvShow) {
+                        is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
                             visibleContent()
@@ -87,8 +87,8 @@ class DetailTvShowFragment : Fragment() {
 
     private fun setUpContent(model: TvShow) {
         with(binding) {
-            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH+model.posterPath)
-            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH+model.posterPath)
+            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + model.posterPath)
+            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH + model.posterPath)
             val genres = ArrayList<String>()
             for (genre in model.genres!!) {
                 genres.add(genre.name)
@@ -127,9 +127,19 @@ class DetailTvShowFragment : Fragment() {
 
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (!statusFavorite) {
-            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite))
+            binding.ivFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_favorite
+                )
+            )
         } else {
-            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete))
+            binding.ivFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_delete
+                )
+            )
         }
     }
 

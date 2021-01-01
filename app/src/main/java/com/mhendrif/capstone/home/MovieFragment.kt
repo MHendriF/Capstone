@@ -25,8 +25,8 @@ class MovieFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
         return binding.root
@@ -39,7 +39,10 @@ class MovieFragment : Fragment() {
             val movieAdapter = MovieAdapter()
             movieAdapter.onItemClick = { selectData ->
                 val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.DATA_EXTRA, arrayListOf(R.id.fragmentDetailMovie, selectData.id))
+                    putExtra(
+                        DetailActivity.DATA_EXTRA,
+                        arrayListOf(R.id.fragmentDetailMovie, selectData.id)
+                    )
                 }
                 Timber.d("Timber des: %s - id: %s", R.id.fragmentDetailMovie, selectData.id)
                 activity?.startActivity(intent)
@@ -47,8 +50,8 @@ class MovieFragment : Fragment() {
 
             movieViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null) {
-                    when(movie) {
-                        is Resource.Loading ->  binding.pbLoading.visibility = View.VISIBLE
+                    when (movie) {
+                        is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
                             movieAdapter.setData(movie.data)

@@ -31,8 +31,10 @@ class DetailViewModel @ViewModelInject constructor(
 
     fun getExtra(data: Int) = this.dataExtra[data]
 
-    fun setFavoriteMovie(movie: Movie, isFavorite: Boolean) = movieUseCase.setFavorite(movie, isFavorite)
+    fun setFavoriteMovie(movie: Movie, isFavorite: Boolean) =
+        movieUseCase.setFavorite(movie, isFavorite)
 
-    fun setFavoriteTvShow(tvShow: TvShow, isFavorite: Boolean) = tvShowUseCase.setFavorite(tvShow, isFavorite)
+    fun setFavoriteTvShow(tvShow: TvShow, isFavorite: Boolean) =
+        tvShowUseCase.setFavorite(tvShow, isFavorite)
 
 }

@@ -17,29 +17,30 @@ import javax.inject.Singleton
 
 @Singleton
 class TvShowRepository @Inject constructor(
-        private val remoteDataSource: RemoteDataSource,
-        private val localDataSource: LocalDataSource,
-        private val appExecutors: AppExecutors
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource,
+    private val appExecutors: AppExecutors
 ) : ITvShowRepository {
 
     override fun getAllTvShow(): Flow<Resource<List<TvShow>>> =
-            object : NetworkBoundResource<List<TvShow>, List<TvShowResponse>>(appExecutors) {
-                override fun loadFromDB(): Flow<List<TvShow>> {
-                    return localDataSource.getAllTvShow().map {
-                        TvShowDataMapper.mapEntitiesToDomain(it)
-                    }
+        object : NetworkBoundResource<List<TvShow>, List<TvShowResponse>>(appExecutors) {
+            override fun loadFromDB(): Flow<List<TvShow>> {
+                return localDataSource.getAllTvShow().map {
+                    TvShowDataMapper.mapEntitiesToDomain(it)
                 }
+            }
 
-                override fun shouldFetch(data: List<TvShow>?): Boolean =
-                    data == null || data.isEmpty()
+            override fun shouldFetch(data: List<TvShow>?): Boolean =
+                data == null || data.isEmpty()
 
-                override suspend fun createCall(): Flow<ApiResponse<List<TvShowResponse>>> = remoteDataSource.getAllTvShow()
+            override suspend fun createCall(): Flow<ApiResponse<List<TvShowResponse>>> =
+                remoteDataSource.getAllTvShow()
 
-                override suspend fun saveCallResult(data: List<TvShowResponse>) {
-                    val dataList = TvShowDataMapper.mapResponsesToEntities(data)
-                    localDataSource.insertAllTvShow(dataList)
-                }
-            }.asFlow()
+            override suspend fun saveCallResult(data: List<TvShowResponse>) {
+                val dataList = TvShowDataMapper.mapResponsesToEntities(data)
+                localDataSource.insertAllTvShow(dataList)
+            }
+        }.asFlow()
 
     override fun getFavorite(): Flow<List<TvShow>> {
         return localDataSource.getFavoriteTvShow().map {
@@ -53,20 +54,22 @@ class TvShowRepository @Inject constructor(
     }
 
     override fun getDetailTvShow(id: Int): Flow<Resource<TvShow>> =
-            object : NetworkBoundResource<TvShow, TvShowResponse>(appExecutors) {
-                override fun loadFromDB(): Flow<TvShow> {
-                    return localDataSource.getDetailTvShow(id).map {
-                        TvShowDataMapper.mapEntityToDomain(it)
-                    }
+        object : NetworkBoundResource<TvShow, TvShowResponse>(appExecutors) {
+            override fun loadFromDB(): Flow<TvShow> {
+                return localDataSource.getDetailTvShow(id).map {
+                    TvShowDataMapper.mapEntityToDomain(it)
                 }
+            }
 
-                override fun shouldFetch(data: TvShow?): Boolean = data?.genres == null || data.genres.isEmpty()
+            override fun shouldFetch(data: TvShow?): Boolean =
+                data?.genres == null || data.genres.isEmpty()
 
-                override suspend fun createCall(): Flow<ApiResponse<TvShowResponse>> = remoteDataSource.getDetailTvShow(id)
+            override suspend fun createCall(): Flow<ApiResponse<TvShowResponse>> =
+                remoteDataSource.getDetailTvShow(id)
 
-                override suspend fun saveCallResult(data: TvShowResponse) {
-                    val entity = TvShowDataMapper.mapResponseToEntity(data)
-                    localDataSource.updateTvShow(entity)
-                }
-            }.asFlow()
+            override suspend fun saveCallResult(data: TvShowResponse) {
+                val entity = TvShowDataMapper.mapResponseToEntity(data)
+                localDataSource.updateTvShow(entity)
+            }
+        }.asFlow()
 }

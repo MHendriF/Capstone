@@ -34,8 +34,8 @@ class FavoriteMovieFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
         return binding.root
@@ -47,7 +47,10 @@ class FavoriteMovieFragment : Fragment() {
             val movieAdapter = MovieAdapter()
             movieAdapter.onItemClick = { selectData ->
                 val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.DATA_EXTRA, arrayListOf(R.id.fragmentDetailMovie, selectData.id))
+                    putExtra(
+                        DetailActivity.DATA_EXTRA,
+                        arrayListOf(R.id.fragmentDetailMovie, selectData.id)
+                    )
                 }
                 activity?.startActivity(intent)
             }

@@ -9,7 +9,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LocalDataSource @Inject constructor(private val movieDao: MovieDao, private val tvShowDao: TvShowDao) {
+class LocalDataSource @Inject constructor(
+    private val movieDao: MovieDao,
+    private val tvShowDao: TvShowDao
+) {
 
     fun getAllMovie(): Flow<List<MovieEntity>> = movieDao.getAllMovie()
 
@@ -32,13 +35,12 @@ class LocalDataSource @Inject constructor(private val movieDao: MovieDao, privat
 
     fun getDetailFavorite(id: Int) = movieDao.getDetailMovie(id)
 
-    ////////////
-
     fun getAllTvShow(): Flow<List<TvShowEntity>> = tvShowDao.getAllTvShow()
 
     fun getFavoriteTvShow(): Flow<List<TvShowEntity>> = tvShowDao.getFavorite()
 
-    suspend fun insertAllTvShow(tvShowList: List<TvShowEntity>) = tvShowDao.insertAllTvShow(tvShowList)
+    suspend fun insertAllTvShow(tvShowList: List<TvShowEntity>) =
+        tvShowDao.insertAllTvShow(tvShowList)
 
     suspend fun insertTvShow(tvShowEntity: TvShowEntity) = tvShowDao.insert(tvShowEntity)
 
