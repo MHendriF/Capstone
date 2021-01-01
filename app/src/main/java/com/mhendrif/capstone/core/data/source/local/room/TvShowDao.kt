@@ -28,5 +28,5 @@ interface TvShowDao {
     fun updateFavorite(tvShow: TvShowEntity)
 
     @Query("SELECT * FROM tvShows where id=:id")
-    fun getDetailTvShow(id: String): Flow<TvShowEntity>
+    fun getDetailTvShow(id: Int): Flow<TvShowEntity>
 }

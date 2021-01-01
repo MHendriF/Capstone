@@ -1,9 +1,5 @@
 package com.mhendrif.capstone.core.binding
 
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.databinding.BindingAdapter
-import com.mhendrif.capstone.core.domain.model.Genre
-
 object GenreBinding {
     val genres: MutableMap<Int, String> = mutableMapOf()
 
@@ -37,23 +33,4 @@ object GenreBinding {
         genres[10768] = "War & Politics"
     }
 
-    @JvmStatic
-    @BindingAdapter("android:listGenre")
-    fun setListGenre(view: AppCompatTextView, idListGenre: List<Int>?) {
-        val genre = StringBuilder()
-        idListGenre?.forEachIndexed { index, key ->
-            genre.append(if (index != idListGenre.size - 1) "${genres[key]}, " else genres[key])
-        }
-        view.text = genre.toString()
-    }
-
-    @JvmStatic
-    @BindingAdapter("android:genres")
-    fun setGenre(view: AppCompatTextView, it: List<Genre>?) {
-        val genre = StringBuilder()
-        it?.forEachIndexed { i, v ->
-            genre.append(if (i != it.size - 1) "${v.name}, " else v.name)
-        }
-        view.text = genre.toString()
-    }
 }

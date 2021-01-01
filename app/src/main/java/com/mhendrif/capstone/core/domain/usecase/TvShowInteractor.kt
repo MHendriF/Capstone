@@ -11,5 +11,5 @@ class TvShowInteractor @Inject constructor(private val tvShowRepository: ITvShow
 
     override fun setFavorite(tvShow: TvShow, state: Boolean) = tvShowRepository.setFavorite(tvShow, state)
 
-    override fun getDetailTvShow(id: String) = tvShowRepository.getDetailTvShow(id)
+    override fun getDetailTvShow(id: Int) = tvShowRepository.getDetailTvShow(id)
 }

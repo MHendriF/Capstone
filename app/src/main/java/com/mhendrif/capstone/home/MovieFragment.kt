@@ -1,6 +1,7 @@
 package com.mhendrif.capstone.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.mhendrif.capstone.R
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
+import com.mhendrif.capstone.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -36,7 +38,12 @@ class MovieFragment : Fragment() {
         if (activity != null) {
             val movieAdapter = MovieAdapter()
             movieAdapter.onItemClick = { selectData ->
-                Timber.d(selectData.title)
+                activity?.toast(selectData.title)
+                val intent = Intent(activity, DetailActivity::class.java).apply {
+                    putExtra(DetailActivity.DATA_EXTRA, arrayListOf(R.id.fragmentDetailMovie, selectData.id))
+                }
+                Timber.d("Timber des: %s - id: %s", R.id.fragmentDetailMovie, selectData.id)
+                activity?.startActivity(intent)
             }
 
             movieViewModel.movie.observe(viewLifecycleOwner, { movie ->

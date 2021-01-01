@@ -53,6 +53,22 @@ object MovieDataMapper {
         )
     }
 
+    fun mapResponseToDomain(input: MovieResponse): Movie {
+        return Movie(
+            id = input.id,
+            title = input.title,
+            overview = input.overview,
+            posterPath = input.posterPath,
+            backdropPath = input.backdropPath,
+            releaseDate = input.releaseDate,
+            voteAverage = input.voteAverage,
+            voteCount = input.voteCount,
+            genres = input.genres,
+            homepage = input.homepage ?: "",
+            isFavorite = false
+        )
+    }
+
     fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> =
             input.map {
                 val listGenre = ArrayList<Genre>()

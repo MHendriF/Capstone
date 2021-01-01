@@ -3,29 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_detail"
-    app:startDestination="@id/detail_movie">
+    app:startDestination="@id/fragmentDetailMovie">
 
     <fragment
-        android:id="@+id/detail_movie"
+        android:id="@+id/fragmentDetailMovie"
         android:name="com.mhendrif.capstone.detail.DetailMovieFragment"
         tools:layout="@layout/fragment_detail_movie">
         <action
-            android:id="@+id/detail_movie"
-            app:destination="@id/detail_movie"
+            android:id="@+id/action_detailActivity_to_detailMovieFragment"
+            app:destination="@id/fragmentDetailMovie"
             app:launchSingleTop="true"
-            app:popUpTo="@id/detail_movie"
+            app:popUpTo="@id/fragmentDetailMovie"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
-        android:id="@+id/detail_tv_show"
+        android:id="@+id/fragmentDetailTvShow"
         android:name="com.mhendrif.capstone.detail.DetailTvShowFragment"
         tools:layout="@layout/fragment_detail_tv_show">
         <action
-            android:id="@id/detail_tv_show"
-            app:destination="@id/detail_tv_show"
+            android:id="@+id/action_detailActivity_to_detailTvShowFragment"
+            app:destination="@id/fragmentDetailTvShow"
             app:launchSingleTop="true"
-            app:popUpTo="@id/detail_tv_show"
+            app:popUpTo="@id/fragmentDetailTvShow"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="tvShowId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

@@ -51,7 +51,7 @@ class TvShowRepository @Inject constructor(
         appExecutors.diskIO().execute { localDataSource.setFavoriteTvShow(entity, state) }
     }
 
-    override fun getDetailTvShow(id: String): Flow<Resource<TvShow>> =
+    override fun getDetailTvShow(id: Int): Flow<Resource<TvShow>> =
             object : NetworkBoundResource<TvShow, TvShowResponse>(appExecutors) {
                 override fun loadFromDB(): Flow<TvShow> {
                     return localDataSource.getDetailTvShow(id).map {
@@ -68,8 +68,4 @@ class TvShowRepository @Inject constructor(
                     localDataSource.updateTvShow(entity)
                 }
             }.asFlow()
-
-
-
-
 }

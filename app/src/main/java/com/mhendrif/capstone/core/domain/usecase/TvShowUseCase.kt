@@ -8,5 +8,5 @@ interface TvShowUseCase {
     fun getAllTvShow(): Flow<Resource<List<TvShow>>>
     fun getFavorite(): Flow<List<TvShow>>
     fun setFavorite(tvShow: TvShow, state: Boolean)
-    fun getDetailTvShow(id: String): Flow<Resource<TvShow>>
+    fun getDetailTvShow(id: Int): Flow<Resource<TvShow>>
 }

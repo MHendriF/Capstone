@@ -52,7 +52,7 @@ class MovieRepository @Inject constructor(
         appExecutors.diskIO().execute { localDataSource.setFavoriteMovie(entity, state) }
     }
 
-    override fun getDetailMovie(id: String): Flow<Resource<Movie>> =
+    override fun getDetailMovie(id: Int): Flow<Resource<Movie>> =
             object : NetworkBoundResource<Movie, MovieResponse>(appExecutors) {
                 override fun loadFromDB(): Flow<Movie> {
                     return localDataSource.getDetailMovie(id).map {
@@ -60,7 +60,8 @@ class MovieRepository @Inject constructor(
                     }
                 }
 
-                override fun shouldFetch(data: Movie?): Boolean = data?.genres == null || data.genres.isEmpty()
+                override fun shouldFetch(data: Movie?): Boolean = true
+                        //data?.genres == null || data.genres.isEmpty()
 
                 override suspend fun createCall(): Flow<ApiResponse<MovieResponse>> = remoteDataSource.getDetailMovie(id)
 
@@ -69,4 +70,16 @@ class MovieRepository @Inject constructor(
                     localDataSource.updateMovie(entity)
                 }
             }.asFlow()
+
+
+    override suspend fun getDetailMovie2(id: Int): Flow<Movie> =
+        remoteDataSource.getDetailMovie2(id).map {
+            MovieDataMapper.mapResponseToDomain(it)
+        }
+
+    override fun getDetailFavorite(id: Int): Flow<Movie> {
+        return localDataSource.getDetailFavorite(id).map {
+            MovieDataMapper.mapEntityToDomain(it)
+        }
+    }
 }

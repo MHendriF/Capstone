@@ -28,7 +28,11 @@ class LocalDataSource @Inject constructor(private val movieDao: MovieDao, privat
         movieDao.updateFavorite(movieEntity)
     }
 
-    fun getDetailMovie(id: String) = movieDao.getDetailMovie(id)
+    fun getDetailMovie(id: Int) = movieDao.getDetailMovie(id)
+
+    fun getDetailFavorite(id: Int) = movieDao.getDetailMovie(id)
+
+    ////////////
 
     fun getAllTvShow(): Flow<List<TvShowEntity>> = tvShowDao.getAllTvShow()
 
@@ -47,5 +51,5 @@ class LocalDataSource @Inject constructor(private val movieDao: MovieDao, privat
         tvShowDao.updateFavorite(tvShowEntity)
     }
 
-    fun getDetailTvShow(id: String) = tvShowDao.getDetailTvShow(id)
+    fun getDetailTvShow(id: Int) = tvShowDao.getDetailTvShow(id)
 }
