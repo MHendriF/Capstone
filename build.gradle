@@ -1,61 +1,58 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext{
-        kotlin_version = "1.4.21"
-        appcompat_version = "1.1.0"
-        core_ktx_version = "1.3.2"
-        constraint_version = "2.0.4"
-        legacy_support_version = "1.0.0"
-        junit_version = "4.13.1"
-        androidx_junit_version = "1.1.2"
-        espresso_version = "3.3.0"
-        multidex_version = "2.0.1"
-        activity_ktx_version = "1.1.0"
-        fragment_ktx_version = "1.2.5"
-        androidx_test_version = "1.3.0"
-        androidx_arch_core_version = "2.1.0"
+        // Sdk and tools
+        minSdkVersion = 21
+        targetSdkVersion = 30
+        compileSdkVersion = 30
 
-        cardview_version = "1.0.0"
-        recyclerview_version = "1.1.0"
-        material_version = "1.2.1"
-        glide_version = "4.11.0"
+        // App dependencies
+        gradleVersion = "4.1.1"
+        kotlinVersion = "1.4.21"
+        appCompatVersion = "1.1.0"
+        ktxVersion = "1.3.2"
+        constraintLayoutVersion = "2.0.4"
+        junitVersion = "4.13.1"
+        androidxJunitVersion = "1.1.2"
+        multidexVersion = "2.0.1"
+        androidxTestVersion = "1.3.0"
+        androidxArchCoreVersion = "2.1.0"
 
-        retrofit_version = "2.9.0"
-        logging_interceptor_version = '4.9.0'
+        materialVersion = "1.2.1"
+        sdpVersion = "1.0.6"
+        sspVersion = "1.0.6"
+        glideVersion = "4.11.0"
+        roundedimageviewVersion = "2.3.0"
+        picassoVersion = "2.71828"
 
-        kotlin_coroutines_version = "1.3.9"
-        lifecycle_version = "2.2.0"
-        room_version = "2.2.6"
+        retrofitVersion = "2.9.0"
+        okhttpVersion = "4.9.0"
 
-        dagger_version = "2.30.1"
-        activity_ktx_version = "1.1.0"
-        fragment_ktx_version = "1.2.5"
+        coroutinesVersion = "1.3.9"
+        lifecycleVersion = "2.2.0"
+        roomVersion = "2.2.6"
+        dataStoreVersion = "1.0.0-alpha05"
 
-        hilt_version = '2.29-alpha'
-        hilt_jetpack_version = '1.0.0-alpha02'
+        hiltVersion = "2.29-alpha"
+        hiltAndroidXVersion = "1.0.0-alpha02"
 
-        navigation_version = '2.3.2'
-        espresso_version = '3.3.0'
-        mockito_version = '3.6.0'
-        robolectric_version = '4.4'
+        navigationVersion = "2.3.2"
+        espressoVersion = "3.3.0"
+        mockitoVersion = "3.6.0"
+        mockitokotlinVersion = "2.2.0"
 
-        timber_version = '4.7.1'
-        sdp_android_version = '1.0.6'
-        ssp_android_version = '1.0.6'
-        roundedimageview_version = '2.3.0'
-        picasso_version = '2.71828'
-
-        paging_version = '2.1.2'
+        timberVersion = "4.7.1"
+        pagingVersion = "2.1.2"
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

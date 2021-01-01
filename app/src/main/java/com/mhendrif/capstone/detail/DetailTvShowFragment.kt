@@ -116,7 +116,7 @@ class DetailTvShowFragment : Fragment() {
                 DialogMessage.showDialog(requireContext(), model.title, isFavorite) {
                     isFavorite = !isFavorite
                     detailViewModel.setFavoriteTvShow(model, isFavorite)
-                    activity?.toast("Success ${if (isFavorite) "delete" else "add"} ${model.title} ${if (isFavorite) "from" else "to"} favorite")
+                    activity?.toast("Success ${if (!isFavorite) "delete" else "add"} ${model.title} ${if (!isFavorite) "from" else "to"} favorite")
                     setStatusFavorite(isFavorite)
                 }
             }
