@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
@@ -90,11 +91,17 @@ class DetailMovieFragment : Fragment() {
         with(binding) {
             ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH+model.posterPath)
             ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH+model.posterPath)
+            val genres = ArrayList<String>()
+            for (genre in model.genres!!) {
+                genres.add(genre.name)
+            }
+
             tvTitle.text = model.title
             tvOverview.text = model.overview
-            tvGenre.text = model.title
             tvReleaseDate.text = model.releaseDate
             tvScore.text = model.voteAverage.toString()
+            tvGenre.text = genres.joinToString()
+
             tvReadMore.setOnClickListener {
                 if (tvReadMore.text.toString() == "Read More") {
                     tvOverview.maxLines = Int.MAX_VALUE
@@ -106,12 +113,25 @@ class DetailMovieFragment : Fragment() {
                     tvReadMore.setText(R.string.read_more)
                 }
             }
+
+            var isFavorite = model.isFavorite
+            setStatusFavorite(isFavorite)
             ivFavorite.setOnClickListener {
-                DialogMessage.showDialog(requireContext(), model.title, model.isFavorite) {
-                    detailViewModel.setFavoriteMovie(model, model.isFavorite)
-                    activity?.toast("Success ${if (model.isFavorite) "delete" else "add"} ${model.title} ${if (model.isFavorite) "from" else "to"} favorite")
+                DialogMessage.showDialog(requireContext(), model.title, isFavorite) {
+                    isFavorite = !isFavorite
+                    detailViewModel.setFavoriteMovie(model, isFavorite)
+                    activity?.toast("Success ${if (isFavorite) "delete" else "add"} ${model.title} ${if (isFavorite) "from" else "to"} favorite")
+                    setStatusFavorite(isFavorite)
                 }
             }
+        }
+    }
+
+    private fun setStatusFavorite(statusFavorite: Boolean) {
+        if (!statusFavorite) {
+            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite))
+        } else {
+            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete))
         }
     }
 

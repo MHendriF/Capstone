@@ -2,16 +2,11 @@ package com.mhendrif.capstone.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.mhendrif.capstone.R
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.domain.model.Movie
 import com.mhendrif.capstone.core.domain.model.TvShow
 import com.mhendrif.capstone.core.domain.usecase.MovieUseCase
 import com.mhendrif.capstone.core.domain.usecase.TvShowUseCase
-import com.mhendrif.capstone.detail.DetailActivity.Companion.DATA_DESTINATION
-import com.mhendrif.capstone.detail.DetailActivity.Companion.DATA_ID
-import timber.log.Timber
-import kotlin.properties.Delegates
 
 class DetailViewModel @ViewModelInject constructor(
     private val movieUseCase: MovieUseCase,

@@ -30,8 +30,9 @@ class MovieRepository @Inject constructor(
                     }
                 }
 
-                override fun shouldFetch(data: List<Movie>?): Boolean = true
-                        //data == null || data.isEmpty()
+                override fun shouldFetch(data: List<Movie>?): Boolean =
+                    data == null || data.isEmpty()
+                    //true // ganti dengan true jika ingin selalu mengambil data dari internet
 
                 override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> = remoteDataSource.getAllMovie()
 
@@ -60,8 +61,8 @@ class MovieRepository @Inject constructor(
                     }
                 }
 
-                override fun shouldFetch(data: Movie?): Boolean = true
-                        //data?.genres == null || data.genres.isEmpty()
+                override fun shouldFetch(data: Movie?): Boolean =
+                    data?.genres == null || data.genres.isEmpty()
 
                 override suspend fun createCall(): Flow<ApiResponse<MovieResponse>> = remoteDataSource.getDetailMovie(id)
 
@@ -70,12 +71,6 @@ class MovieRepository @Inject constructor(
                     localDataSource.updateMovie(entity)
                 }
             }.asFlow()
-
-
-    override suspend fun getDetailMovie2(id: Int): Flow<Movie> =
-        remoteDataSource.getDetailMovie2(id).map {
-            MovieDataMapper.mapResponseToDomain(it)
-        }
 
     override fun getDetailFavorite(id: Int): Flow<Movie> {
         return localDataSource.getDetailFavorite(id).map {

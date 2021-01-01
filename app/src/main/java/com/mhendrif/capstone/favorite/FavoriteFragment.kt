@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.mhendrif.capstone.core.ui.FavoritePagerAdapter
 import com.mhendrif.capstone.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,10 +27,8 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (activity != null) {
-
-        }
+        binding.viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
+        binding.tabs.setupWithViewPager(binding.viewPager)
     }
 
     override fun onDestroyView() {

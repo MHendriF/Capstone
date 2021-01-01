@@ -61,6 +61,7 @@ class TvShowFragment : Fragment() {
                         }
                     }
                 } else {
+                    binding.pbLoading.visibility = View.GONE
                     activity?.toast("Data is null")
                 }
             })

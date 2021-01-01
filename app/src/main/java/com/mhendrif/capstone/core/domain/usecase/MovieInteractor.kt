@@ -14,8 +14,6 @@ class MovieInteractor @Inject constructor(private val movieRepository: IMovieRep
 
     override fun getDetailMovie(id: Int) = movieRepository.getDetailMovie(id)
 
-    override suspend fun getDetailMovie2(id: Int): Flow<Movie> = movieRepository.getDetailMovie2(id)
-
     override fun getDetailFavorite(id: Int): Flow<Movie> {
         TODO("Not yet implemented")
     }

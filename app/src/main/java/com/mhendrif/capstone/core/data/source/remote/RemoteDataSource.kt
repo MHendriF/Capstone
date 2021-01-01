@@ -66,17 +66,6 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getDetailMovie2(id: Int): Flow<MovieResponse> {
-        return flow {
-            try {
-                val response = apiService.getMovieById(id)
-                emit(response)
-            } catch (e: Exception) {
-                Timber.e(e.toString())
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
     suspend fun getDetailTvShow(id: Int): Flow<ApiResponse<TvShowResponse>> {
         return flow {
             try {
