@@ -10,7 +10,7 @@ import com.mhendrif.capstone.core.data.source.local.entity.TvShowEntity
         MovieEntity::class,
         TvShowEntity::class,
     ],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 

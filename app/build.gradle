@@ -54,11 +54,11 @@ dependencies {
 
     // Testing
     androidTestImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "androidx.arch.core:core-testing:$androidxArchCoreVersion"
-    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
-    androidTestImplementation "androidx.test:rules:$androidxTestVersion"
-    testImplementation "androidx.arch.core:core-testing:$androidxArchCoreVersion"
-    testImplementation "androidx.test:core:$androidxTestVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
+    androidTestImplementation "androidx.test:rules:$testVersion"
+    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    testImplementation "androidx.test:core:$testVersion"
 
     // Espresso
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
@@ -127,4 +127,7 @@ dependencies {
 
     // Multidex
     implementation "androidx.multidex:multidex:$multidexVersion"
+
+    // Lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

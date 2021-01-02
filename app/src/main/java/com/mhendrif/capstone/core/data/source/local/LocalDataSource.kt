@@ -4,6 +4,7 @@ import com.mhendrif.capstone.core.data.source.local.entity.MovieEntity
 import com.mhendrif.capstone.core.data.source.local.entity.TvShowEntity
 import com.mhendrif.capstone.core.data.source.local.room.MovieDao
 import com.mhendrif.capstone.core.data.source.local.room.TvShowDao
+import com.mhendrif.capstone.core.utils.SortOrder
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -58,4 +59,15 @@ class LocalDataSource @Inject constructor(
     fun getMoviesOnSortOrderSelected(sortOrder: SortOrder) = movieDao.getMovies(sortOrder)
 
     fun getTvShowsOnSortOrderSelected(sortOrder: SortOrder) = tvShowDao.getTvShows(sortOrder)
+
+//    suspend fun updateSortOrder(sortOrder: SortOrder) {
+//        val dataStore = myPreferenceManagerFactory.get()
+//        dataStore.edit { preferences->
+//            preferences[preferencesKey<String>(Constants.SORT_ORDER)] = sortOrder.name
+//        }
+//    }
+//
+//    fun getSortOrder(): DataStore<Preferences> {
+//        return myPreferenceManagerFactory.get()
+//    }
 }

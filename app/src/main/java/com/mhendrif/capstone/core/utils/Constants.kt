@@ -1,5 +1,7 @@
 package com.mhendrif.capstone.core.utils
 
+enum class SortOrder { BY_NAME, BY_DATE }
+
 object Constants {
     const val TIME_OUT: Long = 120
     const val DELAY: Long = 3000
@@ -11,4 +13,5 @@ object Constants {
     const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"
     const val API_POSTER_PATH = "https://image.tmdb.org/t/p/w185"
     const val API_BACKDROP_PATH = "https://image.tmdb.org/t/p/w500"
+    const val SORT_ORDER = "sort_order"
 }

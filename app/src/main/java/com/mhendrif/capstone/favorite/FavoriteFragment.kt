@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.mhendrif.capstone.R
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.ui.FavoritePagerAdapter
 import com.mhendrif.capstone.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {

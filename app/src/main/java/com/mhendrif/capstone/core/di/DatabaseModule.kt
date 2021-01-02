@@ -16,6 +16,7 @@ import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(ApplicationComponent::class)
 class DatabaseModule {
@@ -32,8 +33,9 @@ class DatabaseModule {
     @Provides
     fun provideTvShowDao(database: AppDatabase): TvShowDao = database.tvShowDao()
 
-//    @Singleton
-//    fun providePreference(@ApplicationContext context: Context): DataStore<Preferences> {
-//        return context.createDataStore(Constants.PREFERENCE_NAME)
-//    }
+    @Singleton
+    @Provides
+    fun provideMyPreferenceManager(@ApplicationContext context: Context): DataStore<Preferences> {
+        return context.createDataStore(Constants.PREFERENCE_NAME)
+    }
 }

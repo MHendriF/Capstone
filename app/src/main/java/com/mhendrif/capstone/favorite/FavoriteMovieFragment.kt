@@ -8,14 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.core.data.Resource
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.ui.MovieAdapter
+import com.mhendrif.capstone.core.utils.SortOrder
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
 import com.mhendrif.capstone.detail.DetailActivity
-import com.mhendrif.capstone.detail.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class FavoriteMovieFragment : Fragment() {
@@ -60,10 +57,13 @@ class FavoriteMovieFragment : Fragment() {
             favoriteViewModel.movies.observe(viewLifecycleOwner, { movies ->
                 if (movies != null && movies.isNotEmpty()) {
                     binding.pbLoading.visibility = View.GONE
+                    binding.rvMovie.visibility = View.VISIBLE
+                    binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
                     movieAdapter.setData(movies)
                 } else {
                     binding.pbLoading.visibility = View.GONE
-                    activity?.toast("Data is null")
+                    binding.rvMovie.visibility = View.GONE
+                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
                 }
             })
 

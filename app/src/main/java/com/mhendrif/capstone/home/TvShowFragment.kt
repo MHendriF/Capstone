@@ -52,19 +52,29 @@ class TvShowFragment : Fragment() {
             tvShowViewModel.tvShow.observe(viewLifecycleOwner, { tvShow ->
                 if (tvShow != null) {
                     when (tvShow) {
-                        is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
+                        is Resource.Loading -> {
+                            binding.pbLoading.visibility = View.VISIBLE
+                            binding.rvTvShow.visibility = View.GONE
+                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
+                        }
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
+                            binding.rvTvShow.visibility = View.VISIBLE
+                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
                             tvShowAdapter.setData(tvShow.data)
                         }
                         is Resource.Error -> {
                             binding.pbLoading.visibility = View.GONE
+                            binding.rvTvShow.visibility = View.GONE
+                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
                             Timber.e(tvShow.message)
                             activity?.toast(tvShow.message.toString())
                         }
                     }
                 } else {
                     binding.pbLoading.visibility = View.GONE
+                    binding.rvTvShow.visibility = View.GONE
+                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
                     activity?.toast("Data is null")
                 }
             })

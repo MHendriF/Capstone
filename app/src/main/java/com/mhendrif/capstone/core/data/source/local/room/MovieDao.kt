@@ -1,8 +1,8 @@
 package com.mhendrif.capstone.core.data.source.local.room
 
 import androidx.room.*
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.data.source.local.entity.MovieEntity
+import com.mhendrif.capstone.core.utils.SortOrder
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,9 +1,8 @@
 package com.mhendrif.capstone.core.domain.usecase
 
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.domain.model.TvShow
 import com.mhendrif.capstone.core.domain.repository.ITvShowRepository
-import kotlinx.coroutines.flow.Flow
+import com.mhendrif.capstone.core.utils.SortOrder
 import javax.inject.Inject
 
 class TvShowInteractor @Inject constructor(private val tvShowRepository: ITvShowRepository): TvShowUseCase {
@@ -15,5 +14,9 @@ class TvShowInteractor @Inject constructor(private val tvShowRepository: ITvShow
 
     override fun getDetailTvShow(id: Int) = tvShowRepository.getDetailTvShow(id)
 
-    override fun onSortOrderSelected(sortOrder: SortOrder) = tvShowRepository.onSortOrderSelected(sortOrder)
+    override fun getFavoriteBySort(sortOrder: SortOrder) = tvShowRepository.getFavoriteBySort(sortOrder)
+
+    //override suspend fun updateSortOrder(sortOrder: SortOrder) = tvShowRepository.updateSortOrder(sortOrder)
+
+    //override fun getSortOrder(): DataStore<Preferences> = tvShowRepository.getSortOrder()
 }

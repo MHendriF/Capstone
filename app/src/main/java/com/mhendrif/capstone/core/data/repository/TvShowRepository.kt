@@ -3,16 +3,18 @@ package com.mhendrif.capstone.core.data.repository
 import com.mhendrif.capstone.core.data.NetworkBoundResource
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.data.source.local.LocalDataSource
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.data.source.remote.RemoteDataSource
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.core.data.source.remote.response.TvShowResponse
 import com.mhendrif.capstone.core.domain.model.TvShow
 import com.mhendrif.capstone.core.domain.repository.ITvShowRepository
 import com.mhendrif.capstone.core.utils.AppExecutors
+import com.mhendrif.capstone.core.utils.SortOrder
 import com.mhendrif.capstone.core.utils.TvShowDataMapper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -74,9 +76,19 @@ class TvShowRepository @Inject constructor(
             }
         }.asFlow()
 
-    override fun onSortOrderSelected(sortOrder: SortOrder): Flow<List<TvShow>> {
+    override fun getFavoriteBySort(sortOrder: SortOrder): Flow<List<TvShow>> {
         return localDataSource.getTvShowsOnSortOrderSelected(sortOrder).map {
             TvShowDataMapper.mapEntitiesToDomain(it)
         }
     }
+
+//    override suspend fun updateSortOrder(sortOrder: SortOrder) {
+//        return withContext(Dispatchers.IO) {
+//            localDataSource.updateSortOrder(sortOrder)
+//        }
+//    }
+//
+//    override fun getSortOrder(): DataStore<Preferences> {
+//        return localDataSource.getSortOrder()
+//    }
 }

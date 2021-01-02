@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.ui.TvShowAdapter
+import com.mhendrif.capstone.core.utils.SortOrder
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
 import com.mhendrif.capstone.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,10 +58,13 @@ class FavoriteTvShowFragment : Fragment() {
             favoriteViewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
                 if (tvShows != null && tvShows.isNotEmpty()) {
                     binding.pbLoading.visibility = View.GONE
+                    binding.rvTvShow.visibility = View.VISIBLE
+                    binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
                     tvShowAdapter.setData(tvShows)
                 } else {
                     binding.pbLoading.visibility = View.GONE
-                    activity?.toast("Data is null")
+                    binding.rvTvShow.visibility = View.GONE
+                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
                 }
             })
 

@@ -3,7 +3,6 @@ package com.mhendrif.capstone.core.data.repository
 import com.mhendrif.capstone.core.data.NetworkBoundResource
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.data.source.local.LocalDataSource
-import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.data.source.remote.RemoteDataSource
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.core.data.source.remote.response.MovieResponse
@@ -11,8 +10,11 @@ import com.mhendrif.capstone.core.domain.model.Movie
 import com.mhendrif.capstone.core.domain.repository.IMovieRepository
 import com.mhendrif.capstone.core.utils.AppExecutors
 import com.mhendrif.capstone.core.utils.MovieDataMapper
+import com.mhendrif.capstone.core.utils.SortOrder
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -75,10 +77,19 @@ class MovieRepository @Inject constructor(
             }
         }.asFlow()
 
-    override fun onSortOrderSelected(sortOrder: SortOrder): Flow<List<Movie>> {
+    override fun getFavoriteBySort(sortOrder: SortOrder): Flow<List<Movie>> {
         return localDataSource.getMoviesOnSortOrderSelected(sortOrder).map {
             MovieDataMapper.mapEntitiesToDomain(it)
         }
     }
 
+//    override suspend fun updateSortOrder(sortOrder: SortOrder) {
+//        return withContext(Dispatchers.IO) {
+//            localDataSource.updateSortOrder(sortOrder)
+//        }
+//    }
+//
+//    override fun getSortOrder(): DataStore<Preferences> {
+//        return localDataSource.getSortOrder()
+//    }
 }

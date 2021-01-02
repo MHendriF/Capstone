@@ -44,26 +44,35 @@ class MovieFragment : Fragment() {
                         arrayListOf(R.id.fragmentDetailMovie, selectData.id)
                     )
                 }
-                Timber.d("Timber des: %s - id: %s", R.id.fragmentDetailMovie, selectData.id)
                 activity?.startActivity(intent)
             }
 
             movieViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null) {
                     when (movie) {
-                        is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
+                        is Resource.Loading -> {
+                            binding.pbLoading.visibility = View.VISIBLE
+                            binding.rvMovie.visibility = View.GONE
+                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
+                        }
                         is Resource.Success -> {
                             binding.pbLoading.visibility = View.GONE
+                            binding.rvMovie.visibility = View.VISIBLE
+                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
                             movieAdapter.setData(movie.data)
                         }
                         is Resource.Error -> {
                             binding.pbLoading.visibility = View.GONE
+                            binding.rvMovie.visibility = View.GONE
+                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
                             Timber.e(movie.message)
                             activity?.toast(movie.message.toString())
                         }
                     }
                 } else {
                     binding.pbLoading.visibility = View.GONE
+                    binding.rvMovie.visibility = View.GONE
+                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
                     activity?.toast("Data is null")
                 }
             })
