@@ -32,9 +32,4 @@ class MainActivity : AppCompatActivity() {
             ).build()
         )
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.sort_menu, menu)
-        return true
-    }
 }

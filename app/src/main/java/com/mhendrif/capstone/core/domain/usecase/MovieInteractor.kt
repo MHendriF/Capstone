@@ -1,5 +1,6 @@
 package com.mhendrif.capstone.core.domain.usecase
 
+import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.domain.model.Movie
 import com.mhendrif.capstone.core.domain.repository.IMovieRepository
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +15,5 @@ class MovieInteractor @Inject constructor(private val movieRepository: IMovieRep
 
     override fun getDetailMovie(id: Int) = movieRepository.getDetailMovie(id)
 
-    override fun getDetailFavorite(id: Int): Flow<Movie> {
-        TODO("Not yet implemented")
-    }
+    override fun onSortOrderSelected(sortOrder: SortOrder) = movieRepository.onSortOrderSelected(sortOrder)
 }

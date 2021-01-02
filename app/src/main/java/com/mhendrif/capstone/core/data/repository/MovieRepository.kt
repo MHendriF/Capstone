@@ -3,6 +3,7 @@ package com.mhendrif.capstone.core.data.repository
 import com.mhendrif.capstone.core.data.NetworkBoundResource
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.data.source.local.LocalDataSource
+import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.data.source.remote.RemoteDataSource
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.core.data.source.remote.response.MovieResponse
@@ -74,9 +75,10 @@ class MovieRepository @Inject constructor(
             }
         }.asFlow()
 
-    override fun getDetailFavorite(id: Int): Flow<Movie> {
-        return localDataSource.getDetailFavorite(id).map {
-            MovieDataMapper.mapEntityToDomain(it)
+    override fun onSortOrderSelected(sortOrder: SortOrder): Flow<List<Movie>> {
+        return localDataSource.getMoviesOnSortOrderSelected(sortOrder).map {
+            MovieDataMapper.mapEntitiesToDomain(it)
         }
     }
+
 }

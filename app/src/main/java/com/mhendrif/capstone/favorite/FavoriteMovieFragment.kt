@@ -3,14 +3,13 @@ package com.mhendrif.capstone.favorite
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.core.data.Resource
+import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
 import com.mhendrif.capstone.detail.DetailActivity
@@ -43,7 +42,10 @@ class FavoriteMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+
         if (activity != null) {
+            favoriteViewModel.getFavoriteMovies()
             val movieAdapter = MovieAdapter()
             movieAdapter.onItemClick = { selectData ->
                 val intent = Intent(activity, DetailActivity::class.java).apply {
@@ -69,6 +71,25 @@ class FavoriteMovieFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = movieAdapter
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.sort_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.by_name -> {
+                item.isChecked = true
+                favoriteViewModel.sorting(SortOrder.BY_NAME);true
+            }
+            R.id.by_release -> {
+                item.isChecked = true
+                favoriteViewModel.sorting(SortOrder.BY_DATE);true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

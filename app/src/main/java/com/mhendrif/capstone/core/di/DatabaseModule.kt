@@ -1,6 +1,9 @@
 package com.mhendrif.capstone.core.di
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.createDataStore
 import androidx.room.Room
 import com.mhendrif.capstone.core.data.source.local.room.AppDatabase
 import com.mhendrif.capstone.core.data.source.local.room.MovieDao
@@ -28,4 +31,9 @@ class DatabaseModule {
 
     @Provides
     fun provideTvShowDao(database: AppDatabase): TvShowDao = database.tvShowDao()
+
+//    @Singleton
+//    fun providePreference(@ApplicationContext context: Context): DataStore<Preferences> {
+//        return context.createDataStore(Constants.PREFERENCE_NAME)
+//    }
 }

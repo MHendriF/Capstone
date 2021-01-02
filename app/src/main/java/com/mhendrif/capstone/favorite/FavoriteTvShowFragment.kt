@@ -3,13 +3,12 @@ package com.mhendrif.capstone.favorite
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.ui.TvShowAdapter
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
 import com.mhendrif.capstone.detail.DetailActivity
@@ -41,8 +40,10 @@ class FavoriteTvShowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
 
         if (activity != null) {
+            favoriteViewModel.getFavoriteTvShows()
             val tvShowAdapter = TvShowAdapter()
             tvShowAdapter.onItemClick = { selectData ->
                 val intent = Intent(activity, DetailActivity::class.java).apply {
@@ -68,6 +69,25 @@ class FavoriteTvShowFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = tvShowAdapter
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.sort_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.by_name -> {
+                item.isChecked = true
+                favoriteViewModel.sorting(SortOrder.BY_NAME);true
+            }
+            R.id.by_release -> {
+                item.isChecked = true
+                favoriteViewModel.sorting(SortOrder.BY_DATE);true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

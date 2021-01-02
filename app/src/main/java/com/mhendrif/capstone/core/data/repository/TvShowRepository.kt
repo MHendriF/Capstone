@@ -3,6 +3,7 @@ package com.mhendrif.capstone.core.data.repository
 import com.mhendrif.capstone.core.data.NetworkBoundResource
 import com.mhendrif.capstone.core.data.Resource
 import com.mhendrif.capstone.core.data.source.local.LocalDataSource
+import com.mhendrif.capstone.core.data.source.local.SortOrder
 import com.mhendrif.capstone.core.data.source.remote.RemoteDataSource
 import com.mhendrif.capstone.core.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.core.data.source.remote.response.TvShowResponse
@@ -72,4 +73,10 @@ class TvShowRepository @Inject constructor(
                 localDataSource.updateTvShow(entity)
             }
         }.asFlow()
+
+    override fun onSortOrderSelected(sortOrder: SortOrder): Flow<List<TvShow>> {
+        return localDataSource.getTvShowsOnSortOrderSelected(sortOrder).map {
+            TvShowDataMapper.mapEntitiesToDomain(it)
+        }
+    }
 }

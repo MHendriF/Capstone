@@ -54,4 +54,8 @@ class LocalDataSource @Inject constructor(
     }
 
     fun getDetailTvShow(id: Int) = tvShowDao.getDetailTvShow(id)
+
+    fun getMoviesOnSortOrderSelected(sortOrder: SortOrder) = movieDao.getMovies(sortOrder)
+
+    fun getTvShowsOnSortOrderSelected(sortOrder: SortOrder) = tvShowDao.getTvShows(sortOrder)
 }

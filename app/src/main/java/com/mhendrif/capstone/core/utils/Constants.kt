@@ -3,6 +3,7 @@ package com.mhendrif.capstone.core.utils
 object Constants {
     const val TIME_OUT: Long = 120
     const val DELAY: Long = 3000
+    const val PREFERENCE_NAME = "user_preference"
     const val DATABASE_NAME = "movie_catalogue_local.db"
     const val MOVIE_TABLE_NAME = "movies"
     const val TV_SHOW_TABLE_NAME = "tvShows"

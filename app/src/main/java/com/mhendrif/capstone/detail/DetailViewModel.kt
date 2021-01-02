@@ -36,5 +36,4 @@ class DetailViewModel @ViewModelInject constructor(
 
     fun setFavoriteTvShow(tvShow: TvShow, isFavorite: Boolean) =
         tvShowUseCase.setFavorite(tvShow, isFavorite)
-
 }
