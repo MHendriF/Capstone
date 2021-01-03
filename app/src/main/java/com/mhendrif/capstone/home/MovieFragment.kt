@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.core.data.Resource
-import com.mhendrif.capstone.core.ui.MovieAdapter
+import com.mhendrif.capstone.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
 import com.mhendrif.capstone.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint

@@ -6,10 +6,11 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
 }
+apply from: '../shared_dependencies.gradle'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion "30.0.3"
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "com.mhendrif.capstone"
@@ -44,89 +45,9 @@ android {
 }
 
 dependencies {
-    // Default dependencies
+    implementation project(":core")
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    implementation "androidx.core:core-ktx:$ktxVersion"
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "com.google.android.material:material:$materialVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    testImplementation "junit:junit:$junitVersion"
-
-    // Testing
-    androidTestImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
-    androidTestImplementation "androidx.test:rules:$testVersion"
-    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-    testImplementation "androidx.test:core:$testVersion"
-
-    // Espresso
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
-    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
-
-    // Mockito
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitokotlinVersion"
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: "$mockitoVersion"
-    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
-
-    // Navigation Component
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-
-    // Glide
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-
-    // Rounded Image View
-    implementation "com.makeramen:roundedimageview:$roundedimageviewVersion"
-
-    // Timber
-    implementation "com.jakewharton.timber:timber:$timberVersion"
-
-    // Scalable Size Unit
-    implementation "com.intuit.sdp:sdp-android:$sdpVersion"
-    implementation "com.intuit.ssp:ssp-android:$sspVersion"
-
-    // Picasso
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
-
-    // OkHttp
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
-
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-
-    // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-
-    // Lifecycle + ViewModel & LiveData
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-    implementation "android.arch.lifecycle:common-java8:$lifecycleVersion"
-
-    // Room
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
-
-    // Dagger
-    implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
-    kaptAndroidTest "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
-
-    // DataStore
-    implementation "androidx.datastore:datastore-preferences:$dataStoreVersion"
-
-    // Paging
-    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
-
-    // Multidex
-    implementation "androidx.multidex:multidex:$multidexVersion"
 
     // Lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"

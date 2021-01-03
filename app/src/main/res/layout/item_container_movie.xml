@@ -16,7 +16,7 @@
         android:id="@+id/viewBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/bg_tv_show"
+        android:background="@drawable/bg_item_container"
         android:paddingBottom="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle" />

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.mhendrif.capstone.core.ui.FavoritePagerAdapter
+import com.mhendrif.capstone.ui.FavoritePagerAdapter
 import com.mhendrif.capstone.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 
