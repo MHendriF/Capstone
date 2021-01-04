@@ -116,7 +116,7 @@ object CommonDeps {
 
     // SSP & SDP
     const val SSP_ANDROID = "com.intuit.ssp:ssp-android:${Version.SSP_ANDROID_VERSION}"
-    const val SSD_ANDROID = "com.intuit.sdp:sdp-android:${Version.SDP_ANDROID_VERSION}"
+    const val SDP_ANDROID = "com.intuit.sdp:sdp-android:${Version.SDP_ANDROID_VERSION}"
 
     // Picasso
     const val PICASSO = "com.squareup.picasso:picasso:${Version.PICASSO_VERSION}"

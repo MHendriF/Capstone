@@ -22,11 +22,12 @@ fun DependencyHandler.addAppModuleDependencies() {
 
     // Views, Animations
     implementation(CommonDeps.LOTTIE)
+    implementation(CommonDeps.SSP_ANDROID)
+    implementation(CommonDeps.SSP_ANDROID)
 
-    // Lifecycle, LiveData, ViewModel
-    implementation(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(CommonDeps.LIFECYCLE_VIEWMODEL_KTX)
-    implementation(CommonDeps.LIFECYCLE_EXTENSIONS)
+    implementation(CommonDeps.PICASSO)
+    implementation(CommonDeps.TIMBER)
+    implementation(CommonDeps.MULTIDEX)
 
     // Navigation Components
     implementation(CommonDeps.NAVIGATION_FRAGMENT)
@@ -41,30 +42,8 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
     kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
-    // Coroutines
-    implementation(CommonDeps.COROUTINES_CORE)
-    implementation(CommonDeps.COROUTINES_ANDROID)
-
     // Leak Canary
     debugImplementation(CommonDeps.LEAK_CANARY)
-
-    // Room
-    implementation(CommonDeps.ROOM_RUNTIME)
-    // For Kotlin use kapt instead of annotationProcessor
-    kapt(CommonDeps.ROOM_COMPILER)
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(CommonDeps.ROOM_KTX)
-    // optional - RxJava support for Room
-    implementation(CommonDeps.ROOM_RXJAVA3)
-
-    // Retrofit
-    implementation(CommonDeps.RETROFIT)
-    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
-    // change base url runtime
-    implementation(CommonDeps.RETROFIT_URL_MANAGER)
-    // Gson
-    implementation(CommonDeps.GSON)
-    implementation(CommonDeps.CHUCKER_DEBUG)
 
     // Glide
     implementation(CommonDeps.GLIDE)
@@ -86,24 +65,43 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(CommonDeps.VIEWPAGER2)
     implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
 
-    // Lifecycle, LiveData, ViewModel
-    implementation(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(CommonDeps.LIFECYCLE_VIEWMODEL_KTX)
-    implementation(CommonDeps.LIFECYCLE_EXTENSIONS)
-
     // Navigation Components
     implementation(CommonDeps.NAVIGATION_FRAGMENT)
     implementation(CommonDeps.NAVIGATION_UI)
     implementation(CommonDeps.NAVIGATION_RUNTIME)
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
 
-    // Dagger
-    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)
     implementation(CommonDeps.COROUTINES_ANDROID)
+
+    // Dagger
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Lifecycle, LiveData, ViewModel
+    api(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
+    api(CommonDeps.LIFECYCLE_VIEWMODEL_KTX)
+    api(CommonDeps.LIFECYCLE_EXTENSIONS)
+
+    // Room
+    api(CommonDeps.ROOM_RUNTIME)
+    // For Kotlin use kapt instead of annotationProcessor
+    kapt(CommonDeps.ROOM_COMPILER)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    api(CommonDeps.ROOM_KTX)
+
+    // Retrofit
+    implementation(CommonDeps.RETROFIT)
+    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
+    // change base url runtime
+    implementation(CommonDeps.RETROFIT_URL_MANAGER)
+
+    // Okhttp
+    implementation(CommonDeps.OK_HTTP3)
 }
 
 /**
@@ -142,7 +140,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
  * Adds Unit test dependencies
  */
 fun DependencyHandler.addUnitTestDependencies() {
-
     // (Required) Writing and executing Unit Tests on the JUnit Platform
     testImplementation(TestDeps.JUNIT_DEFAULT)
 }
