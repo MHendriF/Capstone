@@ -1,5 +1,5 @@
 object PluginVersion {
-    const val KOTLIN_VERSION = "1.4.21"
+    const val KOTLIN_VERSION = "1.4.20"
     const val GRADLE_VERSION = "4.1.1"
 
     const val NAV_SAFE_ARGS_VERSION = "2.3.2"
@@ -13,13 +13,14 @@ object AndroidVersion {
     const val TARGET_SDK_VERSION = COMPILE_SDK_VERSION
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
+    const val BUILD_TOOLS_VERSION = "30.0.3"
 
     const val APPLICATION_ID = "com.mhendrif.capstone"
 }
 
 object Version {
 
-    const val CORE_KTX_VERSION = "1.3.1"
+    const val CORE_KTX_VERSION = "1.3.2"
     const val FRAGMENT_KTX_VERSION = "1.1.0-rc01"
 
     // Appcompat
@@ -29,13 +30,10 @@ object Version {
     const val MATERIAL_VERSION = "1.3.0-alpha01"
 
     // ConstraintLayout
-    const val CONSTRAINT_LAYOUT_VERSION = "2.0.1"
+    const val CONSTRAINT_LAYOUT_VERSION = "2.0.4"
 
     // RecyclerView
     const val RECYCLER_VIEW_VERSION = "1.2.0-alpha05"
-
-    // CardView
-    const val CARD_VIEW_VERSION = "1.0.0"
 
     // ViewPager2
     const val VIEWPAGER2_VERSION = "1.1.0-alpha01"
@@ -47,16 +45,13 @@ object Version {
     const val LIFECYCLE_VERSION = "2.2.0"
 
     // Navigation Components
-    const val NAVIGATION_VERSION = "2.3.0"
+    const val NAVIGATION_VERSION = "2.3.2"
 
     // Retrofit
-    const val RETROFIT_VERSION = "2.8.1"
+    const val RETROFIT_VERSION = "2.9.0"
 
     // OkHttpClient
-    const val OK_HTTP3_VERSION = "4.8.1"
-
-    // MockWebServer
-    const val MOCK_WEB_SERVER_VERSION = "3.7.0"
+    const val OK_HTTP3_VERSION = "4.9.0"
 
     // Gson
     const val GSON_VERSION = "2.8.4"
@@ -76,11 +71,14 @@ object Version {
     const val GLIDE_VERSION = "4.11.0"
 
     // Picasso
-    const val PICASSO_VERSION = "4.11.0"
+    const val PICASSO_VERSION = "2.71828"
 
     // SDP & SSP
     const val SDP_ANDROID_VERSION = "1.0.6"
     const val SSP_ANDROID_VERSION = "1.0.6"
+
+    // Rounded Image View
+    const val ROUNDED_IMAGE_VERSION = "2.3.0"
 
     // Lottie
     const val LOTTIE_VERSION ="3.5.0"

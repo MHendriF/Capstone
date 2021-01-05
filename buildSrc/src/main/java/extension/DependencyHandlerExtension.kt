@@ -16,14 +16,14 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.APPCOMPAT)
     implementation(CommonDeps.MATERIAL)
     implementation(CommonDeps.CONSTRAINT_LAYOUT)
-    implementation(CommonDeps.RECYCLER_VIEW)
-    implementation(CommonDeps.VIEWPAGER2)
-    implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
+    //implementation(CommonDeps.RECYCLER_VIEW)
+    //implementation(CommonDeps.VIEWPAGER2)
+    //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
 
     // Views, Animations
     implementation(CommonDeps.LOTTIE)
     implementation(CommonDeps.SSP_ANDROID)
-    implementation(CommonDeps.SSP_ANDROID)
+    implementation(CommonDeps.SDP_ANDROID)
 
     implementation(CommonDeps.PICASSO)
     implementation(CommonDeps.TIMBER)
@@ -48,6 +48,9 @@ fun DependencyHandler.addAppModuleDependencies() {
     // Glide
     implementation(CommonDeps.GLIDE)
     kapt(CommonDeps.GLIDE_COMPILER)
+
+    // Rounded Image
+    implementation(CommonDeps.ROUNDED_IMAGE)
 }
 
 /**
@@ -61,15 +64,27 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(CommonDeps.APPCOMPAT)
     implementation(CommonDeps.MATERIAL)
     implementation(CommonDeps.CONSTRAINT_LAYOUT)
-    implementation(CommonDeps.RECYCLER_VIEW)
-    implementation(CommonDeps.VIEWPAGER2)
-    implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
+    //implementation(CommonDeps.RECYCLER_VIEW)
+    //implementation(CommonDeps.VIEWPAGER2)
+    //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
 
     // Navigation Components
     implementation(CommonDeps.NAVIGATION_FRAGMENT)
     implementation(CommonDeps.NAVIGATION_UI)
     implementation(CommonDeps.NAVIGATION_RUNTIME)
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
+
+    // Views, Animations
+    implementation(CommonDeps.LOTTIE)
+    implementation(CommonDeps.SSP_ANDROID)
+    implementation(CommonDeps.SDP_ANDROID)
+
+    implementation(CommonDeps.PICASSO)
+    implementation(CommonDeps.TIMBER)
+    implementation(CommonDeps.MULTIDEX)
+
+    // Rounded Image
+    implementation(CommonDeps.ROUNDED_IMAGE)
 
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)
@@ -100,8 +115,9 @@ fun DependencyHandler.addCoreModuleDependencies() {
     // change base url runtime
     implementation(CommonDeps.RETROFIT_URL_MANAGER)
 
-    // Okhttp
+    // Okhttp3
     implementation(CommonDeps.OK_HTTP3)
+    implementation(CommonDeps.OK_HTTP3_LOG)
 }
 
 /**
@@ -151,7 +167,9 @@ fun DependencyHandler.addInstrumentationTestDependencies() {
     androidTestImplementation(TestDeps.ANDROIDX_CORE_TESTING)
 
     // Espresso
-    androidTestImplementation(TestDeps.ANDROIDX_ESPRESSO)
+    androidTestImplementation(TestDeps.ESPRESSO_CORE)
+    androidTestImplementation(TestDeps.ESPRESSO_CONTRIB)
+    implementation(TestDeps.ESPRESSO_IDLING_RESOURCE)
 
     // Testing Navigation
     androidTestImplementation(TestDeps.NAVIGATION_TEST)

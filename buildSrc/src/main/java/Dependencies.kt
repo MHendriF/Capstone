@@ -77,9 +77,7 @@ object CommonDeps {
     const val RETROFIT_URL_MANAGER = "me.jessyan:retrofit-url-manager:1.4.0"
 
     const val OK_HTTP3 = "com.squareup.okhttp3:okhttp:${Version.OK_HTTP3_VERSION}"
-
-    // Gson
-    const val GSON = "com.google.code.gson:gson:${Version.GSON_VERSION}"
+    const val OK_HTTP3_LOG = "com.squareup.okhttp3:logging-interceptor:${Version.OK_HTTP3_VERSION}"
 
     // Room
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.ROOM_VERSION}"
@@ -90,11 +88,7 @@ object CommonDeps {
     // optional - Kotlin Extensions and Coroutines support for Room
     const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
 
-    // optional - RxJava support for Room
-    const val ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Version.ROOM_VERSION}"
-    const val ROOM_RXJAVA3 = "androidx.room:room-rxjava3:${Version.ROOM_VERSION}"
-
-    // glide
+    // Glide
     const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE_VERSION}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE_VERSION}"
 
@@ -118,6 +112,9 @@ object CommonDeps {
     const val SSP_ANDROID = "com.intuit.ssp:ssp-android:${Version.SSP_ANDROID_VERSION}"
     const val SDP_ANDROID = "com.intuit.sdp:sdp-android:${Version.SDP_ANDROID_VERSION}"
 
+    // Rounded Image View
+    const val ROUNDED_IMAGE = "com.makeramen:roundedimageview:${Version.ROUNDED_IMAGE_VERSION}"
+
     // Picasso
     const val PICASSO = "com.squareup.picasso:picasso:${Version.PICASSO_VERSION}"
 
@@ -139,8 +136,7 @@ object TestDeps {
     // (Optional) If you need "Parameterized Tests"
     const val JUNIT5_PARAMS = "org.junit.jupiter:junit-jupiter-params:${TestVersion.junit5Version}"
 
-    const val ANDROIDX_CORE_TESTING =
-        "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
+    const val ANDROIDX_CORE_TESTING = "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
     const val ROBOLECTRIC = "org.robolectric:robolectric:${TestVersion.robolectricVersion}"
 
     // AndroidX Test - JVM testing
@@ -151,6 +147,11 @@ object TestDeps {
 
     const val ANDROIDX_ESPRESSO =
         "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
+
+    // Espresso
+    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${TestVersion.espressoVersion}"
+    const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
+    const val ESPRESSO_IDLING_RESOURCE = "androidx.test.espresso:espresso-idling-resource:${TestVersion.espressoVersion}"
 
     // Coroutines test
     const val COROUTINES_TEST =
@@ -169,11 +170,7 @@ object TestDeps {
     // Truth
     const val TRUTH = "com.google.truth:truth:${TestVersion.truthVersion}"
 
-    // Espresso
-    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${TestVersion.espressoVersion}"
-
     // Testing Navigation
-    const val NAVIGATION_TEST =
-        "androidx.navigation:navigation-testing:${Version.NAVIGATION_VERSION}"
+    const val NAVIGATION_TEST = "androidx.navigation:navigation-testing:${Version.NAVIGATION_VERSION}"
 }
 
