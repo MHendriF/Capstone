@@ -8,12 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.ui.TvShowAdapter
-import com.mhendrif.capstone.core.utils.SortOrder
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
 import com.mhendrif.capstone.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class FavoriteTvShowFragment : Fragment() {

@@ -1,4 +1,7 @@
 include(
     ":app",
-    ":libraries:core"
+    ":libraries:common",
+    ":libraries:core",
+    ":libraries:data",
+    ":libraries:domain"
 )

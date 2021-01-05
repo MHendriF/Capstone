@@ -1,7 +1,7 @@
 package com.mhendrif.capstone
 
 import android.app.Application
-import com.mhendrif.capstone.core.utils.ReleaseTree
+import com.mhendrif.capstone.common.util.ReleaseTree
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

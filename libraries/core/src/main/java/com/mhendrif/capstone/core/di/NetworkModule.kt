@@ -1,7 +1,7 @@
 package com.mhendrif.capstone.core.di
 
-import com.mhendrif.capstone.core.data.source.remote.network.ApiService
-import com.mhendrif.capstone.core.utils.Constants
+import com.mhendrif.capstone.common.util.Constants
+import com.mhendrif.capstone.data.source.remote.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

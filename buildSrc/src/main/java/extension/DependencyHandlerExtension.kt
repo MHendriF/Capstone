@@ -56,6 +56,13 @@ fun DependencyHandler.addAppModuleDependencies() {
 /**
  * Adds dependencies to core module
  */
+fun DependencyHandler.addCommonModuleDependencies() {
+    implementation(CommonDeps.TIMBER)
+}
+
+/**
+ * Adds dependencies to core module
+ */
 fun DependencyHandler.addCoreModuleDependencies() {
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
@@ -118,6 +125,89 @@ fun DependencyHandler.addCoreModuleDependencies() {
     // Okhttp3
     implementation(CommonDeps.OK_HTTP3)
     implementation(CommonDeps.OK_HTTP3_LOG)
+}
+
+/**
+ * Adds dependencies to data module
+ */
+fun DependencyHandler.addDataModuleDependencies() {
+    implementation(CommonDeps.KOTLIN)
+    implementation(CommonDeps.ANDROIDX_CORE_KTX)
+
+    // Views, Animations
+    implementation(CommonDeps.TIMBER)
+    implementation(CommonDeps.MULTIDEX)
+
+    // Rounded Image
+    implementation(CommonDeps.ROUNDED_IMAGE)
+
+    // Coroutines
+    implementation(CommonDeps.COROUTINES_CORE)
+    implementation(CommonDeps.COROUTINES_ANDROID)
+
+    // Dagger
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Lifecycle, LiveData, ViewModel
+    api(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
+    api(CommonDeps.LIFECYCLE_VIEWMODEL_KTX)
+    api(CommonDeps.LIFECYCLE_EXTENSIONS)
+
+    // Room
+    api(CommonDeps.ROOM_RUNTIME)
+    // For Kotlin use kapt instead of annotationProcessor
+    kapt(CommonDeps.ROOM_COMPILER)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    api(CommonDeps.ROOM_KTX)
+
+    // Retrofit
+    implementation(CommonDeps.RETROFIT)
+    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
+    // change base url runtime
+    implementation(CommonDeps.RETROFIT_URL_MANAGER)
+
+    // Okhttp3
+    implementation(CommonDeps.OK_HTTP3)
+    implementation(CommonDeps.OK_HTTP3_LOG)
+}
+
+/**
+ * Adds dependencies to domain module
+ */
+fun DependencyHandler.addDomainModuleDependencies() {
+    implementation(CommonDeps.KOTLIN)
+    implementation(CommonDeps.ANDROIDX_CORE_KTX)
+
+    // Coroutines
+    implementation(CommonDeps.COROUTINES_CORE)
+    implementation(CommonDeps.COROUTINES_ANDROID)
+
+    // Dagger
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Lifecycle, LiveData, ViewModel
+    api(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
+    api(CommonDeps.LIFECYCLE_VIEWMODEL_KTX)
+    api(CommonDeps.LIFECYCLE_EXTENSIONS)
+
+    // Room
+    api(CommonDeps.ROOM_RUNTIME)
+    // For Kotlin use kapt instead of annotationProcessor
+    kapt(CommonDeps.ROOM_COMPILER)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    api(CommonDeps.ROOM_KTX)
+
+    // Retrofit
+    implementation(CommonDeps.RETROFIT)
+    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
 }
 
 /**

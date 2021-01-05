@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.R
 import com.mhendrif.capstone.core.utils.ImageBinding
-import com.mhendrif.capstone.core.domain.model.Movie
-import com.mhendrif.capstone.core.utils.Constants
 import com.mhendrif.capstone.core.databinding.ItemContainerBinding
+import com.mhendrif.capstone.domain.model.Movie
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
 

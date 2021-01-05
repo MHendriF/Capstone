@@ -2,10 +2,10 @@ package com.mhendrif.capstone.core.di
 
 import android.content.Context
 import androidx.room.Room
-import com.mhendrif.capstone.core.data.source.local.room.AppDatabase
-import com.mhendrif.capstone.core.data.source.local.room.MovieDao
-import com.mhendrif.capstone.core.data.source.local.room.TvShowDao
-import com.mhendrif.capstone.core.utils.Constants
+import com.mhendrif.capstone.common.util.Constants
+import com.mhendrif.capstone.data.source.local.room.AppDatabase
+import com.mhendrif.capstone.data.source.local.room.MovieDao
+import com.mhendrif.capstone.data.source.local.room.TvShowDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

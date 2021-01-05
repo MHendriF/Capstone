@@ -11,12 +11,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.utils.ImageBinding
-import com.mhendrif.capstone.core.data.Resource
-import com.mhendrif.capstone.core.domain.model.Movie
-import com.mhendrif.capstone.core.utils.Constants
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailMovieBinding
+import com.mhendrif.capstone.domain.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -84,7 +83,7 @@ class DetailMovieFragment : Fragment() {
         }
     }
 
-    private fun setUpContent(model: Movie) {
+    private fun setUpContent(model: com.mhendrif.capstone.domain.model.Movie) {
         with(binding) {
             ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + model.posterPath)
             ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH + model.posterPath)

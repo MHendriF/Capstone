@@ -1,9 +1,9 @@
 package com.mhendrif.capstone.di
 
-import com.mhendrif.capstone.core.domain.usecase.MovieInteractor
-import com.mhendrif.capstone.core.domain.usecase.MovieUseCase
-import com.mhendrif.capstone.core.domain.usecase.TvShowInteractor
-import com.mhendrif.capstone.core.domain.usecase.TvShowUseCase
+import com.mhendrif.capstone.domain.usecase.MovieInteractor
+import com.mhendrif.capstone.domain.usecase.MovieUseCase
+import com.mhendrif.capstone.domain.usecase.TvShowInteractor
+import com.mhendrif.capstone.domain.usecase.TvShowUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
