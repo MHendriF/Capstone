@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:background="@color/colorPrimary"
-    tools:context=".detail.DetailActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <fragment
-        android:id="@+id/nav_host_detail_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:navGraph="@navigation/nav_graph_detail"
-        tools:ignore="FragmentTagUsage" />
+        android:animateLayoutChanges="true"
+        android:background="@color/colorPrimary"
+        tools:context=".detail.DetailActivity">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <fragment
+            android:id="@+id/nav_host_detail_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:navGraph="@navigation/nav_graph_detail"
+            tools:ignore="FragmentTagUsage" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

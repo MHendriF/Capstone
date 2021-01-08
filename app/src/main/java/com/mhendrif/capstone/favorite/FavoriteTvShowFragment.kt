@@ -5,17 +5,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.ViewModelFactory
+import com.mhendrif.capstone.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
+import com.mhendrif.capstone.core.utils.ItemListener
+import com.mhendrif.capstone.databinding.FragmentFavoriteTvShowBinding
+import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.ui.TvShowAdapter
-import com.mhendrif.capstone.databinding.FragmentTvShowBinding
-import com.mhendrif.capstone.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.mhendrif.capstone.domain.model.TvShow
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class FavoriteTvShowFragment : Fragment() {
+class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.layout.fragment_favorite_tv_show),
+    ItemListener<TvShow> {
 
     companion object {
         private const val ARG_SECTION_NUMBER = "FAVORITE_TV_FRAGMENT"
@@ -25,16 +28,14 @@ class FavoriteTvShowFragment : Fragment() {
         }
     }
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
-    private var _binding: FragmentTvShowBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    internal lateinit var factory: ViewModelFactory
+    private val favoriteViewModel: FavoriteViewModel by viewModels { factory }
+    private lateinit var adapter: TvShowAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTvShowBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,34 +43,26 @@ class FavoriteTvShowFragment : Fragment() {
         setHasOptionsMenu(true)
 
         if (activity != null) {
-            favoriteViewModel.getFavoriteTvShows()
-            val tvShowAdapter = TvShowAdapter()
-            tvShowAdapter.onItemClick = { selectData ->
-                val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(
-                        DetailActivity.DATA_EXTRA,
-                        arrayListOf(R.id.fragmentDetailTvShow, selectData.id)
-                    )
-                }
-                activity?.startActivity(intent)
+            adapter = TvShowAdapter().apply {
+                onItemListener = this@FavoriteTvShowFragment
+                binding.rvTvShow.setHasFixedSize(true)
+                binding.rvTvShow.adapter = this
             }
+            favoriteViewModel.tvShows.observe(viewLifecycleOwner, { handleStat(it) })
+        }
+    }
 
-            favoriteViewModel.tvShows.observe(viewLifecycleOwner, { tvShows ->
-                if (tvShows != null && tvShows.isNotEmpty()) {
-                    binding.pbLoading.visibility = View.GONE
-                    binding.rvTvShow.visibility = View.VISIBLE
-                    binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                    tvShowAdapter.setData(tvShows)
-                } else {
-                    binding.pbLoading.visibility = View.GONE
-                    binding.rvTvShow.visibility = View.GONE
-                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
-                }
-            })
-
-            with(binding.rvTvShow) {
-                setHasFixedSize(true)
-                adapter = tvShowAdapter
+    private fun handleStat(resource: List<TvShow>) {
+        with(binding) {
+            if (resource.isNotEmpty()) {
+                isLoading = false
+                rvTvShow.visibility = View.VISIBLE
+                viewDataEmpty.emptyAnimation.visibility = View.GONE
+                adapter.submitList(resource)
+            } else {
+                isLoading = false
+                rvTvShow.visibility = View.GONE
+                viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
             }
         }
     }
@@ -97,8 +90,13 @@ class FavoriteTvShowFragment : Fragment() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun navigateToDetail(model: TvShow) {
+//        findNavController().navigate(
+//            MovieFragmentDirections.actionMovieFragmentToDetailMovieFragment(movie)
+//        )
+    }
+
+    override fun onItemClick(model: TvShow) {
+        navigateToDetail(model)
     }
 }

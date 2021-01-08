@@ -8,7 +8,6 @@ buildscript {
     dependencies {
         classpath(Plugins.CLASSPATH_GRADLE)
         classpath(Plugins.CLASSPATH_KOTLIN_GRADLE)
-        classpath(Plugins.CLASSPATH_DAGGER_HILT)
         classpath(Plugins.CLASSPATH_KTLINT)
         classpath(Plugins.CLASSPATH_NAV_SAFE_ARGS)
     }

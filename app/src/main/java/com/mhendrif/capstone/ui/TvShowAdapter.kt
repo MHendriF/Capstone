@@ -1,52 +1,29 @@
 package com.mhendrif.capstone.ui
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.core.R
-import com.mhendrif.capstone.core.databinding.ItemContainerBinding
-import com.mhendrif.capstone.core.utils.ImageBinding
+import android.annotation.SuppressLint
+import androidx.recyclerview.widget.DiffUtil
+import com.mhendrif.capstone.R
+import com.mhendrif.capstone.base.BaseAdapter
+import com.mhendrif.capstone.databinding.ItemContainerTvShowBinding
 import com.mhendrif.capstone.domain.model.TvShow
 
-class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
+class TvShowAdapter : BaseAdapter<TvShow, ItemContainerTvShowBinding>(R.layout.item_container_tv_show, diffUtil) {
+    companion object {
+        private val diffUtil = object : DiffUtil.ItemCallback<TvShow>() {
+            override fun areItemsTheSame(oldItem: TvShow, newItem: TvShow) =
+                oldItem.id == newItem.id
 
-    private var listData = ArrayList<TvShow>()
-    var onItemClick: ((TvShow) -> Unit)? = null
-
-    fun setData(newListData: List<TvShow>?) {
-        if (newListData == null) return
-        listData.clear()
-        listData.addAll(newListData)
-        notifyDataSetChanged()
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_container, parent, false)
-        )
-
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(listData[position])
-    }
-
-    override fun getItemCount(): Int = listData.size
-
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemContainerBinding.bind(itemView)
-        fun bind(data: TvShow) {
-            with(binding) {
-                tvTitle.text = data.title
-                tvReleaseDate.text = data.releaseDate
-                tvScore.text = data.voteAverage.toString()
-                ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + data.posterPath)
-            }
+            @SuppressLint("DiffUtilEquals")
+            override fun areContentsTheSame(oldItem: TvShow, newItem: TvShow) =
+                oldItem == newItem
         }
+    }
 
-        init {
-            binding.root.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
+    override fun onBindViewHolder(holder: Holder<ItemContainerTvShowBinding>, position: Int) {
+        holder.binding?.let { bind ->
+            getItem(position)?.apply {
+                bind.model = this
+                bind.root.setOnClickListener { onItemListener?.onItemClick(this) }
             }
         }
     }

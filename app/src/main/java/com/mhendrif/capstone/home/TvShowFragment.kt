@@ -1,96 +1,84 @@
 package com.mhendrif.capstone.home
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.ViewModelFactory
+import com.mhendrif.capstone.base.BaseFragment
+import com.mhendrif.capstone.core.utils.ItemListener
 import com.mhendrif.capstone.ui.TvShowAdapter
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
-import com.mhendrif.capstone.detail.DetailActivity
 import com.mhendrif.capstone.domain.Resource
-import dagger.hilt.android.AndroidEntryPoint
+import com.mhendrif.capstone.domain.model.TvShow
 import timber.log.Timber
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class TvShowFragment : Fragment() {
+class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_show),
+    ItemListener<TvShow> {
 
-    private val tvShowViewModel: TvShowViewModel by viewModels()
-    private var _binding: FragmentTvShowBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    internal lateinit var factory: ViewModelFactory
+    private val tvShowViewModel: TvShowViewModel by viewModels { factory }
+    private lateinit var adapter: TvShowAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTvShowBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val tvShowAdapter = TvShowAdapter()
-            tvShowAdapter.onItemClick = { selectData ->
-                val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(
-                        DetailActivity.DATA_EXTRA,
-                        arrayListOf(R.id.fragmentDetailTvShow, selectData.id)
-                    )
-                }
-                Timber.d("Timber des: %s - id: %s", R.id.fragmentDetailTvShow, selectData.id)
-                activity?.startActivity(intent)
+            adapter = TvShowAdapter().apply {
+                onItemListener = this@TvShowFragment
+                binding.rvTvShow.setHasFixedSize(true)
+                binding.rvTvShow.adapter = this
             }
+            tvShowViewModel.tvShow.observe(viewLifecycleOwner, { handleStat(it) })
+        }
+    }
 
-            tvShowViewModel.tvShow.observe(viewLifecycleOwner, { tvShow ->
-                if (tvShow != null) {
-                    when (tvShow) {
-                        is Resource.Loading -> {
-                            binding.pbLoading.visibility = View.VISIBLE
-                            binding.rvTvShow.visibility = View.GONE
-                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                        }
-                        is Resource.Success -> {
-                            binding.pbLoading.visibility = View.GONE
-                            binding.rvTvShow.visibility = View.VISIBLE
-                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                            tvShowAdapter.setData(tvShow.data)
-                        }
-                        is Resource.Error -> {
-                            binding.pbLoading.visibility = View.GONE
-                            binding.rvTvShow.visibility = View.GONE
-                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                            Timber.e(tvShow.message)
-                            activity?.toast(tvShow.message.toString())
-                        }
-                    }
-                } else {
-                    binding.pbLoading.visibility = View.GONE
-                    binding.rvTvShow.visibility = View.GONE
-                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
-                    activity?.toast("Data is null")
+    private fun handleStat(resource: Resource<List<TvShow>>) {
+        with(binding) {
+            when (resource) {
+                is Resource.Loading -> {
+                    isLoading = true
+                    rvTvShow.visibility = View.GONE
+                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                 }
-            })
-
-            with(binding.rvTvShow) {
-                setHasFixedSize(true)
-                adapter = tvShowAdapter
+                is Resource.Success -> {
+                    isLoading = false
+                    rvTvShow.visibility = View.VISIBLE
+                    viewDataEmpty.emptyAnimation.visibility = View.GONE
+                    adapter.submitList(resource.data)
+                }
+                is Resource.Error -> {
+                    isLoading = false
+                    rvTvShow.visibility = View.GONE
+                    viewDataEmpty.emptyAnimation.visibility = View.GONE
+                    Timber.e(resource.message)
+                    activity?.toast(resource.message.toString())
+                }
             }
         }
+    }
+
+    private fun navigateToDetail(model: TvShow) {
+        findNavController().navigate(
+            TvShowFragmentDirections.actionTvFragmentToDetailTvShowFragment(model)
+        )
     }
 
     private fun Context.toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onItemClick(model: TvShow) {
+        navigateToDetail(model)
     }
 }

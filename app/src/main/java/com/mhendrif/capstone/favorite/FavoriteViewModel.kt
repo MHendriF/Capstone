@@ -1,6 +1,5 @@
 package com.mhendrif.capstone.favorite
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.domain.model.Movie
@@ -8,8 +7,9 @@ import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.domain.usecase.MovieUseCase
 import com.mhendrif.capstone.domain.usecase.TvShowUseCase
 import timber.log.Timber
+import javax.inject.Inject
 
-class FavoriteViewModel @ViewModelInject constructor(
+class FavoriteViewModel @Inject constructor(
     private val movieUseCase: MovieUseCase,
     private val tvShowUseCase: TvShowUseCase,
 ) : ViewModel() {

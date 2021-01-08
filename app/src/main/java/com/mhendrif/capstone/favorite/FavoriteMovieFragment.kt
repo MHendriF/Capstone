@@ -1,21 +1,22 @@
 package com.mhendrif.capstone.favorite
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.ViewModelFactory
+import com.mhendrif.capstone.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
+import com.mhendrif.capstone.core.utils.ItemListener
+import com.mhendrif.capstone.databinding.FragmentFavoriteMovieBinding
 import com.mhendrif.capstone.ui.MovieAdapter
-import com.mhendrif.capstone.databinding.FragmentMovieBinding
-import com.mhendrif.capstone.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.mhendrif.capstone.domain.model.Movie
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class FavoriteMovieFragment : Fragment() {
+class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layout.fragment_favorite_movie),
+    ItemListener<Movie> {
 
     companion object {
         private const val ARG_SECTION_NUMBER = "FAVORITE_MOVIE_FRAGMENT"
@@ -25,16 +26,14 @@ class FavoriteMovieFragment : Fragment() {
         }
     }
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
-    private var _binding: FragmentMovieBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    internal lateinit var factory: ViewModelFactory
+    private val favoriteViewModel: FavoriteViewModel by viewModels { factory }
+    private lateinit var adapter: MovieAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,34 +41,26 @@ class FavoriteMovieFragment : Fragment() {
         setHasOptionsMenu(true)
 
         if (activity != null) {
-            favoriteViewModel.getFavoriteMovies()
-            val movieAdapter = MovieAdapter()
-            movieAdapter.onItemClick = { selectData ->
-                val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(
-                        DetailActivity.DATA_EXTRA,
-                        arrayListOf(R.id.fragmentDetailMovie, selectData.id)
-                    )
-                }
-                activity?.startActivity(intent)
+            adapter = MovieAdapter().apply {
+                onItemListener = this@FavoriteMovieFragment
+                binding.rvMovie.setHasFixedSize(true)
+                binding.rvMovie.adapter = this
             }
+            favoriteViewModel.movies.observe(viewLifecycleOwner, { handleStat(it) })
+        }
+    }
 
-            favoriteViewModel.movies.observe(viewLifecycleOwner, { movies ->
-                if (movies != null && movies.isNotEmpty()) {
-                    binding.pbLoading.visibility = View.GONE
-                    binding.rvMovie.visibility = View.VISIBLE
-                    binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                    movieAdapter.setData(movies)
-                } else {
-                    binding.pbLoading.visibility = View.GONE
-                    binding.rvMovie.visibility = View.GONE
-                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
-                }
-            })
-
-            with(binding.rvMovie) {
-                setHasFixedSize(true)
-                adapter = movieAdapter
+    private fun handleStat(resource: List<Movie>) {
+        with(binding) {
+            if (resource.isNotEmpty()) {
+                isLoading = false
+                rvMovie.visibility = View.VISIBLE
+                viewDataEmpty.emptyAnimation.visibility = View.GONE
+                adapter.submitList(resource)
+            } else {
+                isLoading = false
+                rvMovie.visibility = View.GONE
+                viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
             }
         }
     }
@@ -97,8 +88,14 @@ class FavoriteMovieFragment : Fragment() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun navigateToDetail(model: Movie) {
+//        findNavController().navigate(
+//            MovieFragmentDirections.actionMovieFragmentToDetailMovieFragment(movie)
+//        )
     }
+
+    override fun onItemClick(model: Movie) {
+        navigateToDetail(model)
+    }
+
 }

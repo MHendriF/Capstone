@@ -23,13 +23,13 @@ data class TvShowEntity(
     var overview: String,
 
     @ColumnInfo(name = "poster_path")
-    var posterPath: String,
+    var posterPath: String?,
 
     @ColumnInfo(name = "backdrop_path")
-    var backdropPath: String,
+    var backdropPath: String?,
 
     @ColumnInfo(name = "release_date")
-    var releaseDate: String,
+    var releaseDate: String?,
 
     @ColumnInfo(name = "vote_average")
     var voteAverage: Double,
@@ -41,7 +41,7 @@ data class TvShowEntity(
     var genres: String?,
 
     @ColumnInfo(name = "homepage")
-    var homepage: String,
+    var homepage: String?,
 
     @ColumnInfo(name = "isFavorite")    
     var isFavorite: Boolean = false

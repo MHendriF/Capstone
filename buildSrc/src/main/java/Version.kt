@@ -60,7 +60,7 @@ object Version {
     const val ROOM_VERSION = "2.3.0-alpha02"
 
     // Dagger
-    const val DAGGER_VERSION = "2.29"
+    const val DAGGER_VERSION = "2.30.1"
     const val DAGGER_HILT_VERSION = "2.29-alpha"
     const val DAGGER_HILT_ANDRIODX = "1.0.0-alpha02"
 
@@ -97,6 +97,9 @@ object Version {
 
     // Multidex
     const val MULTIDEX_VERSION = "2.0.1"
+
+    // Multidex
+    const val PAGING_VERSION = "2.1.2"
 
 }
 

@@ -1,34 +1,34 @@
 package com.mhendrif.capstone
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.mhendrif.capstone.base.BaseActivity
 import com.mhendrif.capstone.databinding.ActivityMainBinding
-import dagger.hilt.android.AndroidEntryPoint
 
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-@AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        appComponent.inject(this)
 
-        val navController = Navigation.findNavController(this, R.id.nav_host_main_fragment)
-        setupWithNavController(binding.bottomNavigationView, navController)
-        setupActionBarWithNavController(
-            navController,
-            AppBarConfiguration.Builder(
-                R.id.fragment_movie,
-                R.id.fragment_tv_show,
-                R.id.fragment_favorite
-            ).build()
-        )
+        navController = Navigation.findNavController(this, R.id.nav_host_main_fragment)
+        binding.bottomNavigationView.setupWithNavController(navController)
+
+//        val navController = Navigation.findNavController(this, R.id.nav_host_main_fragment)
+//        setupWithNavController(binding.bottomNavigationView, navController)
+//        setupActionBarWithNavController(
+//            navController,
+//            AppBarConfiguration.Builder(
+//                R.id.movieFragment,
+//                R.id.tvShowFragment,
+//                R.id.favoriteFragment
+//            ).build()
+//        )
     }
+
+    override fun onNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()
 }

@@ -17,13 +17,13 @@ data class MovieResponse(
     val overview: String,
 
     @field:SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String? = null,
 
     @field:SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String? = null,
 
     @field:SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String? = null,
 
     @field:SerializedName("vote_average")
     val voteAverage: Double,

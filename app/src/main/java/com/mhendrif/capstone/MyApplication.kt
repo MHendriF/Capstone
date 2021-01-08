@@ -2,10 +2,12 @@ package com.mhendrif.capstone
 
 import android.app.Application
 import com.mhendrif.capstone.common.util.ReleaseTree
-import dagger.hilt.android.HiltAndroidApp
+import com.mhendrif.capstone.core.di.CoreComponent
+import com.mhendrif.capstone.core.di.DaggerCoreComponent
+import com.mhendrif.capstone.di.AppComponent
+import com.mhendrif.capstone.di.DaggerAppComponent
 import timber.log.Timber
 
-@HiltAndroidApp
 open class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
@@ -14,5 +16,13 @@ open class MyApplication : Application() {
         } else {
             Timber.plant(ReleaseTree())
         }
+    }
+
+    private val coreComponent: CoreComponent by lazy {
+        DaggerCoreComponent.factory().create(applicationContext)
+    }
+
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.factory().create(coreComponent)
     }
 }

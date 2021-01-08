@@ -3,64 +3,60 @@ package com.mhendrif.capstone.detail
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.ViewModelFactory
+import com.mhendrif.capstone.base.BaseFragment
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.utils.ImageBinding
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
-import dagger.hilt.android.AndroidEntryPoint
+import com.mhendrif.capstone.domain.model.Movie
+import com.mhendrif.capstone.domain.model.TvShow
 import timber.log.Timber
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class DetailTvShowFragment : Fragment() {
+class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.fragment_detail_tv_show) {
 
-    private val detailViewModel: DetailViewModel by viewModels()
-    private var _binding: FragmentDetailTvShowBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    internal lateinit var factory: ViewModelFactory
+    private val detailViewModel: DetailViewModel by viewModels { factory }
+    private val args: DetailTvShowFragmentArgs by navArgs()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentDetailTvShowBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ivBack.setOnClickListener { activity?.onBackPressed() }
 
-        val dataId = arguments?.get(DetailActivity.DATA_EXTRA_ID)
-        if (dataId != 0 && dataId != null) detailViewModel.getDetailTvShow(dataId as Int)
+        Timber.d("dataId : %s", args.tvShow.id)
+        detailViewModel.getDetailTvShow(args.tvShow.id)
+        detailViewModel.tvShow.observe(viewLifecycleOwner, { handleStat(it) })
+    }
 
-        if (activity != null) {
-            detailViewModel.tvShow.observe(viewLifecycleOwner, { tvShow ->
-                if (tvShow != null) {
-                    when (tvShow) {
-                        is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            binding.pbLoading.visibility = View.GONE
-                            visibleContent()
-                            tvShow.data?.let { setUpContent(it) }
-                        }
-                        is Resource.Error -> {
-                            binding.pbLoading.visibility = View.GONE
-                            Timber.e(tvShow.message)
-                            activity?.toast(tvShow.message.toString())
-                        }
-                    }
-                } else {
-                    activity?.toast("Data is null")
+    private fun handleStat(resource: Resource<TvShow>) {
+        with(binding) {
+            when (resource) {
+                is Resource.Loading -> isLoading = true
+                is Resource.Success -> {
+                    isLoading = false
+                    visibleContent()
+                    resource.data?.let { setUpContent(it) }
                 }
-            })
+                is Resource.Error -> {
+                    isLoading = false
+                    Timber.e(resource.message)
+                    activity?.toast(resource.message.toString())
+                }
+            }
         }
     }
 
@@ -82,19 +78,19 @@ class DetailTvShowFragment : Fragment() {
         }
     }
 
-    private fun setUpContent(model: com.mhendrif.capstone.domain.model.TvShow) {
+    private fun setUpContent(model: TvShow) {
         with(binding) {
-            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + model.posterPath)
-            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH + model.posterPath)
+//            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + model.posterPath)
+//            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH + model.posterPath)
             val genres = ArrayList<String>()
             for (genre in model.genres!!) {
                 genres.add(genre.name)
             }
 
-            tvTitle.text = model.title
-            tvOverview.text = model.overview
-            tvReleaseDate.text = model.releaseDate
-            tvScore.text = model.voteAverage.toString()
+//            tvTitle.text = model.title
+//            tvOverview.text = model.overview
+//            tvReleaseDate.text = model.releaseDate
+//            tvScore.text = model.voteAverage.toString()
             tvGenre.text = genres.joinToString()
 
             tvReadMore.setOnClickListener {
@@ -138,10 +134,5 @@ class DetailTvShowFragment : Fragment() {
                 )
             )
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

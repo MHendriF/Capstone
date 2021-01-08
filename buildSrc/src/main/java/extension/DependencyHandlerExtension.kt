@@ -36,11 +36,16 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
 
     // Dagger Hilt
-    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    //implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    //(CommonDeps.DAGGER_HILT_COMPILER)
     // Dagger Hilt AndroidX & ViewModel
-    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+    //implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    //kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Dagger2
+    implementation(CommonDeps.DAGGER)
+    kapt(CommonDeps.DAGGER_COMPILER)
+    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
 
     // Leak Canary
     debugImplementation(CommonDeps.LEAK_CANARY)
@@ -51,6 +56,9 @@ fun DependencyHandler.addAppModuleDependencies() {
 
     // Rounded Image
     implementation(CommonDeps.ROUNDED_IMAGE)
+
+    // Paging
+    implementation(CommonDeps.PAGING)
 }
 
 /**
@@ -98,11 +106,16 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(CommonDeps.COROUTINES_ANDROID)
 
     // Dagger
-    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-    // Dagger Hilt AndroidX & ViewModel
-    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+//    // Dagger Hilt AndroidX & ViewModel
+//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Dagger2
+    implementation(CommonDeps.DAGGER)
+    kapt(CommonDeps.DAGGER_COMPILER)
+    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
 
     // Lifecycle, LiveData, ViewModel
     api(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
@@ -125,6 +138,9 @@ fun DependencyHandler.addCoreModuleDependencies() {
     // Okhttp3
     implementation(CommonDeps.OK_HTTP3)
     implementation(CommonDeps.OK_HTTP3_LOG)
+
+    // Paging
+    implementation(CommonDeps.PAGING)
 }
 
 /**
@@ -146,11 +162,16 @@ fun DependencyHandler.addDataModuleDependencies() {
     implementation(CommonDeps.COROUTINES_ANDROID)
 
     // Dagger
-    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-    // Dagger Hilt AndroidX & ViewModel
-    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+//    // Dagger Hilt AndroidX & ViewModel
+//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Dagger2
+    implementation(CommonDeps.DAGGER)
+    kapt(CommonDeps.DAGGER_COMPILER)
+    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
 
     // Lifecycle, LiveData, ViewModel
     api(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
@@ -173,6 +194,9 @@ fun DependencyHandler.addDataModuleDependencies() {
     // Okhttp3
     implementation(CommonDeps.OK_HTTP3)
     implementation(CommonDeps.OK_HTTP3_LOG)
+
+    // Paging
+    implementation(CommonDeps.PAGING)
 }
 
 /**
@@ -187,11 +211,16 @@ fun DependencyHandler.addDomainModuleDependencies() {
     implementation(CommonDeps.COROUTINES_ANDROID)
 
     // Dagger
-    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-    // Dagger Hilt AndroidX & ViewModel
-    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+//    // Dagger Hilt AndroidX & ViewModel
+//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Dagger2
+    implementation(CommonDeps.DAGGER)
+    kapt(CommonDeps.DAGGER_COMPILER)
+    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
 
     // Lifecycle, LiveData, ViewModel
     api(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
@@ -208,6 +237,9 @@ fun DependencyHandler.addDomainModuleDependencies() {
     // Retrofit
     implementation(CommonDeps.RETROFIT)
     implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
+
+    // Paging
+    implementation(CommonDeps.PAGING)
 }
 
 /**
@@ -231,11 +263,16 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
 
     // Dagger Hilt
-    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-    // Dagger Hilt AndroidX & ViewModel
-    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+//    // Dagger Hilt AndroidX & ViewModel
+//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
+
+    // Dagger2
+    implementation(CommonDeps.DAGGER)
+    kapt(CommonDeps.DAGGER_COMPILER)
+    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
 
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)

@@ -3,36 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/fragment_movie">
+    app:startDestination="@id/movieFragment">
 
     <fragment
-        android:id="@+id/fragment_movie"
+        android:id="@+id/movieFragment"
         android:name="com.mhendrif.capstone.home.MovieFragment"
-        android:label="@string/movie"
-        tools:layout="@layout/fragment_movie" />
+        android:label="MovieFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_movieFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_tv_show"
+        android:id="@+id/tvShowFragment"
         android:name="com.mhendrif.capstone.home.TvShowFragment"
-        android:label="@string/tv_show"
-        tools:layout="@layout/fragment_tv_show" />
+        android:label="TvShowFragment"
+        tools:layout="@layout/fragment_tv_show">
+        <action
+            android:id="@+id/action_tvFragment_to_detailTvShowFragment"
+            app:destination="@id/detailTvShowFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_favorite"
+        android:id="@+id/favoriteFragment"
         android:name="com.mhendrif.capstone.favorite.FavoriteFragment"
-        android:label="Favorite"
-        tools:layout="@layout/fragment_favorite" />
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite">
+    <action
+        android:id="@+id/action_favoriteFragment_to_detailMovieFragment"
+        app:destination="@id/detailMovieFragment" />
+    <action
+        android:id="@+id/action_favoriteFragment_to_detailTvShowFragment"
+        app:destination="@id/detailTvShowFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_favorite_movie"
-        android:name="com.mhendrif.capstone.favorite.FavoriteMovieFragment"
-        android:label="Favorite"
-        tools:layout="@layout/fragment_movie" />
+        android:id="@+id/detailMovieFragment"
+        android:name="com.mhendrif.capstone.detail.DetailMovieFragment"
+        android:label="DetailMovieFragment"
+        tools:layout="@layout/fragment_detail_movie">
+        <argument
+            android:name="movie"
+            app:argType="com.mhendrif.capstone.domain.model.Movie" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_favorite_tv_show"
-        android:name="com.mhendrif.capstone.favorite.FavoriteTvShowFragment"
-        android:label="Favorite"
-        tools:layout="@layout/fragment_tv_show" />
+        android:id="@+id/detailTvShowFragment"
+        android:name="com.mhendrif.capstone.detail.DetailTvShowFragment"
+        android:label="DetailTvShowFragment"
+        tools:layout="@layout/fragment_detail_tv_show">
+        <argument
+            android:name="tv_show"
+            app:argType="com.mhendrif.capstone.domain.model.TvShow" />
+    </fragment>
 
 </navigation>

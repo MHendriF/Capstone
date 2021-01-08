@@ -1,95 +1,85 @@
 package com.mhendrif.capstone.home
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.paging.PagedList
 import com.mhendrif.capstone.R
+import com.mhendrif.capstone.ViewModelFactory
+import com.mhendrif.capstone.base.BaseFragment
+import com.mhendrif.capstone.core.utils.ItemListener
 import com.mhendrif.capstone.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
-import com.mhendrif.capstone.detail.DetailActivity
 import com.mhendrif.capstone.domain.Resource
-import dagger.hilt.android.AndroidEntryPoint
+import com.mhendrif.capstone.domain.model.Movie
 import timber.log.Timber
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class MovieFragment : Fragment() {
+class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie),
+    ItemListener<Movie> {
 
-    private val movieViewModel: MovieViewModel by viewModels()
-    private var _binding: FragmentMovieBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    internal lateinit var factory: ViewModelFactory
+    private val movieViewModel: MovieViewModel by viewModels { factory }
+    private lateinit var adapter: MovieAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val movieAdapter = MovieAdapter()
-            movieAdapter.onItemClick = { selectData ->
-                val intent = Intent(activity, DetailActivity::class.java).apply {
-                    putExtra(
-                        DetailActivity.DATA_EXTRA,
-                        arrayListOf(R.id.fragmentDetailMovie, selectData.id)
-                    )
-                }
-                activity?.startActivity(intent)
+            adapter = MovieAdapter().apply {
+                onItemListener = this@MovieFragment
+                binding.rvMovie.setHasFixedSize(true)
+                binding.rvMovie.adapter = this
             }
+            movieViewModel.movie.observe(viewLifecycleOwner, { handleStat(it) })
+        }
+    }
 
-            movieViewModel.movie.observe(viewLifecycleOwner, { movie ->
-                if (movie != null) {
-                    when (movie) {
-                        is Resource.Loading -> {
-                            binding.pbLoading.visibility = View.VISIBLE
-                            binding.rvMovie.visibility = View.GONE
-                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                        }
-                        is Resource.Success -> {
-                            binding.pbLoading.visibility = View.GONE
-                            binding.rvMovie.visibility = View.VISIBLE
-                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                            movieAdapter.setData(movie.data)
-                        }
-                        is Resource.Error -> {
-                            binding.pbLoading.visibility = View.GONE
-                            binding.rvMovie.visibility = View.GONE
-                            binding.viewDataEmpty.emptyAnimation.visibility = View.GONE
-                            Timber.e(movie.message)
-                            activity?.toast(movie.message.toString())
-                        }
-                    }
-                } else {
-                    binding.pbLoading.visibility = View.GONE
-                    binding.rvMovie.visibility = View.GONE
-                    binding.viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
-                    activity?.toast("Data is null")
+    private fun handleStat(resource: Resource<List<Movie>>) {
+        with(binding) {
+            when (resource) {
+                is Resource.Loading -> {
+                    isLoading = true
+                    rvMovie.visibility = View.GONE
+                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                 }
-            })
-
-            with(binding.rvMovie) {
-                setHasFixedSize(true)
-                adapter = movieAdapter
+                is Resource.Success -> {
+                    isLoading = false
+                    rvMovie.visibility = View.VISIBLE
+                    viewDataEmpty.emptyAnimation.visibility = View.GONE
+                    adapter.submitList(resource.data)
+                }
+                is Resource.Error -> {
+                    isLoading = false
+                    rvMovie.visibility = View.GONE
+                    viewDataEmpty.emptyAnimation.visibility = View.GONE
+                    Timber.e(resource.message)
+                    activity?.toast(resource.message.toString())
+                }
             }
         }
+    }
+
+    private fun navigateToDetail(movie: Movie) {
+        findNavController().navigate(
+            MovieFragmentDirections.actionMovieFragmentToDetailMovieFragment(movie)
+        )
     }
 
     private fun Context.toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onItemClick(model: Movie) {
+        navigateToDetail(model)
     }
 }

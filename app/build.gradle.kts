@@ -7,7 +7,6 @@ plugins {
     id(Plugins.KOTLIN_ANDROID_PLUGIN)
     id(Plugins.KOTLIN_KAPT_PLUGIN)
     id(Plugins.KOTLIN_PARCELIZE_PLUGIN)
-    id(Plugins.DAGGER_HILT_PLUGIN)
     id(Plugins.NAVIGATION_PLUGIN)
 }
 
@@ -44,8 +43,10 @@ android {
         }
     }
 
-    android.buildFeatures.dataBinding = true
-    android.buildFeatures.viewBinding = true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

@@ -1,36 +1,28 @@
 package com.mhendrif.capstone.favorite
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import com.mhendrif.capstone.R
+import com.mhendrif.capstone.ViewModelFactory
+import com.mhendrif.capstone.base.BaseFragment
 import com.mhendrif.capstone.ui.FavoritePagerAdapter
 import com.mhendrif.capstone.databinding.FragmentFavoriteBinding
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class FavoriteFragment : Fragment() {
+class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment_favorite) {
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
-    private var _binding: FragmentFavoriteBinding? = null
-    private val binding get() = _binding!!
+    @Inject
+    internal lateinit var factory: ViewModelFactory
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
         binding.tabs.setupWithViewPager(binding.viewPager)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

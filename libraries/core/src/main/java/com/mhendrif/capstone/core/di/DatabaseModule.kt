@@ -8,18 +8,14 @@ import com.mhendrif.capstone.data.source.local.room.MovieDao
 import com.mhendrif.capstone.data.source.local.room.TvShowDao
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
 class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): AppDatabase = Room.databaseBuilder(
+    fun provideDatabase(context: Context): AppDatabase = Room.databaseBuilder(
         context, AppDatabase::class.java, Constants.DATABASE_NAME
     ).fallbackToDestructiveMigration().build()
 

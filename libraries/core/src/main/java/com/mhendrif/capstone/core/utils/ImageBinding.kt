@@ -1,10 +1,13 @@
 package com.mhendrif.capstone.core.utils
 
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 object ImageBinding {
+    @BindingAdapter("android:imageURL")
+    @JvmStatic
     fun setImageURL(imageView: ImageView, URL: String?) {
         try {
             imageView.alpha = 0f
