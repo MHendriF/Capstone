@@ -20,6 +20,7 @@ import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.model.TvShow
 import timber.log.Timber
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.fragment_detail_tv_show) {
 
@@ -86,6 +87,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
                 genres.add(genre.name)
             }
             tvGenre.text = genres.joinToString()
+            pbScore.progress = (model.voteAverage * 10).roundToInt()
 
             tvReadMore.setOnClickListener {
                 if (tvReadMore.text.toString() == "Read More") {

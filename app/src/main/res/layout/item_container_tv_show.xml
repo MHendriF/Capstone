@@ -81,18 +81,34 @@
 
         <TextView
             android:id="@+id/tvScore"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_3sdp"
+            android:ellipsize="end"
             android:fontFamily="@font/ubuntu_regular"
             android:includeFontPadding="false"
-            android:text='@{"Score : "+ model.voteAverage}'
+            android:padding="@dimen/_10sdp"
+            android:text='@{""+ model.voteAverage}'
             android:textColor="@android:color/holo_green_light"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="@id/tvTitle"
-            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toEndOf="@id/ivPoster"
             app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
-            tools:text="Score" />
+            tools:text="8.0" />
+
+        <ProgressBar
+            android:id="@+id/pbScore"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:progressDrawable="@drawable/bg_circle"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintBottom_toBottomOf="@id/tvScore"
+            app:layout_constraintLeft_toLeftOf="@id/tvScore"
+            app:layout_constraintRight_toRightOf="@id/tvScore"
+            app:layout_constraintTop_toTopOf="@id/tvScore"
+            tools:progress="80" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -35,5 +35,8 @@ data class MovieResponse(
     val genres: List<Genre>? = null,
 
     @field:SerializedName("homepage")
-    val homepage: String? = null
+    val homepage: String? = null,
+
+    @field:SerializedName("runtime")
+    val runtime: String? = null
 ) : Parcelable

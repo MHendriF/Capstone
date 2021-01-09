@@ -8,13 +8,20 @@
         <variable
             name="isLoading"
             type="Boolean" />
+
+        <variable
+            name="isVisibleContent"
+            type="Boolean" />
+
         <variable
             name="constants"
             type="com.mhendrif.capstone.common.util.Constants" />
+
         <variable
             name="args"
             type="com.mhendrif.capstone.domain.model.Movie" />
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,15 +36,18 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_28sdp">
 
                 <ImageView
                     android:id="@+id/ivBackground"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_160sdp"
-                    android:imageURL='@{constants.API_BACKDROP_PATH + args.posterPath}'
+                    android:layout_height="@dimen/_200sdp"
+                    android:alpha="0.7"
                     android:contentDescription="@string/img_bg"
-                    android:scaleType="fitXY"
+                    android:imageURL='@{constants.API_BACKDROP_PATH + args.backdropPath}'
+                    android:scaleType="centerCrop"
+                    android:src="?attr/colorPrimarySurface"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -59,8 +69,9 @@
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:imageURL='@{constants.API_POSTER_PATH + args.posterPath}'
                     android:contentDescription="@string/img_bg"
+                    android:imageURL='@{constants.API_POSTER_PATH + args.posterPath}'
+                    android:src="?attr/colorSecondaryVariant"
                     app:layout_constraintBottom_toBottomOf="@id/ivBackground"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ivBackground"
@@ -71,80 +82,156 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:ellipsize="end"
                     android:fontFamily="@font/ubuntu_bold"
                     android:includeFontPadding="false"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:text="@{args.title}"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="@dimen/_14ssp"
-                    android:visibility="gone"
+                    android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=visible}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ivPoster"
                     app:layout_constraintTop_toBottomOf="@id/ivBackground"
                     tools:text="Title" />
 
+                <View
+                    android:id="@+id/viewDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/colorPrimaryLight"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDuration"
+                    app:layout_constraintTop_toTopOf="@id/tvReleaseDate" />
+
+                <TextView
+                    android:id="@+id/tvReleaseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingVertical="@dimen/_14sdp"
+                    android:text="@{args.releaseDate}"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="@dimen/_11ssp"
+                    android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=visible}"
+                    app:drawableLeftCompat="@drawable/ic_calendar"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/tvScore"
+                    app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                    tools:text="2020-02-02" />
+
+                <TextView
+                    android:id="@+id/tvScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:includeFontPadding="false"
+                    android:padding="@dimen/_12sdp"
+                    android:text='@{""+ args.voteAverage}'
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="@dimen/_11ssp"
+                    android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=visible}"
+                    app:layout_constraintLeft_toRightOf="@id/tvReleaseDate"
+                    app:layout_constraintRight_toLeftOf="@id/tvDuration"
+                    app:layout_constraintTop_toTopOf="@id/tvReleaseDate"
+                    app:layout_constraintBottom_toBottomOf="@id/tvReleaseDate"
+                    tools:text="8.0" />
+
+                <ProgressBar
+                    android:id="@+id/pbScore"
+                    style="?android:progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:progressDrawable="@drawable/bg_circle"
+                    app:layout_constraintBottom_toBottomOf="@id/tvScore"
+                    app:layout_constraintHorizontal_bias="0.044"
+                    app:layout_constraintLeft_toLeftOf="@id/tvScore"
+                    app:layout_constraintRight_toRightOf="@id/tvScore"
+                    app:layout_constraintTop_toTopOf="@id/tvScore"
+                    tools:progress="80" />
+
+                <TextView
+                    android:id="@+id/tvDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingVertical="@dimen/_14sdp"
+                    android:text='@{args.runtime + " minutes"}'
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="@dimen/_11ssp"
+                    app:drawableLeftCompat="@drawable/ic_time"
+                    app:layout_constraintLeft_toRightOf="@id/tvScore"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvReleaseDate"
+                    tools:text="150 minutes" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvInfoGenre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/ubuntu_bold"
+                    android:includeFontPadding="false"
+                    android:maxLines="2"
+                    android:text="@string/genre"
+                    android:textColor="@color/colorTextOther"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDuration"
+                    tools:text="Genre" />
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvGenre"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:ellipsize="end"
                     android:fontFamily="@font/ubuntu_regular"
                     android:includeFontPadding="false"
                     android:maxLines="2"
                     android:textColor="@color/colorTextOther"
-                    android:textSize="@dimen/_12ssp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-                    app:layout_constraintStart_toStartOf="@id/tvTitle"
-                    app:layout_constraintTop_toBottomOf="@id/tvTitle"
-                    tools:text="Genre" />
+                    android:textSize="@dimen/_11ssp"
+                    android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=visible}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvInfoGenre"
+                    tools:text="Action, Comedy, Romance" />
 
                 <TextView
-                    android:id="@+id/tvScore"
-                    android:layout_width="0dp"
+                    android:id="@+id/tvInfoOverview"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:ellipsize="end"
-                    android:fontFamily="@font/ubuntu_regular"
+                    android:fontFamily="@font/ubuntu_bold"
                     android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:text='@{"Score : "+ args.voteAverage}'
-                    android:textColor="@android:color/holo_green_light"
-                    android:textSize="@dimen/_12ssp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-                    app:layout_constraintStart_toStartOf="@id/tvTitle"
+                    android:text="@string/overview"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="@dimen/_13ssp"
                     app:layout_constraintTop_toBottomOf="@id/tvGenre"
-                    tools:text="8" />
-
-                <TextView
-                    android:id="@+id/tvReleaseDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/ubuntu_regular"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:text="@{args.releaseDate}"
-                    android:textColor="@color/colorTextSecondary"
-                    android:textSize="@dimen/_12ssp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-                    app:layout_constraintStart_toStartOf="@id/tvTitle"
-                    app:layout_constraintTop_toBottomOf="@id/tvScore"
-                    tools:text="Release on" />
+                    tools:text="Overview" />
 
                 <TextView
                     android:id="@+id/tvOverview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:ellipsize="end"
                     android:fontFamily="@font/ubuntu_regular"
@@ -154,9 +241,9 @@
                     android:text="@{args.overview}"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="@dimen/_11ssp"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/ivPoster"
-                    tools:text="Overview" />
+                    android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=visible}"
+                    app:layout_constraintTop_toBottomOf="@id/tvInfoOverview"
+                    tools:text="As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain." />
 
                 <TextView
                     android:id="@+id/tvReadMore"
@@ -168,7 +255,7 @@
                     android:text="@string/read_more"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/_12ssp"
-                    android:visibility="gone"
+                    android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=visible}"
                     app:layout_constraintStart_toStartOf="@id/tvOverview"
                     app:layout_constraintTop_toBottomOf="@id/tvOverview" />
 

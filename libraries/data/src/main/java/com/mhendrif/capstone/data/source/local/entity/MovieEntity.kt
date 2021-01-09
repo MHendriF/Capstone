@@ -43,6 +43,9 @@ data class MovieEntity(
     @ColumnInfo(name = "homepage")
     var homepage: String?,
 
+    @ColumnInfo(name = "runtime")
+    var runtime: String?,
+
     @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false
 ) : Parcelable

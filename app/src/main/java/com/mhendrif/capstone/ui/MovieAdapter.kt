@@ -6,6 +6,7 @@ import com.mhendrif.capstone.R
 import com.mhendrif.capstone.base.BaseAdapter
 import com.mhendrif.capstone.databinding.ItemContainerMovieBinding
 import com.mhendrif.capstone.domain.model.Movie
+import kotlin.math.roundToInt
 
 class MovieAdapter : BaseAdapter<Movie, ItemContainerMovieBinding>(R.layout.item_container_movie, diffUtil) {
     companion object {
@@ -22,6 +23,7 @@ class MovieAdapter : BaseAdapter<Movie, ItemContainerMovieBinding>(R.layout.item
     override fun onBindViewHolder(holder: Holder<ItemContainerMovieBinding>, position: Int) {
         holder.binding?.let { bind ->
             getItem(position)?.apply {
+                bind.pbScore.progress = (this.voteAverage * 10).roundToInt()
                 bind.model = this
                 bind.root.setOnClickListener { onItemListener?.onItemClick(this) }
             }

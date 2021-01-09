@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/detailMovieFragment"
         android:name="com.mhendrif.capstone.detail.DetailMovieFragment"
-        android:label="DetailMovieFragment"
+        android:label="Detail Movie"
         tools:layout="@layout/fragment_detail_movie">
         <argument
             android:name="movie"
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/detailTvShowFragment"
         android:name="com.mhendrif.capstone.detail.DetailTvShowFragment"
-        android:label="DetailTvShowFragment"
+        android:label="Detail Tv Show"
         tools:layout="@layout/fragment_detail_tv_show">
         <argument
             android:name="tv_show"

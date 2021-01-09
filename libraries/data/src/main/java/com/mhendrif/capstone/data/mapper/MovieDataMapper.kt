@@ -25,7 +25,8 @@ object MovieDataMapper {
                 voteAverage = it.voteAverage,
                 voteCount = it.voteCount,
                 genres = listGenre,
-                homepage = it.homepage ?: "",
+                homepage = it.homepage,
+                runtime = it.runtime,
                 isFavorite = false
             )
             movieList.add(movie)
@@ -48,7 +49,8 @@ object MovieDataMapper {
             voteAverage = input.voteAverage,
             voteCount = input.voteCount,
             genres = listGenre,
-            homepage = input.homepage ?: "",
+            homepage = input.homepage,
+            runtime = input.runtime,
             isFavorite = false
         )
     }
@@ -64,7 +66,8 @@ object MovieDataMapper {
             voteAverage = input.voteAverage,
             voteCount = input.voteCount,
             genres = input.genres,
-            homepage = input.homepage ?: "",
+            homepage = input.homepage,
+            runtime = input.runtime,
             isFavorite = false
         )
     }
@@ -86,6 +89,7 @@ object MovieDataMapper {
                         voteCount = it.voteCount,
                         genres = listGenre,
                         homepage = it.homepage,
+                        runtime = it.runtime,
                         isFavorite = it.isFavorite
                 )
             }
@@ -106,6 +110,7 @@ object MovieDataMapper {
             voteCount = input.voteCount,
             genres = listGenre,
             homepage = input.homepage,
+            runtime = input.runtime,
             isFavorite = input.isFavorite
         )
     }
@@ -126,6 +131,7 @@ object MovieDataMapper {
             voteCount = input.voteCount,
             genres = listGenre,
             homepage = input.homepage,
+            runtime = input.runtime,
             isFavorite = input.isFavorite
         )
     }
