@@ -32,7 +32,6 @@ class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (activity != null) {
             adapter = TvShowAdapter().apply {
                 onItemListener = this@TvShowFragment

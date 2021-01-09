@@ -5,6 +5,10 @@
 
     <data>
         <variable
+            name="constants"
+            type="com.mhendrif.capstone.common.util.Constants" />
+
+        <variable
             name="model"
             type="com.mhendrif.capstone.domain.model.TvShow" />
     </data>
@@ -35,6 +39,7 @@
             android:layout_height="@dimen/_100sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:contentDescription="@string/img_bg"
+            android:imageURL='@{constants.API_POSTER_PATH + model.posterPath}'
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,6 +56,7 @@
             android:includeFontPadding="false"
             android:maxLines="1"
             android:paddingTop="@dimen/_8sdp"
+            android:text="@{model.title}"
             android:textColor="@color/colorTextPrimary"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +71,7 @@
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/ubuntu_regular"
             android:includeFontPadding="false"
+            android:text="@{model.releaseDate}"
             android:textColor="@color/colorTextSecondary"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="@id/tvTitle"
@@ -79,6 +86,7 @@
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/ubuntu_regular"
             android:includeFontPadding="false"
+            android:text='@{"Score : "+ model.voteAverage}'
             android:textColor="@android:color/holo_green_light"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="@id/tvTitle"
