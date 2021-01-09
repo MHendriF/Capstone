@@ -1,6 +1,7 @@
 package com.mhendrif.capstone.domain.model
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -15,5 +16,6 @@ data class TvShow(
     val voteCount: Int,
     val genres: List<Genre>?,
     val homepage: String?,
+    val numberOfSeasons: Int?,
     val isFavorite: Boolean
 ) : Parcelable

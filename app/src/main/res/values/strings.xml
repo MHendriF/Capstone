@@ -15,4 +15,7 @@
     <string name="empty_message">Data is empty</string>
     <string name="genre">Genre</string>
     <string name="overview">Overview</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="detail_tv_show">Detail TV Show</string>
+    <string name="open_link">Open link</string>
 </resources>

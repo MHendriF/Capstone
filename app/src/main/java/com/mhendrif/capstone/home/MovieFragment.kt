@@ -32,7 +32,6 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (activity != null) {
             adapter = MovieAdapter().apply {
                 onItemListener = this@MovieFragment

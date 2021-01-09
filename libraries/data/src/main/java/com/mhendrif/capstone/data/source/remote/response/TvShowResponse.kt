@@ -35,5 +35,8 @@ data class TvShowResponse(
     val genres: List<Genre>? = null,
 
     @field:SerializedName("homepage")
-    val homepage: String? = null
+    val homepage: String? = null,
+
+    @field:SerializedName("number_of_seasons")
+    val numberOfSeasons: Int? = 0,
 ) : Parcelable

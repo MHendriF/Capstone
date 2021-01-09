@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="isLoading"
             type="Boolean" />
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
     </data>
 
     <FrameLayout
@@ -20,6 +22,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/appToolbar"
+                layout="@layout/app_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/viewDataEmpty"
@@ -36,12 +44,11 @@
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/_4sdp"
-                android:paddingTop="@dimen/_4sdp"
+                android:paddingTop="@dimen/_8sdp"
                 android:paddingEnd="@dimen/_4sdp"
-                android:paddingBottom="@dimen/_45sdp"
-                android:visibility="gone"
+                android:paddingBottom="@dimen/_46sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appToolbar"
                 tools:listitem="@layout/item_container_movie" />
 
             <ProgressBar

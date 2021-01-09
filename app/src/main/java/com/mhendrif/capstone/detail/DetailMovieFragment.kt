@@ -1,8 +1,12 @@
 package com.mhendrif.capstone.detail
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -11,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
+import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailMovieBinding
 import com.mhendrif.capstone.domain.Resource
@@ -32,26 +37,39 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.ivBack.setOnClickListener { activity?.onBackPressed() }
+        setHasOptionsMenu(true)
 
-        Timber.d("dataId : %s", args.movie.id)
+        with(binding.appToolbar) {
+            tvTitleAppBar.text = getString(R.string.detail_movie)
+            btnBack.setOnClickListener { activity?.onBackPressed() }
+        }
+
         detailViewModel.movie.observe(viewLifecycleOwner, { handleStat(it) })
         detailViewModel.getDetailMovie(args.movie.id)
     }
 
     private fun handleStat(resource: Resource<Movie>) {
-        Timber.d("change")
         with(binding) {
             when (resource) {
-                is Resource.Loading -> isLoading = true
+                is Resource.Loading -> {
+                    isLoading = true
+                    isVisibleContent = false
+                }
                 is Resource.Success -> {
-                    isLoading = false
                     args = resource.data
-                    visibleContent()
+                    isLoading = false
+                    isVisibleContent = true
                     resource.data?.let { setUpContent(it) }
+                    appToolbar.btnLink.setOnClickListener {
+                        if (resource.data?.homepage.isNullOrEmpty())
+                            openLink(Constants.TMDB_MOVIE_URL+resource.data?.id)
+                        else
+                            openLink(resource.data?.homepage)
+                    }
                 }
                 is Resource.Error -> {
                     isLoading = false
+                    isVisibleContent = false
                     Timber.e(resource.message)
                     activity?.toast(resource.message.toString())
                 }
@@ -61,20 +79,6 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
 
     private fun Context.toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun visibleContent() {
-        with(binding) {
-            ivBackground.visibility = View.VISIBLE
-            ivPoster.visibility = View.VISIBLE
-            tvTitle.visibility = View.VISIBLE
-            tvOverview.visibility = View.VISIBLE
-            tvGenre.visibility = View.VISIBLE
-            tvReleaseDate.visibility = View.VISIBLE
-            tvScore.visibility = View.VISIBLE
-            tvReadMore.visibility = View.VISIBLE
-            ivFavorite.visibility = View.VISIBLE
-        }
     }
 
     private fun setUpContent(model: Movie) {
@@ -114,18 +118,26 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (!statusFavorite) {
             binding.ivFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_favorite
-                )
+                    ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_favorite
+                    )
             )
         } else {
             binding.ivFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_delete
-                )
+                    ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_delete
+                    )
             )
+        }
+    }
+
+    private fun openLink(url: String?) {
+        Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(url)
+        }.also {
+            activity?.startActivity(it)
         }
     }
 }

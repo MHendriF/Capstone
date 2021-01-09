@@ -1,6 +1,8 @@
 package com.mhendrif.capstone.detail
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -36,9 +38,12 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.ivBack.setOnClickListener { activity?.onBackPressed() }
 
-        Timber.d("dataId : %s", args.tvShow.id)
+        with(binding.appToolbar) {
+            tvTitleAppBar.text = getString(R.string.detail_tv_show)
+            btnBack.setOnClickListener { activity?.onBackPressed() }
+        }
+
         detailViewModel.tvShow.observe(viewLifecycleOwner, { handleStat(it) })
         detailViewModel.getDetailTvShow(args.tvShow.id)
     }
@@ -46,15 +51,25 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
     private fun handleStat(resource: Resource<TvShow>) {
         with(binding) {
             when (resource) {
-                is Resource.Loading -> isLoading = true
+                is Resource.Loading -> {
+                    isLoading = true
+                    isVisibleContent = false
+                }
                 is Resource.Success -> {
-                    isLoading = false
                     args = resource.data
-                    visibleContent()
+                    isLoading = false
+                    isVisibleContent = true
                     resource.data?.let { setUpContent(it) }
+                    appToolbar.btnLink.setOnClickListener {
+                        if (resource.data?.homepage.isNullOrEmpty())
+                            openLink(Constants.TMDB_TV_URL+resource.data?.id)
+                        else
+                            openLink(resource.data?.homepage)
+                    }
                 }
                 is Resource.Error -> {
                     isLoading = false
+                    isVisibleContent = true
                     Timber.e(resource.message)
                     activity?.toast(resource.message.toString())
                 }
@@ -64,20 +79,6 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
 
     private fun Context.toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun visibleContent() {
-        with(binding) {
-            ivBackground.visibility = View.VISIBLE
-            ivPoster.visibility = View.VISIBLE
-            tvTitle.visibility = View.VISIBLE
-            tvOverview.visibility = View.VISIBLE
-            tvGenre.visibility = View.VISIBLE
-            tvReleaseDate.visibility = View.VISIBLE
-            tvScore.visibility = View.VISIBLE
-            tvReadMore.visibility = View.VISIBLE
-            ivFavorite.visibility = View.VISIBLE
-        }
     }
 
     private fun setUpContent(model: TvShow) {
@@ -129,6 +130,14 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
                     R.drawable.ic_delete
                 )
             )
+        }
+    }
+
+    private fun openLink(url: String?) {
+        Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(url)
+        }.also {
+            activity?.startActivity(it)
         }
     }
 }

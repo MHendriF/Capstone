@@ -43,6 +43,9 @@ data class TvShowEntity(
     @ColumnInfo(name = "homepage")
     var homepage: String?,
 
+    @ColumnInfo(name = "numberOfSeasons")
+    var numberOfSeasons: Int?,
+
     @ColumnInfo(name = "isFavorite")    
     var isFavorite: Boolean = false
 ) : Parcelable

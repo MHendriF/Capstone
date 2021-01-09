@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="constants"
             type="com.mhendrif.capstone.common.util.Constants" />
+
         <variable
             name="model"
             type="com.mhendrif.capstone.domain.model.Movie" />
@@ -38,8 +40,9 @@
             android:layout_height="@dimen/_100sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:contentDescription="@string/img_bg"
-            android:scaleType="centerCrop"
             android:imageURL='@{constants.API_POSTER_PATH + model.posterPath}'
+            android:scaleType="centerCrop"
+            android:src="?attr/colorSecondaryVariant"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="@dimen/_4sdp" />
@@ -54,8 +57,8 @@
             android:fontFamily="@font/ubuntu_medium"
             android:includeFontPadding="false"
             android:maxLines="1"
-            android:text="@{model.title}"
             android:paddingTop="@dimen/_8sdp"
+            android:text="@{model.title}"
             android:textColor="@color/colorTextPrimary"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,9 +73,9 @@
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/ubuntu_regular"
             android:includeFontPadding="false"
+            android:text="@{model.releaseDate}"
             android:textColor="@color/colorTextSecondary"
             android:textSize="@dimen/_12ssp"
-            android:text="@{model.releaseDate}"
             app:layout_constraintEnd_toEndOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="@id/tvTitle"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
@@ -102,8 +105,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:progressDrawable="@drawable/bg_circle"
-            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintBottom_toBottomOf="@id/tvScore"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintLeft_toLeftOf="@id/tvScore"
             app:layout_constraintRight_toRightOf="@id/tvScore"
             app:layout_constraintTop_toTopOf="@id/tvScore"

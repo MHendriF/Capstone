@@ -25,7 +25,8 @@ object TvShowDataMapper {
                 voteAverage = it.voteAverage,
                 voteCount = it.voteCount,
                 genres = listGenre,
-                homepage = it.homepage ?: "",
+                homepage = it.homepage,
+                numberOfSeasons = it.numberOfSeasons,
                 isFavorite = false
             )
             dataList.add(tvShow)
@@ -48,7 +49,8 @@ object TvShowDataMapper {
             voteAverage = input.voteAverage,
             voteCount = input.voteCount,
             genres = listGenre,
-            homepage = input.homepage ?: "",
+            homepage = input.homepage,
+            numberOfSeasons = input.numberOfSeasons,
             isFavorite = false
         )
     }
@@ -60,17 +62,18 @@ object TvShowDataMapper {
                     listGenre.addAll(setUpGenre(it.genres!!))
                 }
                 TvShow(
-                        id = it.id,
-                        title = it.title,
-                        overview = it.overview,
-                        posterPath = it.posterPath,
-                        backdropPath = it.backdropPath,
-                        releaseDate = it.releaseDate,
-                        voteAverage = it.voteAverage,
-                        voteCount = it.voteCount,
-                        genres = listGenre,
-                        homepage = it.homepage,
-                        isFavorite = it.isFavorite
+                    id = it.id,
+                    title = it.title,
+                    overview = it.overview,
+                    posterPath = it.posterPath,
+                    backdropPath = it.backdropPath,
+                    releaseDate = it.releaseDate,
+                    voteAverage = it.voteAverage,
+                    voteCount = it.voteCount,
+                    genres = listGenre,
+                    homepage = it.homepage,
+                    numberOfSeasons = it.numberOfSeasons,
+                    isFavorite = it.isFavorite
                 )
             }
 
@@ -90,6 +93,7 @@ object TvShowDataMapper {
             voteCount = input.voteCount,
             genres = listGenre,
             homepage = input.homepage,
+            numberOfSeasons = input.numberOfSeasons,
             isFavorite = input.isFavorite
         )
     }
@@ -110,6 +114,7 @@ object TvShowDataMapper {
             voteCount = input.voteCount,
             genres = listGenre,
             homepage = input.homepage,
+            numberOfSeasons = input.numberOfSeasons,
             isFavorite = input.isFavorite
         )
     }
