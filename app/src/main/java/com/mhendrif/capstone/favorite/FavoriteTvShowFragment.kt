@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
@@ -49,6 +50,7 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
                 binding.rvTvShow.adapter = this
             }
             favoriteViewModel.tvShows.observe(viewLifecycleOwner, { handleStat(it) })
+            favoriteViewModel.getFavoriteTvShows()
         }
     }
 
@@ -56,13 +58,13 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
         with(binding) {
             if (resource.isNotEmpty()) {
                 isLoading = false
+                viewDataEmpty.isEmptyData = false
                 rvTvShow.visibility = View.VISIBLE
-                viewDataEmpty.emptyAnimation.visibility = View.GONE
                 adapter.submitList(resource)
             } else {
                 isLoading = false
+                viewDataEmpty.isEmptyData = true
                 rvTvShow.visibility = View.GONE
-                viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
             }
         }
     }
@@ -91,9 +93,9 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
     }
 
     private fun navigateToDetail(model: TvShow) {
-//        findNavController().navigate(
-//            MovieFragmentDirections.actionMovieFragmentToDetailMovieFragment(movie)
-//        )
+        findNavController().navigate(
+            FavoriteFragmentDirections.actionFavoriteFragmentToDetailTvShowFragment(model)
+        )
     }
 
     override fun onItemClick(model: TvShow) {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
@@ -47,6 +48,7 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
                 binding.rvMovie.adapter = this
             }
             favoriteViewModel.movies.observe(viewLifecycleOwner, { handleStat(it) })
+            favoriteViewModel.getFavoriteMovies()
         }
     }
 
@@ -54,13 +56,13 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
         with(binding) {
             if (resource.isNotEmpty()) {
                 isLoading = false
+                viewDataEmpty.isEmptyData = false
                 rvMovie.visibility = View.VISIBLE
-                viewDataEmpty.emptyAnimation.visibility = View.GONE
                 adapter.submitList(resource)
             } else {
                 isLoading = false
+                viewDataEmpty.isEmptyData = true
                 rvMovie.visibility = View.GONE
-                viewDataEmpty.emptyAnimation.visibility = View.VISIBLE
             }
         }
     }
@@ -89,9 +91,9 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
     }
 
     private fun navigateToDetail(model: Movie) {
-//        findNavController().navigate(
-//            MovieFragmentDirections.actionMovieFragmentToDetailMovieFragment(movie)
-//        )
+        findNavController().navigate(
+            FavoriteFragmentDirections.actionFavoriteFragmentToDetailMovieFragment(model)
+        )
     }
 
     override fun onItemClick(model: Movie) {

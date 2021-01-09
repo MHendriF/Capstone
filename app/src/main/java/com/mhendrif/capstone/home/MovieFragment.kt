@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.paging.PagedList
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
@@ -49,19 +48,19 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
             when (resource) {
                 is Resource.Loading -> {
                     isLoading = true
+                    viewDataEmpty.isEmptyData = false
                     rvMovie.visibility = View.GONE
-                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     isLoading = false
+                    viewDataEmpty.isEmptyData = false
                     rvMovie.visibility = View.VISIBLE
-                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                     adapter.submitList(resource.data)
                 }
                 is Resource.Error -> {
                     isLoading = false
+                    viewDataEmpty.isEmptyData = false
                     rvMovie.visibility = View.GONE
-                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                     Timber.e(resource.message)
                     activity?.toast(resource.message.toString())
                 }

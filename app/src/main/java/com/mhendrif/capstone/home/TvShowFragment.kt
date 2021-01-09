@@ -47,19 +47,19 @@ class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_
             when (resource) {
                 is Resource.Loading -> {
                     isLoading = true
+                    viewDataEmpty.isEmptyData = false
                     rvTvShow.visibility = View.GONE
-                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     isLoading = false
+                    viewDataEmpty.isEmptyData = false
                     rvTvShow.visibility = View.VISIBLE
-                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                     adapter.submitList(resource.data)
                 }
                 is Resource.Error -> {
                     isLoading = false
+                    viewDataEmpty.isEmptyData = false
                     rvTvShow.visibility = View.GONE
-                    viewDataEmpty.emptyAnimation.visibility = View.GONE
                     Timber.e(resource.message)
                     activity?.toast(resource.message.toString())
                 }
@@ -69,7 +69,7 @@ class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_
 
     private fun navigateToDetail(model: TvShow) {
         findNavController().navigate(
-            TvShowFragmentDirections.actionTvFragmentToDetailTvShowFragment(model)
+            TvShowFragmentDirections.actionTvShowFragmentToDetailTvShowFragment(model)
         )
     }
 

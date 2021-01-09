@@ -34,16 +34,18 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
         binding.ivBack.setOnClickListener { activity?.onBackPressed() }
 
         Timber.d("dataId : %s", args.movie.id)
-        detailViewModel.getDetailMovie(args.movie.id)
         detailViewModel.movie.observe(viewLifecycleOwner, { handleStat(it) })
+        detailViewModel.getDetailMovie(args.movie.id)
     }
 
     private fun handleStat(resource: Resource<Movie>) {
+        Timber.d("change")
         with(binding) {
             when (resource) {
                 is Resource.Loading -> isLoading = true
                 is Resource.Success -> {
                     isLoading = false
+                    args = resource.data
                     visibleContent()
                     resource.data?.let { setUpContent(it) }
                 }

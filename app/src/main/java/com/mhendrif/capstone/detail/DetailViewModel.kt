@@ -13,21 +13,15 @@ class DetailViewModel @Inject constructor(
     private val tvShowUseCase: TvShowUseCase
 ) : ViewModel() {
 
-//    private val _detailMovie = MutableLiveData<Movie>()
-//    val detailMovie: LiveData<Movie> get() = _detailMovie
-//
-//    private val _detailTvShow = MutableLiveData<TvShow>()
-//    val detailTvShow: LiveData<TvShow> get() = _detailTvShow
-
-    var movie: LiveData<Resource<Movie>> = MutableLiveData()
-    var tvShow: LiveData<Resource<TvShow>> = MutableLiveData()
+    val movie by lazy { MediatorLiveData<Resource<Movie>>() }
+    val tvShow by lazy { MediatorLiveData<Resource<TvShow>>() }
 
     fun getDetailMovie(id: Int) {
-        movie = movieUseCase.getDetailMovie(id).asLiveData()
+        movie.addSource(movieUseCase.getDetailMovie(id).asLiveData()) {movie.value = it}
     }
 
     fun getDetailTvShow(id: Int) {
-        tvShow = tvShowUseCase.getDetailTvShow(id).asLiveData()
+        tvShow.addSource(tvShowUseCase.getDetailTvShow(id).asLiveData()) {tvShow.value = it}
     }
 
     fun setFavoriteMovie(movie: Movie, isFavorite: Boolean) =

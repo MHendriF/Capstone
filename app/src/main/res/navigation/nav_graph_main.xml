@@ -25,7 +25,7 @@
         android:label="@string/tv_show"
         tools:layout="@layout/fragment_tv_show">
         <action
-            android:id="@+id/action_tvFragment_to_detailTvShowFragment"
+            android:id="@+id/action_tvShowFragment_to_detailTvShowFragment"
             app:destination="@id/detailTvShowFragment"
             app:enterAnim="@anim/fragment_close_enter"
             app:exitAnim="@anim/fragment_close_exit"
@@ -65,5 +65,7 @@
             android:name="tv_show"
             app:argType="com.mhendrif.capstone.domain.model.TvShow" />
     </fragment>
+
+
 
 </navigation>

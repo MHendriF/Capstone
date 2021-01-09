@@ -38,8 +38,8 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
         binding.ivBack.setOnClickListener { activity?.onBackPressed() }
 
         Timber.d("dataId : %s", args.tvShow.id)
-        detailViewModel.getDetailTvShow(args.tvShow.id)
         detailViewModel.tvShow.observe(viewLifecycleOwner, { handleStat(it) })
+        detailViewModel.getDetailTvShow(args.tvShow.id)
     }
 
     private fun handleStat(resource: Resource<TvShow>) {
@@ -48,6 +48,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
                 is Resource.Loading -> isLoading = true
                 is Resource.Success -> {
                     isLoading = false
+                    args = resource.data
                     visibleContent()
                     resource.data?.let { setUpContent(it) }
                 }
@@ -80,17 +81,10 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
 
     private fun setUpContent(model: TvShow) {
         with(binding) {
-//            ImageBinding.setImageURL(ivPoster, Constants.API_POSTER_PATH + model.posterPath)
-//            ImageBinding.setImageURL(ivBackground, Constants.API_BACKDROP_PATH + model.posterPath)
             val genres = ArrayList<String>()
             for (genre in model.genres!!) {
                 genres.add(genre.name)
             }
-
-//            tvTitle.text = model.title
-//            tvOverview.text = model.overview
-//            tvReleaseDate.text = model.releaseDate
-//            tvScore.text = model.voteAverage.toString()
             tvGenre.text = genres.joinToString()
 
             tvReadMore.setOnClickListener {
