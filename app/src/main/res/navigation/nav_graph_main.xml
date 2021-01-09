@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/movieFragment">
+    app:startDestination="@id/navigation_movie">
 
     <fragment
-        android:id="@+id/movieFragment"
+        android:id="@+id/navigation_movie"
         android:name="com.mhendrif.capstone.home.MovieFragment"
-        android:label="MovieFragment"
+        android:label="@string/movie"
         tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/action_movieFragment_to_detailMovieFragment"
@@ -20,9 +20,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/tvShowFragment"
+        android:id="@+id/navigation_tv_show"
         android:name="com.mhendrif.capstone.home.TvShowFragment"
-        android:label="TvShowFragment"
+        android:label="@string/tv_show"
         tools:layout="@layout/fragment_tv_show">
         <action
             android:id="@+id/action_tvFragment_to_detailTvShowFragment"
@@ -34,9 +34,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/navigation_favorite"
         android:name="com.mhendrif.capstone.favorite.FavoriteFragment"
-        android:label="FavoriteFragment"
+        android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite">
     <action
         android:id="@+id/action_favoriteFragment_to_detailMovieFragment"

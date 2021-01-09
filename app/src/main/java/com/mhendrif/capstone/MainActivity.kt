@@ -3,7 +3,9 @@ package com.mhendrif.capstone
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.mhendrif.capstone.base.BaseActivity
 import com.mhendrif.capstone.databinding.ActivityMainBinding
 
@@ -15,19 +17,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
 
-        navController = Navigation.findNavController(this, R.id.nav_host_main_fragment)
-        binding.bottomNavigationView.setupWithNavController(navController)
-
-//        val navController = Navigation.findNavController(this, R.id.nav_host_main_fragment)
-//        setupWithNavController(binding.bottomNavigationView, navController)
-//        setupActionBarWithNavController(
-//            navController,
-//            AppBarConfiguration.Builder(
-//                R.id.movieFragment,
-//                R.id.tvShowFragment,
-//                R.id.favoriteFragment
-//            ).build()
-//        )
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        setupWithNavController(binding.bottomNavigationView, navController)
+        setupActionBarWithNavController(
+            navController,
+            AppBarConfiguration.Builder(
+                R.id.navigation_movie,
+                R.id.navigation_tv_show,
+                R.id.navigation_favorite
+            ).build()
+        )
     }
 
     override fun onNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()

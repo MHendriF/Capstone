@@ -47,6 +47,8 @@ object Version {
     // Navigation Components
     const val NAVIGATION_VERSION = "2.3.2"
 
+    const val ANDROIDX_LEGACY_VERSION = "1.0.0"
+
     // Retrofit
     const val RETROFIT_VERSION = "2.9.0"
 

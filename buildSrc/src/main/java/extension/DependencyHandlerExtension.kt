@@ -19,6 +19,7 @@ fun DependencyHandler.addAppModuleDependencies() {
     //implementation(CommonDeps.RECYCLER_VIEW)
     //implementation(CommonDeps.VIEWPAGER2)
     //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
+    implementation(CommonDeps.LEGACY)
 
     // Views, Animations
     implementation(CommonDeps.LOTTIE)
@@ -34,13 +35,6 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.NAVIGATION_UI)
     implementation(CommonDeps.NAVIGATION_RUNTIME)
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
-
-    // Dagger Hilt
-    //implementation(CommonDeps.DAGGER_HILT_ANDROID)
-    //(CommonDeps.DAGGER_HILT_COMPILER)
-    // Dagger Hilt AndroidX & ViewModel
-    //implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-    //kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Dagger2
     implementation(CommonDeps.DAGGER)
@@ -82,6 +76,7 @@ fun DependencyHandler.addCoreModuleDependencies() {
     //implementation(CommonDeps.RECYCLER_VIEW)
     //implementation(CommonDeps.VIEWPAGER2)
     //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
+    implementation(CommonDeps.LEGACY)
 
     // Navigation Components
     implementation(CommonDeps.NAVIGATION_FRAGMENT)
@@ -104,13 +99,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)
     implementation(CommonDeps.COROUTINES_ANDROID)
-
-    // Dagger
-//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-//    // Dagger Hilt AndroidX & ViewModel
-//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Dagger2
     implementation(CommonDeps.DAGGER)
@@ -161,13 +149,6 @@ fun DependencyHandler.addDataModuleDependencies() {
     implementation(CommonDeps.COROUTINES_CORE)
     implementation(CommonDeps.COROUTINES_ANDROID)
 
-    // Dagger
-//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-//    // Dagger Hilt AndroidX & ViewModel
-//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
-
     // Dagger2
     implementation(CommonDeps.DAGGER)
     kapt(CommonDeps.DAGGER_COMPILER)
@@ -209,13 +190,6 @@ fun DependencyHandler.addDomainModuleDependencies() {
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)
     implementation(CommonDeps.COROUTINES_ANDROID)
-
-    // Dagger
-//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-//    // Dagger Hilt AndroidX & ViewModel
-//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Dagger2
     implementation(CommonDeps.DAGGER)
@@ -262,12 +236,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(CommonDeps.NAVIGATION_RUNTIME)
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
 
-    // Dagger Hilt
-//    implementation(CommonDeps.DAGGER_HILT_ANDROID)
-//    kapt(CommonDeps.DAGGER_HILT_COMPILER)
-//    // Dagger Hilt AndroidX & ViewModel
-//    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
-//    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Dagger2
     implementation(CommonDeps.DAGGER)

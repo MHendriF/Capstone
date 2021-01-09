@@ -42,7 +42,7 @@
                 android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/item_container" />
+                tools:listitem="@layout/item_container_movie" />
 
             <ProgressBar
                 android:id="@+id/pbLoading"

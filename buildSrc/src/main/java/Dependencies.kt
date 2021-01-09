@@ -45,6 +45,10 @@ object CommonDeps {
     const val NAVIGATION_DYNAMIC =
         "androidx.navigation:navigation-dynamic-features-fragment:${Version.NAVIGATION_VERSION}"
 
+    // Dynamic Feature Module Support
+    const val LEGACY =
+        "androidx.legacy:legacy-support-v4:${Version.ANDROIDX_LEGACY_VERSION}"
+
     // Dagger Core dependencies
     const val DAGGER = "com.google.dagger:dagger:${Version.DAGGER_VERSION}"
     const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Version.DAGGER_VERSION}"
