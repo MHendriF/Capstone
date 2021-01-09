@@ -5,20 +5,23 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
 import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.core.utils.ImageBinding
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
-import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.model.TvShow
 import timber.log.Timber
 import javax.inject.Inject
@@ -62,7 +65,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
                     resource.data?.let { setUpContent(it) }
                     appToolbar.btnLink.setOnClickListener {
                         if (resource.data?.homepage.isNullOrEmpty())
-                            openLink(Constants.TMDB_TV_URL+resource.data?.id)
+                            openLink(Constants.TMDB_TV_URL + resource.data?.id)
                         else
                             openLink(resource.data?.homepage)
                     }
@@ -118,17 +121,17 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (!statusFavorite) {
             binding.ivFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_favorite
-                )
+                    ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_favorite
+                    )
             )
         } else {
             binding.ivFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_delete
-                )
+                    ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_delete
+                    )
             )
         }
     }
