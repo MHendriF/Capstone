@@ -22,6 +22,7 @@ import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
+import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.model.TvShow
 import timber.log.Timber
 import javax.inject.Inject
@@ -33,6 +34,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
     internal lateinit var factory: ViewModelFactory
     private val detailViewModel: DetailViewModel by viewModels { factory }
     private val args: DetailTvShowFragmentArgs by navArgs()
+    private lateinit var tvShow: TvShow
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -41,14 +43,9 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        with(binding.appToolbar) {
-            tvTitleAppBar.text = getString(R.string.detail_tv_show)
-            btnBack.setOnClickListener { activity?.onBackPressed() }
-        }
-
         detailViewModel.tvShow.observe(viewLifecycleOwner, { handleStat(it) })
         detailViewModel.getDetailTvShow(args.tvShow.id)
+        tvShow = args.tvShow
     }
 
     private fun handleStat(resource: Resource<TvShow>) {
@@ -62,12 +59,9 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
                     args = resource.data
                     isLoading = false
                     isVisibleContent = true
-                    resource.data?.let { setUpContent(it) }
-                    appToolbar.btnLink.setOnClickListener {
-                        if (resource.data?.homepage.isNullOrEmpty())
-                            openLink(Constants.TMDB_TV_URL + resource.data?.id)
-                        else
-                            openLink(resource.data?.homepage)
+                    resource.data?.let {
+                        setUpContent(it)
+                        tvShow = it
                     }
                 }
                 is Resource.Error -> {
@@ -141,6 +135,37 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
             data = Uri.parse(url)
         }.also {
             activity?.startActivity(it)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
+        actionBar?.apply {
+            title = getString(R.string.detail_tv_show)
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.detail_nav_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                activity?.onBackPressed();true
+            }
+            R.id.action_open_link -> {
+                if (tvShow.homepage.isNullOrEmpty())
+                    openLink(Constants.TMDB_TV_URL+tvShow.id)
+                else
+                    openLink(tvShow.homepage)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

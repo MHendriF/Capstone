@@ -4,8 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
@@ -79,5 +81,15 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
 
     override fun onItemClick(model: Movie) {
         navigateToDetail(model)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
+        actionBar?.apply {
+            title = getString(R.string.movie)
+            setDisplayHomeAsUpEnabled(false)
+            setHomeButtonEnabled(true)
+        }
     }
 }

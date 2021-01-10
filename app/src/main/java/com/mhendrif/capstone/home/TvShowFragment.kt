@@ -82,4 +82,14 @@ class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_
     override fun onItemClick(model: TvShow) {
         navigateToDetail(model)
     }
+
+    override fun onResume() {
+        super.onResume()
+        val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
+        actionBar?.apply {
+            title = getString(R.string.tv_show)
+            setDisplayHomeAsUpEnabled(false)
+            setHomeButtonEnabled(true)
+        }
+    }
 }

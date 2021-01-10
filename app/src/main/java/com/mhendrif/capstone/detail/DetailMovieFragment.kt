@@ -7,11 +7,14 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
@@ -30,6 +33,7 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
     internal lateinit var factory: ViewModelFactory
     private val detailViewModel: DetailViewModel by viewModels { factory }
     private val args: DetailMovieFragmentArgs by navArgs()
+    private lateinit var movie: Movie
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,15 +41,9 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
-
-        with(binding.appToolbar) {
-            tvTitleAppBar.text = getString(R.string.detail_movie)
-            btnBack.setOnClickListener { activity?.onBackPressed() }
-        }
-
         detailViewModel.movie.observe(viewLifecycleOwner, { handleStat(it) })
         detailViewModel.getDetailMovie(args.movie.id)
+        movie = args.movie
     }
 
     private fun handleStat(resource: Resource<Movie>) {
@@ -59,12 +57,9 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
                     args = resource.data
                     isLoading = false
                     isVisibleContent = true
-                    resource.data?.let { setUpContent(it) }
-                    appToolbar.btnLink.setOnClickListener {
-                        if (resource.data?.homepage.isNullOrEmpty())
-                            openLink(Constants.TMDB_MOVIE_URL+resource.data?.id)
-                        else
-                            openLink(resource.data?.homepage)
+                    resource.data?.let {
+                        setUpContent(it)
+                        movie = it
                     }
                 }
                 is Resource.Error -> {
@@ -140,4 +135,36 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
             activity?.startActivity(it)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
+        actionBar?.apply {
+            title = getString(R.string.detail_movie)
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.detail_nav_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                activity?.onBackPressed();true
+            }
+            R.id.action_open_link -> {
+                if (movie.homepage.isNullOrEmpty())
+                    openLink(Constants.TMDB_MOVIE_URL+movie.id)
+                else
+                    openLink(movie.homepage)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }

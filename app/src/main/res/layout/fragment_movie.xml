@@ -24,12 +24,6 @@
             android:layout_height="wrap_content">
 
             <include
-                android:id="@+id/appToolbar"
-                layout="@layout/app_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
                 android:id="@+id/viewDataEmpty"
                 layout="@layout/view_empty"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +42,7 @@
                 android:paddingEnd="@dimen/_4sdp"
                 android:paddingBottom="@dimen/_46sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/appToolbar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/item_container_movie" />
 
             <ProgressBar

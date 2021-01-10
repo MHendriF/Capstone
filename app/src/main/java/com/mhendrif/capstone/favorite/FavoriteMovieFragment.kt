@@ -4,8 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ViewModelFactory
 import com.mhendrif.capstone.base.BaseFragment
@@ -67,6 +69,30 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
         }
     }
 
+    private fun Context.toast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToDetail(model: Movie) {
+        findNavController().navigate(
+            FavoriteFragmentDirections.actionFavoriteFragmentToDetailMovieFragment(model)
+        )
+    }
+
+    override fun onItemClick(model: Movie) {
+        navigateToDetail(model)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
+        actionBar?.apply {
+            title = getString(R.string.favorite)
+            setDisplayHomeAsUpEnabled(false)
+            setHomeButtonEnabled(true)
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.sort_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -84,20 +110,6 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun Context.toast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun navigateToDetail(model: Movie) {
-        findNavController().navigate(
-            FavoriteFragmentDirections.actionFavoriteFragmentToDetailMovieFragment(model)
-        )
-    }
-
-    override fun onItemClick(model: Movie) {
-        navigateToDetail(model)
     }
 
 }

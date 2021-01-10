@@ -40,12 +40,6 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/_28sdp">
 
-                <include
-                    android:id="@+id/appToolbar"
-                    layout="@layout/app_toolbar_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
                 <ImageView
                     android:id="@+id/ivBackground"
                     android:layout_width="match_parent"
@@ -55,7 +49,7 @@
                     android:imageURL='@{constants.API_BACKDROP_PATH + args.backdropPath}'
                     android:scaleType="centerCrop"
                     android:src="?attr/colorPrimarySurface"
-                    app:layout_constraintTop_toBottomOf="@id/appToolbar" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/ivPoster"
