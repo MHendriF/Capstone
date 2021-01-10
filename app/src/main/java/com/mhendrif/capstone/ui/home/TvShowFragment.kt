@@ -12,7 +12,7 @@ import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
-import com.mhendrif.capstone.core.utils.ItemListener
+import com.mhendrif.capstone.core.util.ItemListener
 import com.mhendrif.capstone.ui.TvShowAdapter
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
 import com.mhendrif.capstone.domain.Resource

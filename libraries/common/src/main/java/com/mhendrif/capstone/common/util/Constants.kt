@@ -14,4 +14,6 @@ object Constants {
     const val TMDB_TV_URL = "https://www.themoviedb.org/tv/"
     const val API_POSTER_PATH = "https://image.tmdb.org/t/p/w185"
     const val API_BACKDROP_PATH = "https://image.tmdb.org/t/p/w500"
+    const val ARG_FAVORITE_MOVIE = "FAVORITE_MOVIE_FRAGMENT"
+    const val ARG_FAVORITE_TV = "FAVORITE_TV_FRAGMENT"
 }

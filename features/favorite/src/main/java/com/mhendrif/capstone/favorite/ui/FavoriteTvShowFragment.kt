@@ -7,12 +7,13 @@ import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.MainActivity
+import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.core.di.DaggerCoreComponent
-import com.mhendrif.capstone.core.utils.ItemListener
+import com.mhendrif.capstone.core.util.ItemListener
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.favorite.R
 import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteTvShowBinding
@@ -23,7 +24,7 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
     ItemListener<TvShow> {
 
     companion object {
-        private const val ARG_SECTION_NUMBER = "FAVORITE_TV_FRAGMENT"
+        private const val ARG_SECTION_NUMBER = Constants.ARG_FAVORITE_TV
         fun newInstance(index: Int) = FavoriteTvShowFragment().apply {
             arguments = Bundle().apply { putInt(ARG_SECTION_NUMBER, index) }
         }

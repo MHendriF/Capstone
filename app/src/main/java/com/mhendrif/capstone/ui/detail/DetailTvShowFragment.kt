@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.core.utils.DialogMessage
+import com.mhendrif.capstone.core.util.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow

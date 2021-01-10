@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mhendrif.capstone.core.utils.ItemListener
+import com.mhendrif.capstone.core.util.ItemListener
 
 abstract class BaseAdapter<Model : Parcelable, ItemBinding : ViewDataBinding>(
     @LayoutRes private val itemLayout: Int,

@@ -19,7 +19,7 @@ import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.core.utils.DialogMessage
+import com.mhendrif.capstone.core.util.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailMovieBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.Movie

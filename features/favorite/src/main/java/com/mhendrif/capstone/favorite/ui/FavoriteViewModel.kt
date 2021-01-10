@@ -18,11 +18,11 @@ class FavoriteViewModel @Inject constructor(
     var tvShows: MediatorLiveData<List<TvShow>> = MediatorLiveData()
 
     fun getFavoriteMovies() {
-        movies.addSource(movieUseCase.getFavorite().asLiveData()) {movies.value = it}
+        movies.addSource(movieUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) {movies.value = it}
     }
 
     fun getFavoriteTvShows() {
-        tvShows.addSource(tvShowUseCase.getFavorite().asLiveData()) {tvShows.value = it}
+        tvShows.addSource(tvShowUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) {tvShows.value = it}
     }
 
     fun sorting(sortOrder: SortOrder) {
@@ -34,7 +34,6 @@ class FavoriteViewModel @Inject constructor(
                 tvShows.addSource(tvShowUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) {
                     tvShows.value = it
                 }
-                Timber.d("Timber sort by name")
             }
             SortOrder.BY_DATE -> {
                 movies.addSource(movieUseCase.getFavoriteBySort(SortOrder.BY_DATE).asLiveData()) {
@@ -43,7 +42,6 @@ class FavoriteViewModel @Inject constructor(
                 tvShows.addSource(tvShowUseCase.getFavoriteBySort(SortOrder.BY_DATE).asLiveData()) {
                     tvShows.value = it
                 }
-                Timber.d("Timber sort by date")
             }
         }
     }

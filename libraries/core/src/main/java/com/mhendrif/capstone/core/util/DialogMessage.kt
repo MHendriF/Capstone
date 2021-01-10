@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.core.utils
+package com.mhendrif.capstone.core.util
 
 import android.app.AlertDialog
 import android.content.Context
