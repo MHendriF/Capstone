@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@color/colorPrimary"
-        tools:context=".home.TvShowFragment">
+        tools:context=".ui.home.TvShowFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

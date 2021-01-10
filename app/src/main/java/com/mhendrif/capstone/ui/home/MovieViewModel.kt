@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.home
+package com.mhendrif.capstone.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

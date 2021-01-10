@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
-import com.mhendrif.capstone.base.BaseActivity
+import com.mhendrif.capstone.ui.base.BaseActivity
 import com.mhendrif.capstone.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {

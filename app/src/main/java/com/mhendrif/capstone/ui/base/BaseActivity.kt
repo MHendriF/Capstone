@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.base
+package com.mhendrif.capstone.ui.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

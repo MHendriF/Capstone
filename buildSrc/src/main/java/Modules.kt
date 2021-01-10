@@ -8,4 +8,8 @@ object Modules {
         const val DATA = ":libraries:data"
         const val DOMAIN = ":libraries:domain"
     }
+
+    object DynamicFeature {
+        const val FAVORITE = ":features:favorite"
+    }
 }

@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.detail
+package com.mhendrif.capstone.ui.detail
 
 import android.content.Context
 import android.content.Intent
@@ -16,13 +16,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ViewModelFactory
-import com.mhendrif.capstone.base.BaseFragment
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
-import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.model.TvShow
 import timber.log.Timber
 import javax.inject.Inject

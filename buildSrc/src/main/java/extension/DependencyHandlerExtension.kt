@@ -235,7 +235,7 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(CommonDeps.NAVIGATION_UI)
     implementation(CommonDeps.NAVIGATION_RUNTIME)
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
-
+    implementation(CommonDeps.LEGACY)
 
     // Dagger2
     implementation(CommonDeps.DAGGER)
@@ -245,6 +245,29 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)
     implementation(CommonDeps.COROUTINES_ANDROID)
+
+    // Views, Animations
+    implementation(CommonDeps.LOTTIE)
+    implementation(CommonDeps.SSP_ANDROID)
+    implementation(CommonDeps.SDP_ANDROID)
+
+    implementation(CommonDeps.PICASSO)
+    implementation(CommonDeps.TIMBER)
+    implementation(CommonDeps.MULTIDEX)
+
+    // Leak Canary
+    debugImplementation(CommonDeps.LEAK_CANARY)
+
+    // Glide
+    implementation(CommonDeps.GLIDE)
+    kapt(CommonDeps.GLIDE_COMPILER)
+
+    // Rounded Image
+    implementation(CommonDeps.ROUNDED_IMAGE)
+
+    // Paging
+    implementation(CommonDeps.PAGING)
+
 }
 
 /**

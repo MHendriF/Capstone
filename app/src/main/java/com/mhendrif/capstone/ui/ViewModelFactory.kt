@@ -1,4 +1,4 @@
-package com.mhendrif.capstone
+package com.mhendrif.capstone.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.detail
+package com.mhendrif.capstone.ui.detail
 
 import androidx.lifecycle.*
 import com.mhendrif.capstone.domain.Resource

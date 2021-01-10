@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.base
+package com.mhendrif.capstone.ui.base
 
 import android.os.Parcelable
 import android.view.LayoutInflater

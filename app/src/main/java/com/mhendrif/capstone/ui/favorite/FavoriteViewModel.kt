@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.favorite
+package com.mhendrif.capstone.ui.favorite
 
 import androidx.lifecycle.*
 import com.mhendrif.capstone.common.util.SortOrder

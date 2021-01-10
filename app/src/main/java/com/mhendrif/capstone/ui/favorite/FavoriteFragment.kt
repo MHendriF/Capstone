@@ -1,11 +1,11 @@
-package com.mhendrif.capstone.favorite
+package com.mhendrif.capstone.ui.favorite
 
 import android.content.Context
 import android.os.Bundle
 import android.view.*
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ViewModelFactory
-import com.mhendrif.capstone.base.BaseFragment
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.ui.FavoritePagerAdapter
 import com.mhendrif.capstone.databinding.FragmentFavoriteBinding
 import javax.inject.Inject

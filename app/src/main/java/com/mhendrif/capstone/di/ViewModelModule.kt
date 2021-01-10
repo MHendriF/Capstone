@@ -2,11 +2,11 @@ package com.mhendrif.capstone.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mhendrif.capstone.ViewModelFactory
-import com.mhendrif.capstone.detail.DetailViewModel
-import com.mhendrif.capstone.favorite.FavoriteViewModel
-import com.mhendrif.capstone.home.MovieViewModel
-import com.mhendrif.capstone.home.TvShowViewModel
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.detail.DetailViewModel
+import com.mhendrif.capstone.ui.favorite.FavoriteViewModel
+import com.mhendrif.capstone.ui.home.MovieViewModel
+import com.mhendrif.capstone.ui.home.TvShowViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

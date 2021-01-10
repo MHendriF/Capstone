@@ -3,13 +3,13 @@ package com.mhendrif.capstone.di
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.SplashActivity
 import com.mhendrif.capstone.core.di.CoreComponent
-import com.mhendrif.capstone.detail.DetailMovieFragment
-import com.mhendrif.capstone.detail.DetailTvShowFragment
-import com.mhendrif.capstone.favorite.FavoriteFragment
-import com.mhendrif.capstone.favorite.FavoriteMovieFragment
-import com.mhendrif.capstone.favorite.FavoriteTvShowFragment
-import com.mhendrif.capstone.home.MovieFragment
-import com.mhendrif.capstone.home.TvShowFragment
+import com.mhendrif.capstone.ui.detail.DetailMovieFragment
+import com.mhendrif.capstone.ui.detail.DetailTvShowFragment
+import com.mhendrif.capstone.ui.favorite.FavoriteFragment
+import com.mhendrif.capstone.ui.favorite.FavoriteMovieFragment
+import com.mhendrif.capstone.ui.favorite.FavoriteTvShowFragment
+import com.mhendrif.capstone.ui.home.MovieFragment
+import com.mhendrif.capstone.ui.home.TvShowFragment
 import dagger.Component
 
 @AppScope

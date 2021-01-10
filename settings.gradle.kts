@@ -3,5 +3,6 @@ include(
     ":libraries:common",
     ":libraries:core",
     ":libraries:data",
-    ":libraries:domain"
+    ":libraries:domain",
+    ":features:favorite"
 )

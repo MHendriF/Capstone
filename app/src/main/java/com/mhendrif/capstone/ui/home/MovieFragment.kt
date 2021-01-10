@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.home
+package com.mhendrif.capstone.ui.home
 
 import android.content.Context
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ViewModelFactory
-import com.mhendrif.capstone.base.BaseFragment
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.core.utils.ItemListener
 import com.mhendrif.capstone.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding

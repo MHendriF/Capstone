@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.base
+package com.mhendrif.capstone.ui.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

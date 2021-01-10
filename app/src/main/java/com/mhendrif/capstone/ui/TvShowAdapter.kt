@@ -3,7 +3,7 @@ package com.mhendrif.capstone.ui
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.base.BaseAdapter
+import com.mhendrif.capstone.ui.base.BaseAdapter
 import com.mhendrif.capstone.databinding.ItemContainerTvShowBinding
 import com.mhendrif.capstone.domain.model.TvShow
 import kotlin.math.roundToInt
