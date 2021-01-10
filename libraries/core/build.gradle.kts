@@ -13,7 +13,6 @@ android {
     compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
     buildToolsVersion(AndroidVersion.BUILD_TOOLS_VERSION)
     defaultConfig {
-        //applicationId = AndroidVersion.APPLICATION_ID
         minSdkVersion(AndroidVersion.MIN_SDK_VERSION)
         targetSdkVersion(AndroidVersion.TARGET_SDK_VERSION)
         versionCode(AndroidVersion.VERSION_CODE)

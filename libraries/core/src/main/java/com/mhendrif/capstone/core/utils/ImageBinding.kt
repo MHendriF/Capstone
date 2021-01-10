@@ -1,10 +1,7 @@
 package com.mhendrif.capstone.core.utils
 
-import android.view.View
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.mhendrif.capstone.core.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 

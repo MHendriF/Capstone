@@ -11,7 +11,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -100,34 +99,12 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
                 }
             }
 
-            var isFavorite = model.isFavorite
-            setStatusFavorite(isFavorite)
             ivFavorite.setOnClickListener {
-                DialogMessage.showDialog(requireContext(), model.title, isFavorite) {
-                    isFavorite = !isFavorite
-                    detailViewModel.setFavoriteTvShow(model, isFavorite)
-                    activity?.toast("Success ${if (!isFavorite) "delete" else "add"} ${model.title} ${if (!isFavorite) "from" else "to"} favorite")
-                    setStatusFavorite(isFavorite)
+                DialogMessage.showDialog(requireContext(), model.title, model.isFavorite) {
+                    detailViewModel.setFavoriteTvShow(model, !model.isFavorite)
+                    activity?.toast("Success ${if (model.isFavorite) "delete" else "add"} ${model.title} ${if (model.isFavorite) "from" else "to"} favorite")
                 }
             }
-        }
-    }
-
-    private fun setStatusFavorite(statusFavorite: Boolean) {
-        if (!statusFavorite) {
-            binding.ivFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_favorite
-                )
-            )
-        } else {
-            binding.ivFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_delete
-                )
-            )
         }
     }
 

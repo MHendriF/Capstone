@@ -49,7 +49,7 @@
                     android:imageURL='@{constants.API_BACKDROP_PATH + args.backdropPath}'
                     android:scaleType="centerCrop"
                     android:src="?attr/colorPrimarySurface"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/ivPoster"
@@ -262,6 +262,7 @@
             android:layout_marginBottom="@dimen/_20sdp"
             android:background="@drawable/bg_favorite"
             android:contentDescription="@string/app_name"
+            android:favoriteImage="@{args.favorite}"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_favorite"
             android:visibility="@{isVisibleContent ? View.VISIBLE : View.GONE, default=gone}"
