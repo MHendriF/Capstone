@@ -1,16 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Capstone</string>
     <string name="read_more">Read More</string>
     <string name="read_less">Read Less</string>
     <string name="movie">Movie</string>
     <string name="tv_show">TV Show</string>
-    <string name="img_icon">Image Icon</string>
     <string name="img_bg">Image Background</string>
     <string name="favorite">Favorite</string>
     <string name="by_name">By Name</string>
     <string name="by_release">By Release</string>
     <string name="sorting">Sorting</string>
+    <string name="genre">Genre</string>
+    <string name="overview">Overview</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="detail_tv_show">Detail TV Show</string>
+    <string name="open_link">Open link</string>
+    <string name="title_favorite">Favorite</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="empty_message">Data is empty</string>
 </resources>

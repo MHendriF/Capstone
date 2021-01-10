@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.mhendrif.capstone.ui.favorite.FavoriteFragment"
+        android:name="com.mhendrif.capstone.favorite.ui.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite">
     <action

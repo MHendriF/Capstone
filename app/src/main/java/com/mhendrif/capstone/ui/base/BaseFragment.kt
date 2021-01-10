@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.ActionBar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.MyApplication
 import com.mhendrif.capstone.di.AppComponent
 

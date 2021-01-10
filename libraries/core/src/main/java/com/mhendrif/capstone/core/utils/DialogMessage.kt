@@ -2,7 +2,7 @@ package com.mhendrif.capstone.core.utils
 
 import android.app.AlertDialog
 import android.content.Context
-import com.mhendrif.capstone.core.R
+import com.mhendrif.capstone.common.R
 
 object DialogMessage {
     fun showDialog(context: Context, title: String?, isFavorite: Boolean, `fun`: () -> Unit) {

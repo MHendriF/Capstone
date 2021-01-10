@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.ui.favorite
+package com.mhendrif.capstone.favorite.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -7,23 +7,24 @@ import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.MainActivity
-import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
+import com.mhendrif.capstone.core.di.CoreComponent
+import com.mhendrif.capstone.core.di.DaggerCoreComponent
 import com.mhendrif.capstone.core.utils.ItemListener
-import com.mhendrif.capstone.databinding.FragmentFavoriteTvShowBinding
-import com.mhendrif.capstone.ui.TvShowAdapter
-import com.mhendrif.capstone.domain.model.TvShow
+import com.mhendrif.capstone.domain.model.Movie
+import com.mhendrif.capstone.favorite.R
+import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteMovieBinding
+import com.mhendrif.capstone.favorite.di.DaggerFavoriteComponent
 import javax.inject.Inject
 
-class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.layout.fragment_favorite_tv_show),
-    ItemListener<TvShow> {
+class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layout.fragment_favorite_movie),
+    ItemListener<Movie> {
 
     companion object {
-        private const val ARG_SECTION_NUMBER = "FAVORITE_TV_FRAGMENT"
-
-        fun newInstance(index: Int) = FavoriteTvShowFragment().apply {
+        private const val ARG_SECTION_NUMBER = "FAVORITE_MOVIE_FRAGMENT"
+        fun newInstance(index: Int) = FavoriteMovieFragment().apply {
             arguments = Bundle().apply { putInt(ARG_SECTION_NUMBER, index) }
         }
     }
@@ -31,11 +32,15 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
     @Inject
     internal lateinit var factory: ViewModelFactory
     private val favoriteViewModel: FavoriteViewModel by viewModels { factory }
-    private lateinit var adapter: TvShowAdapter
+    private lateinit var adapter: FavoriteMovieAdapter
+
+    private val coreComponent: CoreComponent by lazy {
+        DaggerCoreComponent.factory().create(requireActivity())
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appComponent.inject(this)
+        DaggerFavoriteComponent.builder().coreComponent(coreComponent).build().inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,38 +48,38 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
         setHasOptionsMenu(true)
 
         if (activity != null) {
-            adapter = TvShowAdapter().apply {
-                onItemListener = this@FavoriteTvShowFragment
-                binding.rvTvShow.setHasFixedSize(true)
-                binding.rvTvShow.adapter = this
+            adapter = FavoriteMovieAdapter().apply {
+                onItemListener = this@FavoriteMovieFragment
+                binding.rvMovie.setHasFixedSize(true)
+                binding.rvMovie.adapter = this
             }
-            favoriteViewModel.tvShows.observe(viewLifecycleOwner, { handleStat(it) })
-            favoriteViewModel.getFavoriteTvShows()
+            favoriteViewModel.movies.observe(viewLifecycleOwner, { handleStat(it) })
+            favoriteViewModel.getFavoriteMovies()
         }
     }
 
-    private fun handleStat(resource: List<TvShow>) {
+    private fun handleStat(resource: List<Movie>) {
         with(binding) {
             if (resource.isNotEmpty()) {
                 isLoading = false
                 viewDataEmpty.isEmptyData = false
-                rvTvShow.visibility = View.VISIBLE
+                rvMovie.visibility = View.VISIBLE
                 adapter.submitList(resource)
             } else {
                 isLoading = false
                 viewDataEmpty.isEmptyData = true
-                rvTvShow.visibility = View.GONE
+                rvMovie.visibility = View.GONE
             }
         }
     }
 
-    private fun navigateToDetail(model: TvShow) {
+    private fun navigateToDetail(model: Movie) {
         findNavController().navigate(
-            FavoriteFragmentDirections.actionFavoriteFragmentToDetailTvShowFragment(model)
+            FavoriteFragmentDirections.actionFavoriteFragmentToDetailMovieFragment(model)
         )
     }
 
-    override fun onItemClick(model: TvShow) {
+    override fun onItemClick(model: Movie) {
         navigateToDetail(model)
     }
 
@@ -106,4 +111,5 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }

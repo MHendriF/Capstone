@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.ui.favorite
+package com.mhendrif.capstone.favorite.ui
 
 import androidx.lifecycle.*
 import com.mhendrif.capstone.common.util.SortOrder
@@ -34,7 +34,6 @@ class FavoriteViewModel @Inject constructor(
                 tvShows.addSource(tvShowUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) {
                     tvShows.value = it
                 }
-
                 Timber.d("Timber sort by name")
             }
             SortOrder.BY_DATE -> {

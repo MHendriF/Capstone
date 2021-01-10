@@ -60,6 +60,20 @@ fun DependencyHandler.addAppModuleDependencies() {
  */
 fun DependencyHandler.addCommonModuleDependencies() {
     implementation(CommonDeps.TIMBER)
+
+    implementation(CommonDeps.KOTLIN)
+    implementation(CommonDeps.ANDROIDX_CORE_KTX)
+
+    // Support and Widgets
+    implementation(CommonDeps.APPCOMPAT)
+    implementation(CommonDeps.MATERIAL)
+    implementation(CommonDeps.CONSTRAINT_LAYOUT)
+    implementation(CommonDeps.LEGACY)
+
+    // Views, Animations
+    implementation(CommonDeps.LOTTIE)
+    implementation(CommonDeps.SSP_ANDROID)
+    implementation(CommonDeps.SDP_ANDROID)
 }
 
 /**
@@ -225,6 +239,12 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
 
+    // Support and Widgets
+    implementation(CommonDeps.APPCOMPAT)
+    implementation(CommonDeps.MATERIAL)
+    implementation(CommonDeps.CONSTRAINT_LAYOUT)
+    implementation(CommonDeps.LEGACY)
+
     // Lifecycle, LiveData, ViewModel
     implementation(CommonDeps.LIFECYCLE_LIVEDATA_KTX)
     implementation(CommonDeps.LIFECYCLE_VIEWMODEL_KTX)
@@ -235,8 +255,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(CommonDeps.NAVIGATION_UI)
     implementation(CommonDeps.NAVIGATION_RUNTIME)
     implementation(CommonDeps.NAVIGATION_DYNAMIC)
-    implementation(CommonDeps.LEGACY)
-
     // Dagger2
     implementation(CommonDeps.DAGGER)
     kapt(CommonDeps.DAGGER_COMPILER)

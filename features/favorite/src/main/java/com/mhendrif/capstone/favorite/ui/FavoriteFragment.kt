@@ -1,23 +1,24 @@
-package com.mhendrif.capstone.ui.favorite
+package com.mhendrif.capstone.favorite.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.core.di.CoreComponent
+import com.mhendrif.capstone.core.di.DaggerCoreComponent
+import com.mhendrif.capstone.favorite.R
+import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteBinding
+import com.mhendrif.capstone.favorite.di.DaggerFavoriteComponent
 import com.mhendrif.capstone.ui.base.BaseFragment
-import com.mhendrif.capstone.ui.FavoritePagerAdapter
-import com.mhendrif.capstone.databinding.FragmentFavoriteBinding
-import javax.inject.Inject
 
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment_favorite) {
 
-    @Inject
-    internal lateinit var factory: ViewModelFactory
+    private val coreComponent: CoreComponent by lazy {
+        DaggerCoreComponent.factory().create(requireActivity())
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appComponent.inject(this)
+        DaggerFavoriteComponent.builder().coreComponent(coreComponent).build().inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
