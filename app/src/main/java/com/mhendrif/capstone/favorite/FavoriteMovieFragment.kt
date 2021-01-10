@@ -3,7 +3,6 @@ package com.mhendrif.capstone.favorite
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -67,10 +66,6 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
                 rvMovie.visibility = View.GONE
             }
         }
-    }
-
-    private fun Context.toast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToDetail(model: Movie) {

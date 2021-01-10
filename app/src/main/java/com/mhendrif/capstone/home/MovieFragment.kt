@@ -49,18 +49,18 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie
             when (resource) {
                 is Resource.Loading -> {
                     isLoading = true
-                    viewDataEmpty.isEmptyData = false
+                    viewNetworkError.isNetworkError = false
                     rvMovie.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     isLoading = false
-                    viewDataEmpty.isEmptyData = false
+                    viewNetworkError.isNetworkError = false
                     rvMovie.visibility = View.VISIBLE
                     adapter.submitList(resource.data)
                 }
                 is Resource.Error -> {
                     isLoading = false
-                    viewDataEmpty.isEmptyData = false
+                    viewNetworkError.isNetworkError = false
                     rvMovie.visibility = View.GONE
                     Timber.e(resource.message)
                     activity?.toast(resource.message.toString())

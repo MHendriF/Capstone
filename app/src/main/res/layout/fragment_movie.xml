@@ -24,8 +24,8 @@
             android:layout_height="wrap_content">
 
             <include
-                android:id="@+id/viewDataEmpty"
-                layout="@layout/view_empty"
+                android:id="@+id/viewNetworkError"
+                layout="@layout/view_network_error"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
                 android:paddingStart="@dimen/_4sdp"
                 android:paddingTop="@dimen/_8sdp"
                 android:paddingEnd="@dimen/_4sdp"
-                android:paddingBottom="@dimen/_46sdp"
+                android:paddingBottom="@dimen/_45sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/item_container_movie" />

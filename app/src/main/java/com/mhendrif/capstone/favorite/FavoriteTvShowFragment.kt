@@ -1,10 +1,8 @@
 package com.mhendrif.capstone.favorite
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,7 +13,6 @@ import com.mhendrif.capstone.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.core.utils.ItemListener
 import com.mhendrif.capstone.databinding.FragmentFavoriteTvShowBinding
-import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.ui.TvShowAdapter
 import com.mhendrif.capstone.domain.model.TvShow
 import javax.inject.Inject
@@ -69,11 +66,6 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
                 rvTvShow.visibility = View.GONE
             }
         }
-    }
-
-
-    private fun Context.toast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToDetail(model: TvShow) {
