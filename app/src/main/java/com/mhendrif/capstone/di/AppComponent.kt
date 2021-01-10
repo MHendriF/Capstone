@@ -1,6 +1,7 @@
 package com.mhendrif.capstone.di
 
 import com.mhendrif.capstone.MainActivity
+import com.mhendrif.capstone.SplashActivity
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.detail.DetailMovieFragment
 import com.mhendrif.capstone.detail.DetailTvShowFragment
@@ -22,6 +23,7 @@ interface AppComponent {
         fun create(coreComponent: CoreComponent): AppComponent
     }
 
+    fun inject(activity: SplashActivity)
     fun inject(activity: MainActivity)
     fun inject(fragment: MovieFragment)
     fun inject(fragment: TvShowFragment)
