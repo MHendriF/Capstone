@@ -11,7 +11,6 @@ buildscript {
         classpath(Plugins.CLASSPATH_KOTLIN_GRADLE)
         classpath(Plugins.CLASSPATH_KTLINT)
         classpath(Plugins.CLASSPATH_NAV_SAFE_ARGS)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
 

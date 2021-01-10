@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ui.ViewModelFactory
@@ -83,6 +84,11 @@ class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_
         navigateToDetail(model)
     }
 
+    private fun setUpBottomNavigation() {
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation_view)
+        bottomNav.visibility = View.VISIBLE
+    }
+
     override fun onResume() {
         super.onResume()
         val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
@@ -91,5 +97,6 @@ class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_
             setDisplayHomeAsUpEnabled(false)
             setHomeButtonEnabled(true)
         }
+        setUpBottomNavigation()
     }
 }

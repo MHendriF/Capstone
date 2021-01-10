@@ -14,18 +14,20 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.ViewModelFactory
-import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.utils.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.math.roundToInt
+
 
 class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.fragment_detail_tv_show) {
 
@@ -114,17 +116,17 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (!statusFavorite) {
             binding.ivFavorite.setImageDrawable(
-                    ContextCompat.getDrawable(
-                            requireContext(),
-                            R.drawable.ic_favorite
-                    )
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_favorite
+                )
             )
         } else {
             binding.ivFavorite.setImageDrawable(
-                    ContextCompat.getDrawable(
-                            requireContext(),
-                            R.drawable.ic_delete
-                    )
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_delete
+                )
             )
         }
     }
@@ -137,6 +139,11 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
         }
     }
 
+    private fun setUpBottomNavigation() {
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation_view)
+        bottomNav.visibility = View.GONE
+    }
+
     override fun onResume() {
         super.onResume()
         val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
@@ -145,6 +152,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
             setDisplayHomeAsUpEnabled(true)
             setHomeButtonEnabled(true)
         }
+        setUpBottomNavigation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -159,7 +167,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
             }
             R.id.action_open_link -> {
                 if (tvShow.homepage.isNullOrEmpty())
-                    openLink(Constants.TMDB_TV_URL+tvShow.id)
+                    openLink(Constants.TMDB_TV_URL + tvShow.id)
                 else
                     openLink(tvShow.homepage)
                 true

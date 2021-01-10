@@ -1,6 +1,7 @@
 package com.mhendrif.capstone
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -17,5 +18,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.bottomNavigationView.visibility = View.VISIBLE
     }
 }

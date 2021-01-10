@@ -3,6 +3,7 @@ package com.mhendrif.capstone.favorite.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.core.di.DaggerCoreComponent
 import com.mhendrif.capstone.favorite.R
@@ -25,5 +26,15 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
         binding.tabs.setupWithViewPager(binding.viewPager)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setUpBottomNavigation()
+    }
+
+    private fun setUpBottomNavigation() {
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(com.mhendrif.capstone.R.id.bottom_navigation_view)
+        bottomNav.visibility = View.VISIBLE
     }
 }

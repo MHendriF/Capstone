@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.ui.ViewModelFactory
@@ -136,6 +137,11 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
         }
     }
 
+    private fun setUpBottomNavigation() {
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation_view)
+        bottomNav.visibility = View.GONE
+    }
+
     override fun onResume() {
         super.onResume()
         val actionBar: ActionBar? = (activity as MainActivity?)?.supportActionBar
@@ -144,6 +150,7 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
             setDisplayHomeAsUpEnabled(true)
             setHomeButtonEnabled(true)
         }
+        setUpBottomNavigation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
