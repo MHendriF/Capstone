@@ -14,17 +14,6 @@ object CommonDeps {
     const val CONSTRAINT_LAYOUT =
         "androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT_VERSION}"
 
-    // RecyclerView
-    const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Version.RECYCLER_VIEW_VERSION}"
-
-    // ViewPager2
-    const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Version.VIEWPAGER2_VERSION}"
-
-    // SwipeRefreshLayout
-    const val SWIPE_REFRESH_LAYOUT =
-        "androidx.swiperefreshlayout:swiperefreshlayout:${Version.SWIPE_REFRESH_LAYOUT_VERSION}"
-
-
     // Lifecycle, ViewModel and LiveData
     const val LIFECYCLE_LIVEDATA_KTX =
         "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE_VERSION}"
@@ -54,16 +43,6 @@ object CommonDeps {
     const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Version.DAGGER_VERSION}"
     const val DAGGER_ANNOTATION_PROCESSOR = "com.google.dagger:dagger-android-processor:${Version.DAGGER_VERSION}"
 
-    // Dagger Hilt
-    const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${Version.DAGGER_HILT_VERSION}"
-    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
-
-    // Dagger Hilt AndroidX
-    const val DAGGER_HILT_VIEWMODEL =
-        "androidx.hilt:hilt-lifecycle-viewmodel:${Version.DAGGER_HILT_ANDRIODX}"
-    const val DAGGER_HILT_ANDROIDX_HILT_COMPILER =
-        "androidx.hilt:hilt-compiler:${Version.DAGGER_HILT_ANDRIODX}"
-
     // Coroutines
     const val COROUTINES_CORE =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.COROUTINES_VERSION}"
@@ -90,10 +69,6 @@ object CommonDeps {
     // optional - Kotlin Extensions and Coroutines support for Room
     const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
 
-    // Glide
-    const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE_VERSION}"
-    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE_VERSION}"
-
     // Lottie
     const val LOTTIE = "com.airbnb.android:lottie:${Version.LOTTIE_VERSION}"
 
@@ -103,8 +78,7 @@ object CommonDeps {
 
     // Chucker
     const val CHUCKER_DEBUG = "com.github.chuckerteam.chucker:library:${Version.CHUCKER_VERSION}"
-    const val CHUCKER_RELEASE =
-        "com.github.chuckerteam.chucker:library-no-op:${Version.CHUCKER_VERSION}"
+    const val CHUCKER_RELEASE = "com.github.chuckerteam.chucker:library-no-op:${Version.CHUCKER_VERSION}"
 
     // Leak Canary
     const val LEAK_CANARY =
@@ -132,17 +106,10 @@ object CommonDeps {
 
 object TestDeps {
 
+    // (Required) Writing and executing Unit Tests on the JUnit Platform
     const val JUNIT_DEFAULT = "junit:junit:${TestVersion.junit4Version}"
 
-    // (Required) Writing and executing Unit Tests on the JUnit Platform
-    const val JUNIT5_API = "org.junit.jupiter:junit-jupiter-api:${TestVersion.junit5Version}"
-    const val JUNIT5_ENGINE = "org.junit.jupiter:junit-jupiter-engine:${TestVersion.junit5Version}"
-
-    // (Optional) If you need "Parameterized Tests"
-    const val JUNIT5_PARAMS = "org.junit.jupiter:junit-jupiter-params:${TestVersion.junit5Version}"
-
     const val ANDROIDX_CORE_TESTING = "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
-    const val ROBOLECTRIC = "org.robolectric:robolectric:${TestVersion.robolectricVersion}"
 
     // AndroidX Test - JVM testing
     const val ANDROIDX_TEST_CORE_KTX =
@@ -150,30 +117,12 @@ object TestDeps {
     const val ANDROIDX_JUNIT =
         "androidx.test.ext:junit:${TestVersion.androidXTestExtKotlinRunnerVersion}"
 
-    const val ANDROIDX_ESPRESSO =
-        "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
+    const val ANDROIDX_ESPRESSO = "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
 
     // Espresso
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${TestVersion.espressoVersion}"
     const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
     const val ESPRESSO_IDLING_RESOURCE = "androidx.test.espresso:espresso-idling-resource:${TestVersion.espressoVersion}"
-
-    // Coroutines test
-    const val COROUTINES_TEST =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersion.coroutinesTestVersion}"
-
-    // MockWebServer
-    const val MOCK_WEB_SERVER =
-        "com.squareup.okhttp3:mockwebserver:${TestVersion.mockWebServerVersion}"
-
-    // Gson
-    const val GSON = "com.google.code.gson:gson:${Version.GSON_VERSION}"
-
-    // MockK
-    const val MOCK_K = "io.mockk:mockk:${TestVersion.mockKVersion}"
-
-    // Truth
-    const val TRUTH = "com.google.truth:truth:${TestVersion.truthVersion}"
 
     // Testing Navigation
     const val NAVIGATION_TEST = "androidx.navigation:navigation-testing:${Version.NAVIGATION_VERSION}"

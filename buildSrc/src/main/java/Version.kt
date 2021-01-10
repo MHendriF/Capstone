@@ -32,15 +32,6 @@ object Version {
     // ConstraintLayout
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.4"
 
-    // RecyclerView
-    const val RECYCLER_VIEW_VERSION = "1.2.0-alpha05"
-
-    // ViewPager2
-    const val VIEWPAGER2_VERSION = "1.1.0-alpha01"
-
-    //SwipeRefreshLayout
-    const val SWIPE_REFRESH_LAYOUT_VERSION = "1.1.0"
-
     // Architecture MVVM & LiveData
     const val LIFECYCLE_VERSION = "2.2.0"
 
@@ -55,22 +46,15 @@ object Version {
     // OkHttpClient
     const val OK_HTTP3_VERSION = "4.9.0"
 
-    // Gson
-    const val GSON_VERSION = "2.8.4"
-
     // Room
     const val ROOM_VERSION = "2.3.0-alpha02"
 
     // Dagger
     const val DAGGER_VERSION = "2.30.1"
     const val DAGGER_HILT_VERSION = "2.29-alpha"
-    const val DAGGER_HILT_ANDRIODX = "1.0.0-alpha02"
 
     // Coroutines
     const val COROUTINES_VERSION = "1.3.9"
-
-    // Glide
-    const val GLIDE_VERSION = "4.11.0"
 
     // Picasso
     const val PICASSO_VERSION = "2.71828"
@@ -114,27 +98,9 @@ object TestVersion {
     const val androidXTestRulesVersion = "1.2.0-beta01"
     const val archTestingVersion = "2.0.0"
 
-    // Junit5
-    const val junit5Version = "5.4.0"
-
     // Junit4
     const val junit4Version = "4.13.1"
 
     // Espresso
     const val espressoVersion = "3.3.0"
-
-    // RoboElectric
-    const val robolectricVersion = "4.3.1"
-    const val rulesVersion = "1.0.1"
-
-    const val coroutinesTestVersion = "1.3.7"
-
-    // MockWebServer
-    const val mockWebServerVersion = "4.8.1"
-
-    // Truth Assertion
-    const val truthVersion = "1.0.1"
-
-    // MockK
-    const val mockKVersion = "1.10.0"
 }

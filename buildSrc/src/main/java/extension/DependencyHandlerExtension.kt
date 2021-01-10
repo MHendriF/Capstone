@@ -16,9 +16,6 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.MATERIAL)
     implementation(CommonDeps.CONSTRAINT_LAYOUT)
     implementation(CommonDeps.LEGACY)
-    //implementation(CommonDeps.RECYCLER_VIEW)
-    //implementation(CommonDeps.VIEWPAGER2)
-    //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
 
     // Views, Animations
     implementation(CommonDeps.LOTTIE)

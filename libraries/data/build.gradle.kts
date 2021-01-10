@@ -18,6 +18,18 @@ android {
         versionCode(AndroidVersion.VERSION_CODE)
         versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // TODO Scheme is created in data module but with which one, find out
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
+        }
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
