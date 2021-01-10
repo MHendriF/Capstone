@@ -8,7 +8,6 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
  * Adds required dependencies to app module
  */
 fun DependencyHandler.addAppModuleDependencies() {
-
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
 
@@ -16,10 +15,10 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.APPCOMPAT)
     implementation(CommonDeps.MATERIAL)
     implementation(CommonDeps.CONSTRAINT_LAYOUT)
+    implementation(CommonDeps.LEGACY)
     //implementation(CommonDeps.RECYCLER_VIEW)
     //implementation(CommonDeps.VIEWPAGER2)
     //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
-    implementation(CommonDeps.LEGACY)
 
     // Views, Animations
     implementation(CommonDeps.LOTTIE)
@@ -44,10 +43,6 @@ fun DependencyHandler.addAppModuleDependencies() {
     // Leak Canary
     debugImplementation(CommonDeps.LEAK_CANARY)
 
-    // Glide
-    implementation(CommonDeps.GLIDE)
-    kapt(CommonDeps.GLIDE_COMPILER)
-
     // Rounded Image
     implementation(CommonDeps.ROUNDED_IMAGE)
 
@@ -56,13 +51,12 @@ fun DependencyHandler.addAppModuleDependencies() {
 }
 
 /**
- * Adds dependencies to core module
+ * Adds dependencies to common module
  */
 fun DependencyHandler.addCommonModuleDependencies() {
-    implementation(CommonDeps.TIMBER)
-
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
+    implementation(CommonDeps.TIMBER)
 
     // Support and Widgets
     implementation(CommonDeps.APPCOMPAT)
@@ -87,9 +81,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(CommonDeps.APPCOMPAT)
     implementation(CommonDeps.MATERIAL)
     implementation(CommonDeps.CONSTRAINT_LAYOUT)
-    //implementation(CommonDeps.RECYCLER_VIEW)
-    //implementation(CommonDeps.VIEWPAGER2)
-    //implementation(CommonDeps.SWIPE_REFRESH_LAYOUT)
     implementation(CommonDeps.LEGACY)
 
     // Navigation Components
@@ -152,12 +143,8 @@ fun DependencyHandler.addDataModuleDependencies() {
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
 
-    // Views, Animations
     implementation(CommonDeps.TIMBER)
     implementation(CommonDeps.MULTIDEX)
-
-    // Rounded Image
-    implementation(CommonDeps.ROUNDED_IMAGE)
 
     // Coroutines
     implementation(CommonDeps.COROUTINES_CORE)
@@ -183,8 +170,6 @@ fun DependencyHandler.addDataModuleDependencies() {
     // Retrofit
     implementation(CommonDeps.RETROFIT)
     implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
-    // change base url runtime
-    implementation(CommonDeps.RETROFIT_URL_MANAGER)
 
     // Okhttp3
     implementation(CommonDeps.OK_HTTP3)
@@ -275,10 +260,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
 
     // Leak Canary
     debugImplementation(CommonDeps.LEAK_CANARY)
-
-    // Glide
-    implementation(CommonDeps.GLIDE)
-    kapt(CommonDeps.GLIDE_COMPILER)
 
     // Rounded Image
     implementation(CommonDeps.ROUNDED_IMAGE)
