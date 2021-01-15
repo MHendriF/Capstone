@@ -2,7 +2,7 @@ package com.mhendrif.capstone.favorite.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.core.di.DaggerCoreComponent
