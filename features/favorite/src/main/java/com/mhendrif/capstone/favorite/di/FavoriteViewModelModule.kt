@@ -3,8 +3,8 @@ package com.mhendrif.capstone.favorite.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mhendrif.capstone.di.ViewModelKey
-import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.favorite.ui.FavoriteViewModel
+import com.mhendrif.capstone.ui.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

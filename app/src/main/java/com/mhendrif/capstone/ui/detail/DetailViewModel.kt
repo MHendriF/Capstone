@@ -19,11 +19,11 @@ class DetailViewModel @Inject constructor(
     val tvShow by lazy { MediatorLiveData<Resource<TvShow>>() }
 
     fun getDetailMovie(id: Int) {
-        movie.addSource(movieUseCase.getDetailMovie(id).asLiveData()) {movie.value = it}
+        movie.addSource(movieUseCase.getDetailMovie(id).asLiveData()) { movie.value = it }
     }
 
     fun getDetailTvShow(id: Int) {
-        tvShow.addSource(tvShowUseCase.getDetailTvShow(id).asLiveData()) {tvShow.value = it}
+        tvShow.addSource(tvShowUseCase.getDetailTvShow(id).asLiveData()) { tvShow.value = it }
     }
 
     fun setFavoriteMovie(movie: Movie, isFavorite: Boolean) =

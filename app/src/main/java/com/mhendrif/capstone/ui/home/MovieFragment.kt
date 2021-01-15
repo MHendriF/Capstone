@@ -10,17 +10,18 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.ViewModelFactory
-import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.core.util.ItemListener
-import com.mhendrif.capstone.ui.MovieAdapter
 import com.mhendrif.capstone.databinding.FragmentMovieBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.Movie
-import timber.log.Timber
+import com.mhendrif.capstone.ui.MovieAdapter
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import javax.inject.Inject
+import timber.log.Timber
 
-class MovieFragment : BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie),
+class MovieFragment :
+    BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie),
     ItemListener<Movie> {
 
     @Inject

@@ -23,10 +23,9 @@ import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
-import timber.log.Timber
 import javax.inject.Inject
 import kotlin.math.roundToInt
-
+import timber.log.Timber
 
 class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.fragment_detail_tv_show) {
 
@@ -140,7 +139,7 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                activity?.onBackPressed();true
+                activity?.onBackPressed(); true
             }
             R.id.action_open_link -> {
                 if (tvShow.homepage.isNullOrEmpty())

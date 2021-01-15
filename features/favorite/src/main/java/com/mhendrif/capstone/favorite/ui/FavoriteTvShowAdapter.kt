@@ -3,9 +3,9 @@ package com.mhendrif.capstone.favorite.ui
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.base.BaseAdapter
 import com.mhendrif.capstone.databinding.ItemContainerTvShowBinding
 import com.mhendrif.capstone.domain.model.TvShow
+import com.mhendrif.capstone.ui.base.BaseAdapter
 import kotlin.math.roundToInt
 
 class FavoriteTvShowAdapter : BaseAdapter<TvShow, ItemContainerTvShowBinding>(R.layout.item_container_tv_show, diffUtil) {

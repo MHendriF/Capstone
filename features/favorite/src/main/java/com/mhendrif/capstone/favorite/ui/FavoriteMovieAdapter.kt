@@ -3,9 +3,9 @@ package com.mhendrif.capstone.favorite.ui
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.base.BaseAdapter
 import com.mhendrif.capstone.databinding.ItemContainerMovieBinding
 import com.mhendrif.capstone.domain.model.Movie
+import com.mhendrif.capstone.ui.base.BaseAdapter
 import kotlin.math.roundToInt
 
 class FavoriteMovieAdapter : BaseAdapter<Movie, ItemContainerMovieBinding>(R.layout.item_container_movie, diffUtil) {

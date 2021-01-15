@@ -10,17 +10,18 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.ViewModelFactory
-import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.core.util.ItemListener
-import com.mhendrif.capstone.ui.TvShowAdapter
 import com.mhendrif.capstone.databinding.FragmentTvShowBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow
-import timber.log.Timber
+import com.mhendrif.capstone.ui.TvShowAdapter
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import javax.inject.Inject
+import timber.log.Timber
 
-class TvShowFragment : BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_show),
+class TvShowFragment :
+    BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_show),
     ItemListener<TvShow> {
 
     @Inject

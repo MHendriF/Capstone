@@ -4,11 +4,11 @@ import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.data.source.remote.network.ApiService
 import dagger.Module
 import dagger.Provides
+import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 @Module
 class NetworkModule {

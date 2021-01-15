@@ -8,8 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.ui.ViewModelFactory
-import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.core.di.DaggerCoreComponent
@@ -18,9 +16,12 @@ import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.favorite.R
 import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteMovieBinding
 import com.mhendrif.capstone.favorite.di.DaggerFavoriteComponent
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import javax.inject.Inject
 
-class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layout.fragment_favorite_movie),
+class FavoriteMovieFragment :
+    BaseFragment<FragmentFavoriteMovieBinding>(R.layout.fragment_favorite_movie),
     ItemListener<Movie> {
 
     companion object {
@@ -103,11 +104,11 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
         return when (item.itemId) {
             R.id.by_name -> {
                 item.isChecked = true
-                favoriteViewModel.sorting(SortOrder.BY_NAME);true
+                favoriteViewModel.sorting(SortOrder.BY_NAME); true
             }
             R.id.by_release -> {
                 item.isChecked = true
-                favoriteViewModel.sorting(SortOrder.BY_DATE);true
+                favoriteViewModel.sorting(SortOrder.BY_DATE); true
             }
             else -> super.onOptionsItemSelected(item)
         }

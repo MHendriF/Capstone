@@ -8,8 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.ui.ViewModelFactory
-import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.core.di.DaggerCoreComponent
@@ -18,9 +16,12 @@ import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.favorite.R
 import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteTvShowBinding
 import com.mhendrif.capstone.favorite.di.DaggerFavoriteComponent
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import javax.inject.Inject
 
-class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.layout.fragment_favorite_tv_show),
+class FavoriteTvShowFragment :
+    BaseFragment<FragmentFavoriteTvShowBinding>(R.layout.fragment_favorite_tv_show),
     ItemListener<TvShow> {
 
     companion object {
@@ -103,11 +104,11 @@ class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>(R.lay
         return when (item.itemId) {
             R.id.by_name -> {
                 item.isChecked = true
-                favoriteViewModel.sorting(SortOrder.BY_NAME);true
+                favoriteViewModel.sorting(SortOrder.BY_NAME); true
             }
             R.id.by_release -> {
                 item.isChecked = true
-                favoriteViewModel.sorting(SortOrder.BY_DATE);true
+                favoriteViewModel.sorting(SortOrder.BY_DATE); true
             }
             else -> super.onOptionsItemSelected(item)
         }

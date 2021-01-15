@@ -16,16 +16,16 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.ui.ViewModelFactory
-import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.core.util.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailMovieBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.Movie
-import timber.log.Timber
+import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.ui.base.BaseFragment
 import javax.inject.Inject
 import kotlin.math.roundToInt
+import timber.log.Timber
 
 class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fragment_detail_movie) {
 
@@ -138,11 +138,11 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                activity?.onBackPressed();true
+                activity?.onBackPressed(); true
             }
             R.id.action_open_link -> {
                 if (movie.homepage.isNullOrEmpty())
-                    openLink(Constants.TMDB_MOVIE_URL+movie.id)
+                    openLink(Constants.TMDB_MOVIE_URL + movie.id)
                 else
                     openLink(movie.homepage)
                 true

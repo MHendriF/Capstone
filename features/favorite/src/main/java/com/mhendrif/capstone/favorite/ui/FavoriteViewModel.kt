@@ -6,7 +6,6 @@ import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.domain.usecase.MovieUseCase
 import com.mhendrif.capstone.domain.usecase.TvShowUseCase
-import timber.log.Timber
 import javax.inject.Inject
 
 class FavoriteViewModel @Inject constructor(
@@ -18,11 +17,11 @@ class FavoriteViewModel @Inject constructor(
     var tvShows: MediatorLiveData<List<TvShow>> = MediatorLiveData()
 
     fun getFavoriteMovies() {
-        movies.addSource(movieUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) {movies.value = it}
+        movies.addSource(movieUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) { movies.value = it }
     }
 
     fun getFavoriteTvShows() {
-        tvShows.addSource(tvShowUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) {tvShows.value = it}
+        tvShows.addSource(tvShowUseCase.getFavoriteBySort(SortOrder.BY_NAME).asLiveData()) { tvShows.value = it }
     }
 
     fun sorting(sortOrder: SortOrder) {
