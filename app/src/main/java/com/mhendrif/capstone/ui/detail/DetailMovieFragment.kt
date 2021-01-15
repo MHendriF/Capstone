@@ -150,5 +150,4 @@ class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fr
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
