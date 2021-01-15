@@ -5,7 +5,7 @@ import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.domain.repository.ITvShowRepository
 import javax.inject.Inject
 
-class TvShowInteractor @Inject constructor(private val tvShowRepository: ITvShowRepository):
+class TvShowInteractor @Inject constructor(private val tvShowRepository: ITvShowRepository) :
     TvShowUseCase {
     override fun getAllTvShow() = tvShowRepository.getAllTvShow()
 

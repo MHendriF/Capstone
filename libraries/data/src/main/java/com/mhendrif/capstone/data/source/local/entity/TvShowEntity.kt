@@ -43,6 +43,6 @@ data class TvShowEntity(
     @ColumnInfo(name = "numberOfSeasons")
     var numberOfSeasons: Int?,
 
-    @ColumnInfo(name = "isFavorite")    
+    @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false
 )

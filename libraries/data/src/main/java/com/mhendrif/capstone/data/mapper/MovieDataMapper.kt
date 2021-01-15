@@ -55,44 +55,26 @@ object MovieDataMapper {
         )
     }
 
-    fun mapResponseToDomain(input: MovieResponse): Movie {
-        return Movie(
-            id = input.id,
-            title = input.title,
-            overview = input.overview,
-            posterPath = input.posterPath,
-            backdropPath = input.backdropPath,
-            releaseDate = input.releaseDate,
-            voteAverage = input.voteAverage,
-            voteCount = input.voteCount,
-            genres = input.genres,
-            homepage = input.homepage,
-            runtime = input.runtime,
-            isFavorite = false
+    fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> = input.map {
+        val listGenre = ArrayList<Genre>()
+        if (it.genres != null && it.genres?.isNotEmpty()!!) {
+            listGenre.addAll(setUpGenre(it.genres!!))
+        }
+        Movie(
+            id = it.id,
+            title = it.title,
+            overview = it.overview,
+            posterPath = it.posterPath,
+            backdropPath = it.backdropPath,
+            releaseDate = it.releaseDate,
+            voteAverage = it.voteAverage,
+            voteCount = it.voteCount,
+            genres = listGenre,
+            homepage = it.homepage,
+            runtime = it.runtime,
+            isFavorite = it.isFavorite
         )
     }
-
-    fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> =
-            input.map {
-                val listGenre = ArrayList<Genre>()
-                if (it.genres != null && it.genres?.isNotEmpty()!!) {
-                    listGenre.addAll(setUpGenre(it.genres!!))
-                }
-                Movie(
-                        id = it.id,
-                        title = it.title,
-                        overview = it.overview,
-                        posterPath = it.posterPath,
-                        backdropPath = it.backdropPath,
-                        releaseDate = it.releaseDate,
-                        voteAverage = it.voteAverage,
-                        voteCount = it.voteCount,
-                        genres = listGenre,
-                        homepage = it.homepage,
-                        runtime = it.runtime,
-                        isFavorite = it.isFavorite
-                )
-            }
 
     fun mapEntityToDomain(input: MovieEntity): Movie {
         val listGenre = ArrayList<Genre>()

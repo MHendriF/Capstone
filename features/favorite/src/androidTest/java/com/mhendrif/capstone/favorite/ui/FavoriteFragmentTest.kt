@@ -66,9 +66,8 @@ class FavoriteFragmentTest {
             Espresso.onView(withId(R.id.rvMovie))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(data.size))
             Espresso.onView(withId(R.id.rvMovie)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-                    ViewActions.click()
-                ))
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click())
+            )
             Espresso.onView(withId(R.id.tvReadMore)).perform(ViewActions.click())
         }
     }

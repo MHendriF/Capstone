@@ -55,27 +55,26 @@ object TvShowDataMapper {
         )
     }
 
-    fun mapEntitiesToDomain(input: List<TvShowEntity>): List<TvShow> =
-            input.map {
-                val listGenre = ArrayList<Genre>()
-                if (it.genres != null && it.genres?.isNotEmpty()!!) {
-                    listGenre.addAll(setUpGenre(it.genres!!))
-                }
-                TvShow(
-                    id = it.id,
-                    title = it.title,
-                    overview = it.overview,
-                    posterPath = it.posterPath,
-                    backdropPath = it.backdropPath,
-                    releaseDate = it.releaseDate,
-                    voteAverage = it.voteAverage,
-                    voteCount = it.voteCount,
-                    genres = listGenre,
-                    homepage = it.homepage,
-                    numberOfSeasons = it.numberOfSeasons,
-                    isFavorite = it.isFavorite
-                )
-            }
+    fun mapEntitiesToDomain(input: List<TvShowEntity>): List<TvShow> = input.map {
+        val listGenre = ArrayList<Genre>()
+        if (it.genres != null && it.genres?.isNotEmpty()!!) {
+            listGenre.addAll(setUpGenre(it.genres!!))
+        }
+        TvShow(
+            id = it.id,
+            title = it.title,
+            overview = it.overview,
+            posterPath = it.posterPath,
+            backdropPath = it.backdropPath,
+            releaseDate = it.releaseDate,
+            voteAverage = it.voteAverage,
+            voteCount = it.voteCount,
+            genres = listGenre,
+            homepage = it.homepage,
+            numberOfSeasons = it.numberOfSeasons,
+            isFavorite = it.isFavorite
+        )
+    }
 
     fun mapEntityToDomain(input: TvShowEntity): TvShow {
         val listGenre = ArrayList<Genre>()
