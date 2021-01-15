@@ -15,9 +15,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
-import com.mhendrif.capstone.favorite.R as FR
 import com.mhendrif.capstone.core.util.EspressoIdlingResource
 import com.mhendrif.capstone.domain.model.Movie
+import com.mhendrif.capstone.favorite.R as FR
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

@@ -5,9 +5,9 @@ import com.mhendrif.capstone.data.source.local.entity.MovieEntity
 import com.mhendrif.capstone.data.source.local.entity.TvShowEntity
 import com.mhendrif.capstone.data.source.local.room.MovieDao
 import com.mhendrif.capstone.data.source.local.room.TvShowDao
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
 
 @Singleton
 class LocalDataSource @Inject constructor(

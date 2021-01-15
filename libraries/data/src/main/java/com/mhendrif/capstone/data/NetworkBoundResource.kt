@@ -4,7 +4,6 @@ import com.mhendrif.capstone.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.data.util.AppExecutors
 import com.mhendrif.capstone.domain.Resource
 import kotlinx.coroutines.flow.*
-
 import timber.log.Timber
 
 abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {

@@ -2,19 +2,19 @@ package com.mhendrif.capstone.data.repository
 
 import com.mhendrif.capstone.common.util.SortOrder
 import com.mhendrif.capstone.data.NetworkBoundResource
-import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.data.mapper.MovieDataMapper
 import com.mhendrif.capstone.data.source.local.LocalDataSource
 import com.mhendrif.capstone.data.source.remote.RemoteDataSource
 import com.mhendrif.capstone.data.source.remote.network.ApiResponse
 import com.mhendrif.capstone.data.source.remote.response.MovieResponse
 import com.mhendrif.capstone.data.util.AppExecutors
+import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.repository.IMovieRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class MovieRepository @Inject constructor(
