@@ -8,5 +8,6 @@ import javax.inject.Inject
 class MovieViewModel @Inject constructor(
     movieUseCase: MovieUseCase
 ) : ViewModel() {
+
     var movie = movieUseCase.getAllMovie().asLiveData()
 }

@@ -8,5 +8,6 @@ import javax.inject.Inject
 class TvShowViewModel @Inject constructor(
     tvShowUseCase: TvShowUseCase
 ) : ViewModel() {
+
     val tvShow = tvShowUseCase.getAllTvShow().asLiveData()
 }
