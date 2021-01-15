@@ -19,15 +19,17 @@ import com.mhendrif.capstone.core.util.EspressoIdlingResource
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.ui.TvShowAdapter
 import org.junit.After
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 class TvShowFragmentTest {
+
     private val context = ApplicationProvider.getApplicationContext<Context>()
-    private val currentDes =
-        { activity: Activity -> activity.findNavController(R.id.nav_host_fragment).currentDestination }
+    private val currentDes = { activity: Activity -> activity.findNavController(R.id.nav_host_fragment).currentDestination }
 
     @get:Rule
     val scenarioRule = ActivityScenarioRule(MainActivity::class.java)
