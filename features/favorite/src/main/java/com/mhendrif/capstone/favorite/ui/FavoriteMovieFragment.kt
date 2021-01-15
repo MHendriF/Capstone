@@ -112,5 +112,4 @@ class FavoriteMovieFragment : BaseFragment<FragmentFavoriteMovieBinding>(R.layou
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
