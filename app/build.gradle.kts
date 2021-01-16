@@ -51,6 +51,7 @@ android {
     dynamicFeatures = mutableSetOf(
         Modules.DynamicFeature.FAVORITE
     )
+    android.lintOptions.isAbortOnError = false
 }
 
 dependencies {

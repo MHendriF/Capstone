@@ -37,10 +37,10 @@ subprojects {
 
     // KtLint Configurations
     ktlint {
-        debug.set(true)
+        //debug.set(true)
         verbose.set(true)
         android.set(true)
-        outputToConsole.set(true)
+        //outputToConsole.set(true)
     }
 
     // Detekt
