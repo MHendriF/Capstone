@@ -22,21 +22,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
     packagingOptions {
         exclude("META-INF/AL2.0")
     }
 
     dataBinding.isEnabled = true
+    android.lintOptions.isAbortOnError = false
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

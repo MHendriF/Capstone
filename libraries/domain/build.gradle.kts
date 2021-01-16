@@ -32,6 +32,7 @@ android {
 
     android.buildFeatures.dataBinding = true
     android.buildFeatures.viewBinding = true
+    android.lintOptions.isAbortOnError = false
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
