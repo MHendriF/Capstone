@@ -16,4 +16,5 @@ object Constants {
     const val API_BACKDROP_PATH = "https://image.tmdb.org/t/p/w500"
     const val ARG_FAVORITE_MOVIE = "FAVORITE_MOVIE_FRAGMENT"
     const val ARG_FAVORITE_TV = "FAVORITE_TV_FRAGMENT"
+    const val PASSPHRASE = "movie_catalogue_local"
 }

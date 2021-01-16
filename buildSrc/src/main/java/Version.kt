@@ -83,8 +83,17 @@ object Version {
     // Multidex
     const val MULTIDEX_VERSION = "2.0.1"
 
-    // Multidex
+    // Paging
     const val PAGING_VERSION = "2.1.2"
+
+    // SQLCipher
+    const val SQLCIPHER_VERSION = "4.4.2"
+
+    // Sqlite
+    const val SQLITE_VERSION = "2.1.0"
+
+    // Shimmer
+    const val SHIMMER_VERSION = "0.5.0"
 
 }
 

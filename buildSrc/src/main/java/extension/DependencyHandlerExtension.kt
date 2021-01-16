@@ -113,21 +113,22 @@ fun DependencyHandler.addCoreModuleDependencies() {
     api(CommonDeps.LIFECYCLE_EXTENSIONS)
 
     // Room
-    api(CommonDeps.ROOM_RUNTIME)
+    api(DataDeps.ROOM_RUNTIME)
     // For Kotlin use kapt instead of annotationProcessor
-    kapt(CommonDeps.ROOM_COMPILER)
+    kapt(DataDeps.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
-    api(CommonDeps.ROOM_KTX)
+    api(DataDeps.ROOM_KTX)
+
+    api(DataDeps.SQLCIPHER)
+    api(DataDeps.SQLITE)
 
     // Retrofit
-    implementation(CommonDeps.RETROFIT)
-    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
-    // change base url runtime
-    implementation(CommonDeps.RETROFIT_URL_MANAGER)
+    implementation(NetworkDeps.RETROFIT)
+    implementation(NetworkDeps.RETROFIT_GSON_CONVERTER)
 
     // Okhttp3
-    implementation(CommonDeps.OK_HTTP3)
-    implementation(CommonDeps.OK_HTTP3_LOG)
+    implementation(NetworkDeps.OK_HTTP3)
+    implementation(NetworkDeps.OK_HTTP3_LOG)
 
     // Paging
     implementation(CommonDeps.PAGING)
@@ -158,19 +159,19 @@ fun DependencyHandler.addDataModuleDependencies() {
     api(CommonDeps.LIFECYCLE_EXTENSIONS)
 
     // Room
-    api(CommonDeps.ROOM_RUNTIME)
+    api(DataDeps.ROOM_RUNTIME)
     // For Kotlin use kapt instead of annotationProcessor
-    kapt(CommonDeps.ROOM_COMPILER)
+    kapt(DataDeps.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
-    api(CommonDeps.ROOM_KTX)
+    api(DataDeps.ROOM_KTX)
 
     // Retrofit
-    implementation(CommonDeps.RETROFIT)
-    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
+    implementation(NetworkDeps.RETROFIT)
+    implementation(NetworkDeps.RETROFIT_GSON_CONVERTER)
 
     // Okhttp3
-    implementation(CommonDeps.OK_HTTP3)
-    implementation(CommonDeps.OK_HTTP3_LOG)
+    implementation(NetworkDeps.OK_HTTP3)
+    implementation(NetworkDeps.OK_HTTP3_LOG)
 
     // Paging
     implementation(CommonDeps.PAGING)
@@ -198,15 +199,15 @@ fun DependencyHandler.addDomainModuleDependencies() {
     api(CommonDeps.LIFECYCLE_EXTENSIONS)
 
     // Room
-    api(CommonDeps.ROOM_RUNTIME)
+    api(DataDeps.ROOM_RUNTIME)
     // For Kotlin use kapt instead of annotationProcessor
-    kapt(CommonDeps.ROOM_COMPILER)
+    kapt(DataDeps.ROOM_COMPILER)
     // optional - Kotlin Extensions and Coroutines support for Room
-    api(CommonDeps.ROOM_KTX)
+    api(DataDeps.ROOM_KTX)
 
     // Retrofit
-    implementation(CommonDeps.RETROFIT)
-    implementation(CommonDeps.RETROFIT_GSON_CONVERTER)
+    implementation(NetworkDeps.RETROFIT)
+    implementation(NetworkDeps.RETROFIT_GSON_CONVERTER)
 
     // Paging
     implementation(CommonDeps.PAGING)

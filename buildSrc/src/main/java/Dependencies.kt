@@ -22,7 +22,6 @@ object CommonDeps {
     const val LIFECYCLE_EXTENSIONS =
         "androidx.lifecycle:lifecycle-extensions:${Version.LIFECYCLE_VERSION}"
 
-
     // Navigation Components
     const val NAVIGATION_FRAGMENT =
         "androidx.navigation:navigation-fragment-ktx:${Version.NAVIGATION_VERSION}"
@@ -49,36 +48,8 @@ object CommonDeps {
     const val COROUTINES_ANDROID =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.COROUTINES_VERSION}"
 
-    // Retrofit
-    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
-    const val RETROFIT_GSON_CONVERTER =
-        "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
-
-    // Retrofit change base url runtime
-    const val RETROFIT_URL_MANAGER = "me.jessyan:retrofit-url-manager:1.4.0"
-
-    const val OK_HTTP3 = "com.squareup.okhttp3:okhttp:${Version.OK_HTTP3_VERSION}"
-    const val OK_HTTP3_LOG = "com.squareup.okhttp3:logging-interceptor:${Version.OK_HTTP3_VERSION}"
-
-    // Room
-    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.ROOM_VERSION}"
-
-    // For Kotlin use kapt instead of annotationProcessor
-    const val ROOM_COMPILER = "androidx.room:room-compiler:${Version.ROOM_VERSION}"
-
-    // optional - Kotlin Extensions and Coroutines support for Room
-    const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
-
     // Lottie
     const val LOTTIE = "com.airbnb.android:lottie:${Version.LOTTIE_VERSION}"
-
-    // Preference Manager
-    const val PREFERENCE_MANAGER =
-        "androidx.preference:preference-ktx:${Version.PREFERENCE_MANAGER_VERSION}"
-
-    // Chucker
-    const val CHUCKER_DEBUG = "com.github.chuckerteam.chucker:library:${Version.CHUCKER_VERSION}"
-    const val CHUCKER_RELEASE = "com.github.chuckerteam.chucker:library-no-op:${Version.CHUCKER_VERSION}"
 
     // Leak Canary
     const val LEAK_CANARY =
@@ -102,6 +73,31 @@ object CommonDeps {
 
     // Paging
     const val PAGING  = "androidx.paging:paging-runtime-ktx:${Version.PAGING_VERSION}"
+
+    const val SHIMMER = "com.facebook.shimmer:shimmer:${Version.SHIMMER_VERSION}"
+}
+
+object NetworkDeps {
+    // Retrofit
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
+    const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
+
+    // Okhttp
+    const val OK_HTTP3 = "com.squareup.okhttp3:okhttp:${Version.OK_HTTP3_VERSION}"
+    const val OK_HTTP3_LOG = "com.squareup.okhttp3:logging-interceptor:${Version.OK_HTTP3_VERSION}"
+}
+
+object DataDeps {
+    // Room
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.ROOM_VERSION}"
+    // For Kotlin use kapt instead of annotationProcessor
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Version.ROOM_VERSION}"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
+
+    const val SQLCIPHER = "net.zetetic:android-database-sqlcipher:${Version.SQLCIPHER_VERSION}"
+
+    const val SQLITE = "androidx.sqlite:sqlite-ktx:${Version.SQLITE_VERSION}"
 }
 
 object TestDeps {
