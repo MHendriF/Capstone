@@ -66,6 +66,7 @@ subprojects {
         }
     }
 }
+
 // JVM target applied to all Kotlin tasks across all sub-projects
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
