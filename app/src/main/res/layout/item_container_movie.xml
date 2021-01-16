@@ -40,7 +40,7 @@
             android:layout_height="@dimen/_100sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:contentDescription="@string/img_bg"
-            android:imageURL='@{constants.API_POSTER_PATH + model.posterPath}'
+            android:setImageUrl='@{constants.API_POSTER_PATH + model.posterPath}'
             android:scaleType="centerCrop"
             android:src="?attr/colorSecondaryVariant"
             app:layout_constraintStart_toStartOf="parent"

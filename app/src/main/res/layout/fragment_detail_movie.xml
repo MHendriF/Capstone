@@ -46,7 +46,7 @@
                     android:layout_height="@dimen/_200sdp"
                     android:alpha="0.7"
                     android:contentDescription="@string/img_bg"
-                    android:imageURL='@{constants.API_BACKDROP_PATH + args.backdropPath}'
+                    android:setImageUrl='@{constants.API_BACKDROP_PATH + args.backdropPath}'
                     android:scaleType="centerCrop"
                     android:src="?attr/colorPrimarySurface"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
                     android:layout_height="@dimen/_150sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:contentDescription="@string/img_bg"
-                    android:imageURL='@{constants.API_POSTER_PATH + args.posterPath}'
+                    android:setImageUrl='@{constants.API_POSTER_PATH + args.posterPath}'
                     android:src="?attr/colorSecondaryVariant"
                     app:layout_constraintBottom_toBottomOf="@id/ivBackground"
                     app:layout_constraintStart_toStartOf="parent"

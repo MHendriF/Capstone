@@ -7,9 +7,9 @@ import com.squareup.picasso.Picasso
 import timber.log.Timber
 
 object ImageBinding {
-    @BindingAdapter("android:imageURL")
+    @BindingAdapter("android:setImageUrl")
     @JvmStatic
-    fun setImageURL(imageView: ImageView, url: String?) {
+    fun setImageUrl(imageView: ImageView, url: String?) {
         try {
             imageView.alpha = 0f
             Picasso.get().load(url).noFade().into(
