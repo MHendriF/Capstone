@@ -1,14 +1,15 @@
 version: 2.1
   
 orbs:
-  android: circleci/android@0.2.1
+  android: circleci/android@0.2.3
   
 jobs:
   build:
     executor: android/android
     environment:
-      JVM_OPTS: -Xmx2048m
-      GRADLE_OPTS: -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
+      # Configure the JVM and Gradle to avoid OOM errors
+      _JAVA_OPTIONS: "-Xmx3g"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     steps:
       - checkout
       - restore_cache:
@@ -30,6 +31,9 @@ jobs:
       - store_artifacts: 
           path: app/build/reports
           destination: reports
+      - store_artifacts:
+          path: features/favorite/build/reports
+          destination: features/favorite/reports
       - run:
           name: Run Tests
           command: ./gradlew lint test
