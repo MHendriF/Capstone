@@ -1,5 +1,6 @@
 package com.mhendrif.capstone.ui.detail
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -17,7 +18,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.R
 import com.mhendrif.capstone.common.util.Constants
-import com.mhendrif.capstone.core.util.DialogMessage
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow
@@ -99,10 +99,14 @@ class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.
             }
 
             ivFavorite.setOnClickListener {
-                DialogMessage.showDialog(requireContext(), model.title, model.isFavorite) {
-                    detailViewModel.setFavoriteTvShow(model, !model.isFavorite)
-                    activity?.toast("Success ${if (model.isFavorite) "delete" else "add"} ${model.title} ${if (model.isFavorite) "from" else "to"} favorite")
-                }
+                AlertDialog.Builder(requireContext())
+                    .setTitle(model.title)
+                    .setMessage("Do you want to ${if (model.isFavorite) "delete" else "add"} ${if (model.isFavorite) "from" else "to"} favorites?")
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.ok) { _, _ ->
+                        detailViewModel.setFavoriteTvShow(model, !model.isFavorite)
+                        activity?.toast("Success ${if (model.isFavorite) "delete" else "add"} ${model.title} ${if (model.isFavorite) "from" else "to"} favorite")
+                    }.show()
             }
         }
     }

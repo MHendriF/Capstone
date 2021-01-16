@@ -1,14 +1,14 @@
 object PluginVersion {
-    const val KOTLIN_VERSION = "1.4.20"
+    const val KOTLIN_VERSION = "1.4.21"
     const val GRADLE_VERSION = "4.1.1"
 
     const val NAV_SAFE_ARGS_VERSION = "2.3.2"
-    const val KTLINT_VERSION = "9.3.0"
-    const val DETEKT_VERSION = "1.10.0"
+    const val KTLINT_VERSION = "9.4.1"
+    const val DETEKT_VERSION = "1.15.0"
 }
 
 object AndroidVersion {
-    const val MIN_SDK_VERSION = 21
+    const val MIN_SDK_VERSION = 23
     const val COMPILE_SDK_VERSION = 30
     const val TARGET_SDK_VERSION = COMPILE_SDK_VERSION
     const val VERSION_CODE = 1
