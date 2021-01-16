@@ -263,7 +263,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
 
     // Paging
     implementation(CommonDeps.PAGING)
-
 }
 
 /**
@@ -327,7 +326,6 @@ private fun DependencyHandler.project(
     } else {
         mapOf("path" to path)
     }
-
     return uncheckedCast(project(notation))
 }
 
