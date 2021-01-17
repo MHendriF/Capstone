@@ -65,9 +65,6 @@ object CommonDeps {
     // Picasso
     const val PICASSO = "com.squareup.picasso:picasso:${Version.PICASSO_VERSION}"
 
-    // Timber
-    const val TIMBER = "com.jakewharton.timber:timber:${Version.TIMBER_VERSION}"
-
     // Multidex
     const val MULTIDEX = "androidx.multidex:multidex:${Version.MULTIDEX_VERSION}"
 
@@ -75,6 +72,17 @@ object CommonDeps {
     const val PAGING  = "androidx.paging:paging-runtime-ktx:${Version.PAGING_VERSION}"
 
     const val SHIMMER = "com.facebook.shimmer:shimmer:${Version.SHIMMER_VERSION}"
+}
+
+object DebugDeps {
+    // Timber
+    const val TIMBER = "com.jakewharton.timber:timber:${Version.TIMBER_VERSION}"
+
+    // Firebase
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Version.FIREBASE_BOM}"
+    const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx"
+    //const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:${Version.FIREBASE_ANALYTICS_VERSION}"
+    //const val FIREBASE_CRASHLYTICS = "com.google.firebase:firebase-crashlytics:${Version.FIREBASE_CRASHLYTICS_VERSION}"
 }
 
 object NetworkDeps {

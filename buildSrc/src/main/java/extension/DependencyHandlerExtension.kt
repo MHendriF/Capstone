@@ -21,9 +21,8 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(CommonDeps.LOTTIE)
     implementation(CommonDeps.SSP_ANDROID)
     implementation(CommonDeps.SDP_ANDROID)
-
     implementation(CommonDeps.PICASSO)
-    implementation(CommonDeps.TIMBER)
+
     implementation(CommonDeps.MULTIDEX)
 
     // Navigation Components
@@ -45,6 +44,12 @@ fun DependencyHandler.addAppModuleDependencies() {
 
     // Paging
     implementation(CommonDeps.PAGING)
+
+    // Tools Debuging
+    api(platform(DebugDeps.FIREBASE_BOM))
+    api(DebugDeps.FIREBASE_ANALYTICS)
+//    api(DebugDeps.FIREBASE_ANALYTICS)
+//    api(DebugDeps.FIREBASE_CRASHLYTICS)
 }
 
 /**
@@ -53,7 +58,6 @@ fun DependencyHandler.addAppModuleDependencies() {
 fun DependencyHandler.addCommonModuleDependencies() {
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
-    implementation(CommonDeps.TIMBER)
 
     // Support and Widgets
     implementation(CommonDeps.APPCOMPAT)
@@ -65,6 +69,9 @@ fun DependencyHandler.addCommonModuleDependencies() {
     implementation(CommonDeps.LOTTIE)
     implementation(CommonDeps.SSP_ANDROID)
     implementation(CommonDeps.SDP_ANDROID)
+
+    // Tools Debuging
+    api(DebugDeps.TIMBER)
 }
 
 /**
@@ -90,9 +97,8 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(CommonDeps.LOTTIE)
     implementation(CommonDeps.SSP_ANDROID)
     implementation(CommonDeps.SDP_ANDROID)
-
     implementation(CommonDeps.PICASSO)
-    implementation(CommonDeps.TIMBER)
+
     implementation(CommonDeps.MULTIDEX)
 
     // Rounded Image
@@ -140,8 +146,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
 fun DependencyHandler.addDataModuleDependencies() {
     implementation(CommonDeps.KOTLIN)
     implementation(CommonDeps.ANDROIDX_CORE_KTX)
-
-    implementation(CommonDeps.TIMBER)
     implementation(CommonDeps.MULTIDEX)
 
     // Coroutines
@@ -251,9 +255,8 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(CommonDeps.LOTTIE)
     implementation(CommonDeps.SSP_ANDROID)
     implementation(CommonDeps.SDP_ANDROID)
-
     implementation(CommonDeps.PICASSO)
-    implementation(CommonDeps.TIMBER)
+
     implementation(CommonDeps.MULTIDEX)
 
     // Leak Canary

@@ -7,9 +7,10 @@ buildscript {
 
     dependencies {
         classpath(Plugins.CLASSPATH_GRADLE)
-        classpath(Plugins.CLASSPATH_KOTLIN_GRADLE)
+        classpath(Plugins.CLASSPATH_KOTLIN)
         classpath(Plugins.CLASSPATH_KTLINT)
         classpath(Plugins.CLASSPATH_NAV_SAFE_ARGS)
+        classpath(Plugins.CLASSPATH_GOOGLE_SERVICE)
     }
 }
 

@@ -5,6 +5,8 @@ object PluginVersion {
     const val NAV_SAFE_ARGS_VERSION = "2.3.2"
     const val KTLINT_VERSION = "9.4.1"
     const val DETEKT_VERSION = "1.15.0"
+    const val GOOGLE_GMS_VERSION = "4.3.4"
+    //const val FIREBASE_VERSION = "2.4.1"
 }
 
 object AndroidVersion {
@@ -14,7 +16,6 @@ object AndroidVersion {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
     const val BUILD_TOOLS_VERSION = "30.0.3"
-
     const val APPLICATION_ID = "com.mhendrif.capstone"
 }
 
@@ -95,6 +96,10 @@ object Version {
     // Shimmer
     const val SHIMMER_VERSION = "0.5.0"
 
+    // Firebase
+    const val FIREBASE_BOM = "26.3.0"
+    //const val FIREBASE_ANALYTICS_VERSION = "18.0.1"
+    //const val FIREBASE_CRASHLYTICS_VERSION = "17.3.0"
 }
 
 object TestVersion {

@@ -8,6 +8,7 @@ plugins {
     id(Plugins.KOTLIN_KAPT_PLUGIN)
     id(Plugins.KOTLIN_PARCELIZE_PLUGIN)
     id(Plugins.NAVIGATION_PLUGIN)
+    id(Plugins.GOOGLE_SERVICE_PLUGIN)
 }
 
 android {
