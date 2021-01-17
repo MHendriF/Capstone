@@ -28,7 +28,8 @@
 - [SQLCipher](https://github.com/sqlcipher/android-database-sqlcipher) - Encryption data
 - [CertificatePinner](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-certificate-pinner/) - Secure the network
 - [Coroutine](https://developer.android.com/kotlin/coroutines) - Dynamic programming
+- [ProGuard](https://medium.com/androiddevelopers/troubleshooting-proguard-issues-on-android-bce9de4f8a74) - Obfuscate the app
 
-## Author 🧞‍
+## Author 👨‍🍳
 
 _M Hendri Febriansyah_
