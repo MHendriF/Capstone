@@ -11,7 +11,6 @@ object Plugins {
     const val CLASSPATH_KTLINT = "org.jlleitschuh.gradle:ktlint-gradle:${PluginVersion.KTLINT_VERSION}"
     const val CLASSPATH_NAV_SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${PluginVersion.NAV_SAFE_ARGS_VERSION}"
     const val CLASSPATH_GOOGLE_SERVICE = "com.google.gms:google-services:${PluginVersion.GOOGLE_GMS_VERSION}"
-    //const val CLASSPATH_FIREBASE = "com.google.firebase:firebase-crashlytics-gradle:${PluginVersion.FIREBASE_VERSION}"
 
     /*
         Module Level
