@@ -17,4 +17,5 @@ object Constants {
     const val ARG_FAVORITE_MOVIE = "FAVORITE_MOVIE_FRAGMENT"
     const val ARG_FAVORITE_TV = "FAVORITE_TV_FRAGMENT"
     const val PASSPHRASE = "movie_catalogue_local"
+    const val HOSTNAME = "www.themoviedb.org"
 }
