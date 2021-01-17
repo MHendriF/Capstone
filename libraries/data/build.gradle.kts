@@ -32,6 +32,23 @@ android {
         }
     }
 
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        getByName("debug") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
     android.buildFeatures.dataBinding = true
     android.buildFeatures.viewBinding = true
     android.lintOptions.isAbortOnError = false

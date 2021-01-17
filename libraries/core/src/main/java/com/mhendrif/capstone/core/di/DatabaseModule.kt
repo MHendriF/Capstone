@@ -1,8 +1,6 @@
 package com.mhendrif.capstone.core.di
 
 import android.content.Context
-import net.sqlcipher.database.SQLiteDatabase
-import net.sqlcipher.database.SupportFactory
 import androidx.room.Room
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.data.source.local.room.AppDatabase
@@ -11,6 +9,8 @@ import com.mhendrif.capstone.data.source.local.room.TvShowDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 
 @Module
 class DatabaseModule {
