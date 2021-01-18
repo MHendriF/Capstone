@@ -12,7 +12,6 @@ object Plugins {
     const val CLASSPATH_NAV_SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${PluginVersion.NAV_SAFE_ARGS_VERSION}"
     const val CLASSPATH_GOOGLE_SERVICE = "com.google.gms:google-services:${PluginVersion.GOOGLE_GMS_VERSION}"
     const val CLASSPATH_FIREBASE_CRASHLYTICS = "com.google.firebase:firebase-crashlytics-gradle:${PluginVersion.FIREBASE_CRASHLYTICS_VERSION}"
-    const val CLASSPATH_LEAKCANARY = "com.squareup.leakcanary:leakcanary-deobfuscation-gradle-plugin:${PluginVersion.LEAKCANARY_VERSION}"
 
     /*
         Module Level
@@ -28,5 +27,4 @@ object Plugins {
 
     const val GOOGLE_SERVICE_PLUGIN = "com.google.gms.google-services"
     const val FIREBASE_CRASHLYTICS_PLUGIN = "com.google.firebase.crashlytics"
-    const val LEAKCANARY_DEOBFUSCATION_PLUGIN = "com.squareup.leakcanary.deobfuscation"
 }
