@@ -6,6 +6,8 @@ object PluginVersion {
     const val KTLINT_VERSION = "9.4.1"
     const val DETEKT_VERSION = "1.15.0"
     const val GOOGLE_GMS_VERSION = "4.3.4"
+    const val FIREBASE_CRASHLYTICS_VERSION = "2.4.1"
+    const val LEAKCANARY_VERSION = "2.1"
 }
 
 object AndroidVersion {

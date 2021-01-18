@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayoutMediator
 import com.mhendrif.capstone.core.di.CoreComponent
 import com.mhendrif.capstone.core.di.DaggerCoreComponent
 import com.mhendrif.capstone.favorite.R
@@ -24,8 +25,15 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
-        binding.tabs.setupWithViewPager(binding.viewPager)
+
+        // ViewPager2
+        val viewPager = binding.viewPager
+
+        // TabLayout
+        val tabLayout = binding.tabs
+
+        viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
     }
 
     override fun onResume() {
@@ -36,5 +44,14 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment
     private fun setUpBottomNavigation() {
         val bottomNav: BottomNavigationView = requireActivity().findViewById(com.mhendrif.capstone.R.id.bottom_navigation_view)
         bottomNav.visibility = View.VISIBLE
+    }
+
+    override fun onDestroyView() {
+        // ViewPager2
+        val viewPager = binding.viewPager
+        // TabLayout
+        val tabLayout = binding.tabs
+        viewPager.adapter = null
+        super.onDestroyView()
     }
 }

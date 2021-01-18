@@ -1,4 +1,4 @@
-package com.mhendrif.capstone.core.util
+package com.mhendrif.capstone.data.util
 
 import androidx.test.espresso.idling.CountingIdlingResource
 

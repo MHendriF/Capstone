@@ -1,6 +1,7 @@
 package com.mhendrif.capstone.favorite.ui
 
 import android.content.Context
+import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

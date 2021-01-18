@@ -30,13 +30,11 @@ fun DependencyHandler.addAppModuleDependencies() {
     // Rounded Image
     implementation(CommonDeps.ROUNDED_IMAGE)
 
-    // Paging
-    implementation(CommonDeps.PAGING)
-
     implementation(CommonDeps.MULTIDEX)
 
     // Tools Debuging
     api(platform(DebugDeps.FIREBASE_BOM))
+    api(DebugDeps.FIREBASE_CRASHLYTICS)
     api(DebugDeps.FIREBASE_ANALYTICS)
 }
 
@@ -101,6 +99,9 @@ fun DependencyHandler.addDataModuleDependencies() {
     // Okhttp3
     api(NetworkDeps.OK_HTTP3)
     api(NetworkDeps.OK_HTTP3_LOG)
+
+    // paging
+    api(CommonDeps.PAGING)
 }
 
 /**
@@ -136,9 +137,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
 
     // Rounded Image
     implementation(CommonDeps.ROUNDED_IMAGE)
-
-    // Paging
-    implementation(CommonDeps.PAGING)
 }
 
 /**

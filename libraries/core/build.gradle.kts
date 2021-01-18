@@ -26,7 +26,7 @@ android {
             consumerProguardFiles("consumer-rules.pro")
         }
         getByName("debug") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             consumerProguardFiles("consumer-rules.pro")
         }
     }

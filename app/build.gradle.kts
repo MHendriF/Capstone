@@ -9,6 +9,7 @@ plugins {
     id(Plugins.KOTLIN_PARCELIZE_PLUGIN)
     id(Plugins.NAVIGATION_PLUGIN)
     id(Plugins.GOOGLE_SERVICE_PLUGIN)
+    id(Plugins.FIREBASE_CRASHLYTICS_PLUGIN)
 }
 
 android {
@@ -32,7 +33,7 @@ android {
             )
         }
         getByName("debug") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

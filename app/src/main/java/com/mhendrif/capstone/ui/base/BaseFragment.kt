@@ -38,4 +38,8 @@ abstract class BaseFragment<B : ViewDataBinding> constructor(
         super.onActivityCreated(savedInstanceState)
         setHasOptionsMenu(true)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 }

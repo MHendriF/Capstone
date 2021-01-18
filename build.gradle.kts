@@ -11,6 +11,7 @@ buildscript {
         classpath(Plugins.CLASSPATH_KTLINT)
         classpath(Plugins.CLASSPATH_NAV_SAFE_ARGS)
         classpath(Plugins.CLASSPATH_GOOGLE_SERVICE)
+        classpath(Plugins.CLASSPATH_FIREBASE_CRASHLYTICS)
     }
 }
 
