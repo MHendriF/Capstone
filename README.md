@@ -29,6 +29,12 @@
 - [CertificatePinner](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-certificate-pinner/) - Secure the network
 - [Coroutine](https://developer.android.com/kotlin/coroutines) - Dynamic programming
 - [ProGuard](https://medium.com/androiddevelopers/troubleshooting-proguard-issues-on-android-bce9de4f8a74) - Obfuscate the app
+- [Firebase Crashlytics](https://medium.com/androiddevelopers/troubleshooting-proguard-issues-on-android-bce9de4f8a74) - Realtime crash reporter
+
+## Future Development 🚧
+
+- Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
+- Migrate to [Hilt](https://dagger.dev/hilt/) as Dependency Injection
 
 ## Author 👨‍🍳
 
