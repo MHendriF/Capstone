@@ -24,12 +24,8 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val viewPager = binding.viewPager
-        val tabLayout = binding.tabs
-
-        viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
-        tabLayout.setupWithViewPager(viewPager)
+        binding.viewPager.adapter = FavoritePagerAdapter(requireContext(), childFragmentManager)
+        binding.tabs.setupWithViewPager(binding.viewPager)
     }
 
     override fun onResume() {
@@ -40,11 +36,5 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(R.layout.fragment
     private fun setUpBottomNavigation() {
         val bottomNav: BottomNavigationView = requireActivity().findViewById(com.mhendrif.capstone.R.id.bottom_navigation_view)
         bottomNav.visibility = View.VISIBLE
-    }
-
-    override fun onDestroyView() {
-        val viewPager = binding.viewPager
-        viewPager.adapter = null
-        super.onDestroyView()
     }
 }

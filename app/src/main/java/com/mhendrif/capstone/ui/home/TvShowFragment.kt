@@ -17,6 +17,7 @@ import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.ui.TvShowAdapter
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
+import com.mhendrif.capstone.util.AutoClearedValue
 import javax.inject.Inject
 import timber.log.Timber
 
@@ -25,9 +26,9 @@ class TvShowFragment :
     ItemListener<TvShow> {
 
     @Inject
-    internal lateinit var factory: ViewModelFactory
+    lateinit var factory: ViewModelFactory
     private val tvShowViewModel: TvShowViewModel by viewModels { factory }
-    private lateinit var adapter: TvShowAdapter
+    private var adapter by AutoClearedValue<TvShowAdapter>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

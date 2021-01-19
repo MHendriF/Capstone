@@ -21,6 +21,7 @@ import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteTvShowBinding
 import com.mhendrif.capstone.favorite.di.DaggerFavoriteComponent
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
+import com.mhendrif.capstone.util.AutoClearedValue
 import javax.inject.Inject
 
 class FavoriteTvShowFragment :
@@ -35,9 +36,9 @@ class FavoriteTvShowFragment :
     }
 
     @Inject
-    internal lateinit var factory: ViewModelFactory
+    lateinit var factory: ViewModelFactory
     private val favoriteViewModel: FavoriteViewModel by viewModels { factory }
-    private lateinit var adapter: FavoriteTvShowAdapter
+    private var adapter by AutoClearedValue<FavoriteTvShowAdapter>()
 
     private val coreComponent: CoreComponent by lazy {
         DaggerCoreComponent.factory().create(requireActivity())

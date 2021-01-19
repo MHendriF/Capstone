@@ -21,7 +21,7 @@ android {
         versionCode(AndroidVersion.VERSION_CODE)
         versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        // multiDexEnabled = true
+        multiDexEnabled = true
     }
 
     buildTypes {

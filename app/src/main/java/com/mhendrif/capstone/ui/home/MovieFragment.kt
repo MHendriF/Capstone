@@ -17,17 +17,17 @@ import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.ui.MovieAdapter
 import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
+import com.mhendrif.capstone.util.AutoClearedValue
 import javax.inject.Inject
 import timber.log.Timber
 
 class MovieFragment :
-    BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie),
-    ItemListener<Movie> {
+    BaseFragment<FragmentMovieBinding>(R.layout.fragment_movie), ItemListener<Movie> {
 
     @Inject
-    internal lateinit var factory: ViewModelFactory
+    lateinit var factory: ViewModelFactory
     private val movieViewModel: MovieViewModel by viewModels { factory }
-    private lateinit var adapter: MovieAdapter
+    private var adapter by AutoClearedValue<MovieAdapter>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
