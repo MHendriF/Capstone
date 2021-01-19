@@ -7,7 +7,6 @@ object PluginVersion {
     const val DETEKT_VERSION = "1.15.0"
     const val GOOGLE_GMS_VERSION = "4.3.4"
     const val FIREBASE_CRASHLYTICS_VERSION = "2.4.1"
-    const val LEAKCANARY_VERSION = "2.1"
 }
 
 object AndroidVersion {
@@ -17,7 +16,6 @@ object AndroidVersion {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
     const val BUILD_TOOLS_VERSION = "30.0.3"
-    const val APPLICATION_ID = "com.mhendrif.capstone"
 }
 
 object Version {
@@ -52,7 +50,6 @@ object Version {
 
     // Dagger
     const val DAGGER_VERSION = "2.30.1"
-    const val DAGGER_HILT_VERSION = "2.29-alpha"
 
     // Coroutines
     const val COROUTINES_VERSION = "1.3.9"
@@ -70,14 +67,8 @@ object Version {
     // Lottie
     const val LOTTIE_VERSION ="3.5.0"
 
-    // Preference Manager
-    const val PREFERENCE_MANAGER_VERSION ="1.1.1"
-
     // Timber
     const val TIMBER_VERSION = "4.7.1"
-
-    // Chucker
-    const val CHUCKER_VERSION ="3.2.0"
 
     // Leak Canary
     const val LEAK_CANARY_VERSION = "2.4"
@@ -94,9 +85,6 @@ object Version {
     // Sqlite
     const val SQLITE_VERSION = "2.1.0"
 
-    // Shimmer
-    const val SHIMMER_VERSION = "0.5.0"
-
     // Firebase
     const val FIREBASE_BOM = "26.3.0"
 }
@@ -104,10 +92,7 @@ object Version {
 object TestVersion {
 
     // AndroidX
-    const val androidXVersion = "1.0.0"
-    const val androidXTestCoreVersion = "1.2.0"
     const val androidXTestExtKotlinRunnerVersion = "1.1.2"
-    const val androidXTestRulesVersion = "1.2.0-beta01"
     const val archTestingVersion = "2.0.0"
 
     // Junit4

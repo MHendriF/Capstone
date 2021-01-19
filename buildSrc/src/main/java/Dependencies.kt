@@ -70,8 +70,6 @@ object CommonDeps {
 
     // Paging
     const val PAGING  = "androidx.paging:paging-runtime-ktx:${Version.PAGING_VERSION}"
-
-    const val SHIMMER = "com.facebook.shimmer:shimmer:${Version.SHIMMER_VERSION}"
 }
 
 object DebugDeps {
@@ -115,12 +113,8 @@ object TestDeps {
     const val ANDROIDX_CORE_TESTING = "androidx.arch.core:core-testing:${TestVersion.archTestingVersion}"
 
     // AndroidX Test - JVM testing
-    const val ANDROIDX_TEST_CORE_KTX =
-        "androidx.test:core-ktx:${TestVersion.androidXTestCoreVersion}"
     const val ANDROIDX_JUNIT =
         "androidx.test.ext:junit:${TestVersion.androidXTestExtKotlinRunnerVersion}"
-
-    const val ANDROIDX_ESPRESSO = "androidx.test.espresso:espresso-contrib:${TestVersion.espressoVersion}"
 
     // Espresso
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${TestVersion.espressoVersion}"

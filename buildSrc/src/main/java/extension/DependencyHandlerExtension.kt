@@ -185,9 +185,6 @@ private fun DependencyHandler.testImplementation(dependencyNotation: Any): Depen
 private fun DependencyHandler.debugImplementation(dependencyNotation: Any): Dependency? =
     add("debugImplementation", dependencyNotation)
 
-private fun DependencyHandler.testRuntimeOnly(dependencyNotation: Any): Dependency? =
-    add("testRuntimeOnly", dependencyNotation)
-
 private fun DependencyHandler.androidTestImplementation(dependencyNotation: Any): Dependency? =
     add("androidTestImplementation", dependencyNotation)
 
