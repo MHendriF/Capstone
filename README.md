@@ -8,7 +8,7 @@
 
 - Following [Clean Architecture approach](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - Following [MVVM Architectural Design Pattern](https://developer.android.com/jetpack/guide)
-- [Circle CI](https://circleci.com/) - Continuous Integration
+- Circle CI - [Continuous Integration](https://www.atlassian.com/continuous-delivery/continuous-integration)
 - [Dagger](https://github.com/google/dagger) - Dependency Injection framework
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding) - Data Binding
 - [Room](https://developer.android.com/training/data-storage/room) - Persistence library provides an abstraction layer over SQLite
@@ -35,6 +35,8 @@
 
 - Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
 - Migrate to [Hilt](https://dagger.dev/hilt/) as Dependency Injection
+- Add feature search
+- Use [Jetpack Compose](https://developer.android.com/jetpack/compose) for UI toolkit
 
 ## Author 👨‍🍳
 
