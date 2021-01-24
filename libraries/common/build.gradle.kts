@@ -1,7 +1,7 @@
-import java.util.Properties
 import extension.addCommonModuleDependencies
 import extension.addInstrumentationTestDependencies
 import extension.addUnitTestDependencies
+import java.util.Properties
 
 plugins {
     id(Plugins.ANDROID_LIBRARY_PLUGIN)
