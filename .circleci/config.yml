@@ -13,11 +13,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Adding TMDB API to build environment
-        command: echo "API_KEY=\"$TMDB_API_KEY\"" >> local.properties
+          name: Adding TMDB API to build environment
+          command: echo "API_KEY=\"$TMDB_API_KEY\"" >> local.properties
       - run:
-        name: Adding DB Encryption Key to build environment
-        command: echo "PASSPHRASE=\"$DB_PASSPHRASE\"" >> local.properties
+          name: Adding DB Encryption Key to build environment
+          command: echo "PASSPHRASE=\"$DB_PASSPHRASE\"" >> local.properties
       - restore_cache:
           key: android-orb-v1-
       - run:
