@@ -1,8 +1,18 @@
 # Capstone
 
+Simple app movie catalogue using API from [The Movie DB](https://www.themoviedb.org)
+
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://circleci.com/gh/MHendriF/Capstone)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.21-blue.svg)](https://kotlinlang.org)
+
+## Notes 📝
+Before you run this application please config environment in file **local.properties**
+```kotlin
+API_KEY="YOUR_API_KEY"
+PASSPHRASE="YOUR_DB_PASSPHRASE"
+```
+[How to get Api Key](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Features 🕹
 

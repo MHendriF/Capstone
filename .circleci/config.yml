@@ -12,6 +12,12 @@ jobs:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     steps:
       - checkout
+      - run:
+        name: Adding TMDB API to build environment
+        command: echo "API_KEY=\"$TMDB_API_KEY\"" >> local.properties
+      - run:
+        name: Adding DB Encryption Key to build environment
+        command: echo "PASSPHRASE=\"$DB_PASSPHRASE\"" >> local.properties
       - restore_cache:
           key: android-orb-v1-
       - run:

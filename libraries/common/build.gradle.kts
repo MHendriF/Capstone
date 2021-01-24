@@ -1,3 +1,4 @@
+import java.util.Properties
 import extension.addCommonModuleDependencies
 import extension.addInstrumentationTestDependencies
 import extension.addUnitTestDependencies
@@ -8,6 +9,9 @@ plugins {
     id(Plugins.KOTLIN_KAPT_PLUGIN)
 }
 
+val localProperties = Properties()
+localProperties.load(project.rootProject.file("local.properties").inputStream())
+
 android {
     compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
     buildToolsVersion(AndroidVersion.BUILD_TOOLS_VERSION)
@@ -17,6 +21,8 @@ android {
         versionCode(AndroidVersion.VERSION_CODE)
         versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "TMDB_API_KEY", localProperties["API_KEY"] as String)
+        buildConfigField("String", "DB_PASSPHRASE", localProperties["PASSPHRASE"] as String)
     }
 
     android.buildFeatures.dataBinding = true
