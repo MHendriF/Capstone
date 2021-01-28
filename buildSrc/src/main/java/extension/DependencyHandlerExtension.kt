@@ -8,10 +8,12 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
  * Adds required dependencies to app module
  */
 fun DependencyHandler.addAppModuleDependencies() {
-    // Dagger2
-    implementation(CommonDeps.DAGGER)
-    kapt(CommonDeps.DAGGER_COMPILER)
-    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
+    // Dagger Hilt
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Navigation Components
     api(CommonDeps.NAVIGATION_FRAGMENT)
@@ -64,10 +66,12 @@ fun DependencyHandler.addCommonModuleDependencies() {
  * Adds dependencies to domain module
  */
 fun DependencyHandler.addDomainModuleDependencies() {
-    // Dagger2
-    implementation(CommonDeps.DAGGER)
-    kapt(CommonDeps.DAGGER_COMPILER)
-    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
+    // Dagger Hilt
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Coroutines
     api(CommonDeps.COROUTINES_CORE)
@@ -81,10 +85,12 @@ fun DependencyHandler.addDomainModuleDependencies() {
  * Adds dependencies to data module
  */
 fun DependencyHandler.addDataModuleDependencies() {
-    // Dagger2
-    implementation(CommonDeps.DAGGER)
-    kapt(CommonDeps.DAGGER_COMPILER)
-    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
+    // Dagger Hilt
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Room
     api(DataDeps.ROOM_RUNTIME)
@@ -108,10 +114,12 @@ fun DependencyHandler.addDataModuleDependencies() {
  * Adds dependencies to core module
  */
 fun DependencyHandler.addCoreModuleDependencies() {
-    // Dagger2
-    implementation(CommonDeps.DAGGER)
-    kapt(CommonDeps.DAGGER_COMPILER)
-    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
+    // Dagger Hilt
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Views, Animations
     api(CommonDeps.PICASSO)
@@ -127,10 +135,12 @@ fun DependencyHandler.addCoreModuleDependencies() {
  *
  */
 fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
-    // Dagger2
-    implementation(CommonDeps.DAGGER)
-    kapt(CommonDeps.DAGGER_COMPILER)
-    kapt(CommonDeps.DAGGER_ANNOTATION_PROCESSOR)
+    // Dagger Hilt
+    implementation(CommonDeps.DAGGER_HILT_ANDROID)
+    kapt(CommonDeps.DAGGER_HILT_COMPILER)
+    // Dagger Hilt AndroidX & ViewModel
+    implementation(CommonDeps.DAGGER_HILT_VIEWMODEL)
+    kapt(CommonDeps.DAGGER_HILT_ANDROIDX_HILT_COMPILER)
 
     // Leak Canary
     debugImplementation(CommonDeps.LEAK_CANARY)
@@ -148,7 +158,6 @@ fun DependencyHandler.addUnitTestDependencies() {
 }
 
 fun DependencyHandler.addInstrumentationTestDependencies() {
-
     // AndroidX Test - Instrumented testing
     androidTestImplementation(TestDeps.ANDROIDX_JUNIT)
     androidTestImplementation(TestDeps.ANDROIDX_CORE_TESTING)

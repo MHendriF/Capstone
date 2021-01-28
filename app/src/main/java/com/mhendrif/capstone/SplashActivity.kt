@@ -7,12 +7,13 @@ import android.os.Looper
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.databinding.ActivitySplashBinding
 import com.mhendrif.capstone.ui.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appComponent.inject(this)
 
         Handler(Looper.getMainLooper()).postDelayed(
             {

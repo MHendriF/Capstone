@@ -19,7 +19,7 @@ PASSPHRASE="YOUR_DB_PASSPHRASE"
 - Following [Clean Architecture approach](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - Following [MVVM Architectural Design Pattern](https://developer.android.com/jetpack/guide)
 - Circle CI - [Continuous Integration](https://www.atlassian.com/continuous-delivery/continuous-integration)
-- [Dagger](https://github.com/google/dagger) - Dependency Injection framework
+- [Hilt](https://dagger.dev/hilt) - Dependency Injection framework
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding) - Data Binding
 - [Room](https://developer.android.com/training/data-storage/room) - Persistence library provides an abstraction layer over SQLite
 - [OkHttp3](https://github.com/square/okhttp) - Network interceptor
@@ -43,10 +43,12 @@ PASSPHRASE="YOUR_DB_PASSPHRASE"
 
 ## Future Development 🚧
 
-- Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
-- Migrate to [Hilt](https://dagger.dev/hilt/) as Dependency Injection
-- Add feature search
-- Use [Jetpack Compose](https://developer.android.com/jetpack/compose) for UI toolkit
+- [ ] Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
+- [x] Migrate from [Dagger](https://github.com/google/dagger) to [Hilt](https://dagger.dev/hilt/) as Dependency Injection
+- [ ] Add feature search
+- [ ] Use [Paging](https://developer.android.com/topic/libraries/architecture/paging) for management data on RecyclerView
+- [ ] Add Unit Testing and Instrument Testing
+- [ ] Use [Jetpack Compose](https://developer.android.com/jetpack/compose) for UI toolkit
 
 ## MAD Score
 

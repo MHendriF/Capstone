@@ -21,24 +21,18 @@ import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.databinding.FragmentDetailMovieBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.Movie
-import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
 import timber.log.Timber
 
+@AndroidEntryPoint
 class DetailMovieFragment : BaseFragment<FragmentDetailMovieBinding>(R.layout.fragment_detail_movie) {
 
-    @Inject
-    internal lateinit var factory: ViewModelFactory
-    private val detailViewModel: DetailViewModel by viewModels { factory }
+    private val detailViewModel: DetailViewModel by viewModels()
     private val args: DetailMovieFragmentArgs by navArgs()
     private lateinit var movie: Movie
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        appComponent.inject(this)
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         detailViewModel.movie.observe(viewLifecycleOwner, { handleStat(it) })

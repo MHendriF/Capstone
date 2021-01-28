@@ -10,6 +10,7 @@ plugins {
     id(Plugins.NAVIGATION_PLUGIN)
     id(Plugins.GOOGLE_SERVICE_PLUGIN)
     id(Plugins.FIREBASE_CRASHLYTICS_PLUGIN)
+    id(Plugins.DAGGER_HILT_PLUGIN)
 }
 
 android {
