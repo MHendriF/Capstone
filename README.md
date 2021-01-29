@@ -44,7 +44,7 @@ PASSPHRASE="YOUR_DB_PASSPHRASE"
 ## Future Development 🚧
 
 - [ ] Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
-- [x] Migrate from [Dagger](https://github.com/google/dagger) to [Hilt](https://dagger.dev/hilt/) as Dependency Injection
+- [x] ~~Migrate from [Dagger](https://github.com/google/dagger) to [Hilt](https://dagger.dev/hilt/) as Dependency Injection~~
 - [ ] Add feature search
 - [ ] Use [Paging](https://developer.android.com/topic/libraries/architecture/paging) for management data on RecyclerView
 - [ ] Add Unit Testing and Instrument Testing

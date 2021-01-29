@@ -12,6 +12,7 @@ import dagger.hilt.android.components.ApplicationComponent
 @Module(includes = [NetworkModule::class, DatabaseModule::class])
 @InstallIn(ApplicationComponent::class)
 abstract class RepositoryModule {
+
     @Binds
     abstract fun provideMovieRepository(movieRepository: MovieRepository): IMovieRepository
 

@@ -31,9 +31,11 @@ class DatabaseModule {
         ).fallbackToDestructiveMigration().openHelperFactory(sqlCipherFactory).build()
     }
 
+    @Singleton
     @Provides
     fun provideMovieDao(database: AppDatabase): MovieDao = database.movieDao()
 
+    @Singleton
     @Provides
     fun provideTvShowDao(database: AppDatabase): TvShowDao = database.tvShowDao()
 }

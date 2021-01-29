@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(ApplicationComponent::class)
 class NetworkModule {
 
+    @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val certificatePinner = CertificatePinner.Builder()
@@ -30,6 +32,7 @@ class NetworkModule {
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideApiService(client: OkHttpClient): ApiService {
         val retrofit = Retrofit.Builder()
