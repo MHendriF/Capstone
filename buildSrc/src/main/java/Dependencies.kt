@@ -90,6 +90,11 @@ object NetworkDeps {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
     const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
 
+    // Moshi
+    const val RETROFIT_MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:${Version.CONVERTER_MOSHI_VERSION}"
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Version.MOSHI_VERSION}"
+    const val MOSHI_CODEGEN  = "com.squareup.moshi:moshi-kotlin-codegen:${Version.MOSHI_VERSION}"
+
     // Okhttp
     const val OK_HTTP3 = "com.squareup.okhttp3:okhttp:${Version.OK_HTTP3_VERSION}"
     const val OK_HTTP3_LOG = "com.squareup.okhttp3:logging-interceptor:${Version.OK_HTTP3_VERSION}"

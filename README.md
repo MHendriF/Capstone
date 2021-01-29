@@ -25,8 +25,8 @@ PASSPHRASE="YOUR_DB_PASSPHRASE"
 - [OkHttp3](https://github.com/square/okhttp) - Network interceptor
 - [Retrofit](https://github.com/square/retrofit) - HTTP client
 - [Picasso](https://github.com/square/picasso) - Loading images
-- [Timber](https://github.com/JakeWharton/timber) - Log
-- [Gson](https://github.com/google/gson) - JSON library
+- [Timber](https://github.com/JakeWharton/timber) - Log for debugging
+- [Moshi](https://proandroiddev.com/goodbye-gson-hello-moshi-4e591116231e) - Modern JSON library for Android and Java. It makes it easy to parse JSON into Java objects
 - [Material Components](https://github.com/material-components/material-components-android) - Material Design
 - [Lottie](https://airbnb.design/lottie/) - Vector animation library
 - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Alternative syntax to the Groovy DSL

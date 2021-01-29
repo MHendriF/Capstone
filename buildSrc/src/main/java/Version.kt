@@ -41,6 +41,8 @@ object Version {
 
     // Retrofit
     const val RETROFIT_VERSION = "2.9.0"
+    const val CONVERTER_MOSHI_VERSION = "2.9.0"
+    const val MOSHI_VERSION = "1.11.0"
 
     // OkHttpClient
     const val OK_HTTP3_VERSION = "4.9.0"
@@ -79,7 +81,7 @@ object Version {
     const val MULTIDEX_VERSION = "2.0.1"
 
     // Paging
-    const val PAGING_VERSION = "2.1.2"
+    const val PAGING_VERSION = "3.0.0-alpha11"
 
     // SQLCipher
     const val SQLCIPHER_VERSION = "4.4.2"

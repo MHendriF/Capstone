@@ -28,7 +28,9 @@ class DatabaseModule {
             context,
             AppDatabase::class.java,
             Constants.DATABASE_NAME
-        ).fallbackToDestructiveMigration().openHelperFactory(sqlCipherFactory).build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(sqlCipherFactory)
+            .build()
     }
 
     @Singleton

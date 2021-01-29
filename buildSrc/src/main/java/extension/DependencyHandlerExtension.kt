@@ -77,8 +77,13 @@ fun DependencyHandler.addDomainModuleDependencies() {
     api(CommonDeps.COROUTINES_CORE)
     api(CommonDeps.COROUTINES_ANDROID)
 
-    // Retrofit
-    api(NetworkDeps.RETROFIT_GSON_CONVERTER)
+    // Moshi
+    api(NetworkDeps.RETROFIT_MOSHI_CONVERTER)
+    api(NetworkDeps.MOSHI_KOTLIN)
+    kapt(NetworkDeps.MOSHI_CODEGEN)
+
+    // Paging
+    api(CommonDeps.PAGING)
 }
 
 /**
@@ -101,13 +106,11 @@ fun DependencyHandler.addDataModuleDependencies() {
 
     // Retrofit
     api(NetworkDeps.RETROFIT)
+    kapt(NetworkDeps.MOSHI_CODEGEN)
 
     // Okhttp3
     api(NetworkDeps.OK_HTTP3)
     api(NetworkDeps.OK_HTTP3_LOG)
-
-    // paging
-    api(CommonDeps.PAGING)
 }
 
 /**

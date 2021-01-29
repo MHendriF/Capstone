@@ -1,13 +1,15 @@
 package com.mhendrif.capstone.domain.model
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
+@JsonClass(generateAdapter = true)
 @Parcelize
 data class Genre(
-    @field:SerializedName("id")
+    @Json(name = "id")
     val id: Int,
-    @field:SerializedName("name")
+    @Json(name = "name")
     val name: String
 ) : Parcelable
