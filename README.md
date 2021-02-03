@@ -6,6 +6,9 @@ Simple app movie catalogue using API from [The Movie DB](https://www.themoviedb.
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.21-blue.svg)](https://kotlinlang.org)
 
+[![codebeat badge](https://codebeat.co/badges/24943eac-9934-4264-b944-33d867614c49)](https://codebeat.co/projects/github-com-mhendrif-capstone-main)
+[![CodeFactor](https://www.codefactor.io/repository/github/mhendrif/capstone/badge)](https://www.codefactor.io/repository/github/mhendrif/capstone)
+
 ## Notes 📝
 Before you run this application please config environment in file **local.properties**
 ```kotlin
