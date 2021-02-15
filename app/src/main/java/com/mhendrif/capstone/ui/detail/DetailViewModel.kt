@@ -1,5 +1,6 @@
 package com.mhendrif.capstone.ui.detail
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -8,9 +9,8 @@ import com.mhendrif.capstone.domain.model.Movie
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.domain.usecase.MovieUseCase
 import com.mhendrif.capstone.domain.usecase.TvShowUseCase
-import javax.inject.Inject
 
-class DetailViewModel @Inject constructor(
+class DetailViewModel @ViewModelInject constructor(
     private val movieUseCase: MovieUseCase,
     private val tvShowUseCase: TvShowUseCase
 ) : ViewModel() {

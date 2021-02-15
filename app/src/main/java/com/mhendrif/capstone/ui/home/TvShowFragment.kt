@@ -15,25 +15,18 @@ import com.mhendrif.capstone.databinding.FragmentTvShowBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.ui.TvShowAdapter
-import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.util.AutoClearedValue
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class TvShowFragment :
     BaseFragment<FragmentTvShowBinding>(R.layout.fragment_tv_show),
     ItemListener<TvShow> {
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val tvShowViewModel: TvShowViewModel by viewModels { factory }
+    private val tvShowViewModel: TvShowViewModel by viewModels()
     private var adapter by AutoClearedValue<TvShowAdapter>()
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        appComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

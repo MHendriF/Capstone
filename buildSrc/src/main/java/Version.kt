@@ -14,7 +14,7 @@ object AndroidVersion {
     const val COMPILE_SDK_VERSION = 30
     const val TARGET_SDK_VERSION = 30
     const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0.0"
+    const val VERSION_NAME = "1.1.0"
     const val BUILD_TOOLS_VERSION = "30.0.3"
 }
 
@@ -41,6 +41,8 @@ object Version {
 
     // Retrofit
     const val RETROFIT_VERSION = "2.9.0"
+    const val CONVERTER_MOSHI_VERSION = "2.9.0"
+    const val MOSHI_VERSION = "1.11.0"
 
     // OkHttpClient
     const val OK_HTTP3_VERSION = "4.9.0"
@@ -50,6 +52,8 @@ object Version {
 
     // Dagger
     const val DAGGER_VERSION = "2.30.1"
+    const val DAGGER_HILT_VERSION = "2.28.1-alpha"
+    const val DAGGER_HILT_ANDRIODX = "1.0.0-alpha02"
 
     // Coroutines
     const val COROUTINES_VERSION = "1.3.9"
@@ -77,7 +81,7 @@ object Version {
     const val MULTIDEX_VERSION = "2.0.1"
 
     // Paging
-    const val PAGING_VERSION = "2.1.2"
+    const val PAGING_VERSION = "3.0.0-alpha11"
 
     // SQLCipher
     const val SQLCIPHER_VERSION = "4.4.2"

@@ -6,6 +6,9 @@ Simple app movie catalogue using API from [The Movie DB](https://www.themoviedb.
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.21-blue.svg)](https://kotlinlang.org)
 
+[![codebeat badge](https://codebeat.co/badges/24943eac-9934-4264-b944-33d867614c49)](https://codebeat.co/projects/github-com-mhendrif-capstone-main)
+[![CodeFactor](https://www.codefactor.io/repository/github/mhendrif/capstone/badge)](https://www.codefactor.io/repository/github/mhendrif/capstone)
+
 ## Notes 📝
 Before you run this application please config environment in file **local.properties**
 ```kotlin
@@ -19,14 +22,14 @@ PASSPHRASE="YOUR_DB_PASSPHRASE"
 - Following [Clean Architecture approach](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - Following [MVVM Architectural Design Pattern](https://developer.android.com/jetpack/guide)
 - Circle CI - [Continuous Integration](https://www.atlassian.com/continuous-delivery/continuous-integration)
-- [Dagger](https://github.com/google/dagger) - Dependency Injection framework
+- [Hilt](https://dagger.dev/hilt) - Dependency Injection framework
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding) - Data Binding
 - [Room](https://developer.android.com/training/data-storage/room) - Persistence library provides an abstraction layer over SQLite
 - [OkHttp3](https://github.com/square/okhttp) - Network interceptor
 - [Retrofit](https://github.com/square/retrofit) - HTTP client
 - [Picasso](https://github.com/square/picasso) - Loading images
-- [Timber](https://github.com/JakeWharton/timber) - Log
-- [Gson](https://github.com/google/gson) - JSON library
+- [Timber](https://github.com/JakeWharton/timber) - Log for debugging
+- [Moshi](https://proandroiddev.com/goodbye-gson-hello-moshi-4e591116231e) - Modern JSON library for Android and Java. It makes it easy to parse JSON into Java objects
 - [Material Components](https://github.com/material-components/material-components-android) - Material Design
 - [Lottie](https://airbnb.design/lottie/) - Vector animation library
 - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Alternative syntax to the Groovy DSL
@@ -43,10 +46,12 @@ PASSPHRASE="YOUR_DB_PASSPHRASE"
 
 ## Future Development 🚧
 
-- Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
-- Migrate to [Hilt](https://dagger.dev/hilt/) as Dependency Injection
-- Add feature search
-- Use [Jetpack Compose](https://developer.android.com/jetpack/compose) for UI toolkit
+- [ ] Replace Data Binding with [View Binding](https://developer.android.com/topic/libraries/view-binding)
+- [x] ~~Migrate from [Dagger](https://github.com/google/dagger) to [Hilt](https://dagger.dev/hilt/) as Dependency Injection~~
+- [ ] Add feature search
+- [ ] Use [Paging](https://developer.android.com/topic/libraries/architecture/paging) for management data on RecyclerView
+- [ ] Add Unit Testing and Instrument Testing
+- [ ] Use [Jetpack Compose](https://developer.android.com/jetpack/compose) for UI toolkit
 
 ## MAD Score
 

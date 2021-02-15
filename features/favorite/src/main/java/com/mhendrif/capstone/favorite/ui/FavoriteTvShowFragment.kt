@@ -1,6 +1,5 @@
 package com.mhendrif.capstone.favorite.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -12,16 +11,16 @@ import androidx.navigation.fragment.findNavController
 import com.mhendrif.capstone.MainActivity
 import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.common.util.SortOrder
-import com.mhendrif.capstone.core.di.CoreComponent
-import com.mhendrif.capstone.core.di.DaggerCoreComponent
 import com.mhendrif.capstone.core.util.ItemListener
+import com.mhendrif.capstone.di.FavoriteModuleDependencies
 import com.mhendrif.capstone.domain.model.TvShow
 import com.mhendrif.capstone.favorite.R
 import com.mhendrif.capstone.favorite.databinding.FragmentFavoriteTvShowBinding
 import com.mhendrif.capstone.favorite.di.DaggerFavoriteComponent
-import com.mhendrif.capstone.ui.ViewModelFactory
+import com.mhendrif.capstone.favorite.di.FavoriteViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
 import com.mhendrif.capstone.util.AutoClearedValue
+import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
 class FavoriteTvShowFragment :
@@ -36,17 +35,13 @@ class FavoriteTvShowFragment :
     }
 
     @Inject
-    lateinit var factory: ViewModelFactory
+    lateinit var factory: FavoriteViewModelFactory
     private val favoriteViewModel: FavoriteViewModel by viewModels { factory }
     private var adapter by AutoClearedValue<FavoriteTvShowAdapter>()
 
-    private val coreComponent: CoreComponent by lazy {
-        DaggerCoreComponent.factory().create(requireActivity())
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        DaggerFavoriteComponent.builder().coreComponent(coreComponent).build().inject(this)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        injectDynamicFeatureModule()
+        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -116,5 +111,18 @@ class FavoriteTvShowFragment :
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun injectDynamicFeatureModule() {
+        DaggerFavoriteComponent.builder()
+            .context(requireContext())
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    requireActivity().application,
+                    FavoriteModuleDependencies::class.java
+                )
+            )
+            .build()
+            .inject(this)
     }
 }

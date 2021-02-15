@@ -35,7 +35,7 @@ data class MovieEntity(
     var voteCount: Int,
 
     @ColumnInfo(name = "genres")
-    var genres: String?,
+    var genres: String,
 
     @ColumnInfo(name = "homepage")
     var homepage: String?,

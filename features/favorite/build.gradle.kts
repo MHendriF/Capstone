@@ -9,6 +9,7 @@ plugins {
     id(Plugins.KOTLIN_PARCELIZE_PLUGIN)
     id(Plugins.NAVIGATION_PLUGIN)
     id(Plugins.GOOGLE_SERVICE_PLUGIN)
+    id(Plugins.DAGGER_HILT_PLUGIN)
 }
 
 android {

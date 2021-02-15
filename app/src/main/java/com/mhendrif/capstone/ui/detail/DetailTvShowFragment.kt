@@ -21,24 +21,17 @@ import com.mhendrif.capstone.common.util.Constants
 import com.mhendrif.capstone.databinding.FragmentDetailTvShowBinding
 import com.mhendrif.capstone.domain.Resource
 import com.mhendrif.capstone.domain.model.TvShow
-import com.mhendrif.capstone.ui.ViewModelFactory
 import com.mhendrif.capstone.ui.base.BaseFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
 import timber.log.Timber
 
+@AndroidEntryPoint
 class DetailTvShowFragment : BaseFragment<FragmentDetailTvShowBinding>(R.layout.fragment_detail_tv_show) {
 
-    @Inject
-    internal lateinit var factory: ViewModelFactory
-    private val detailViewModel: DetailViewModel by viewModels { factory }
+    private val detailViewModel: DetailViewModel by viewModels()
     private val args: DetailTvShowFragmentArgs by navArgs()
     private lateinit var tvShow: TvShow
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        appComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

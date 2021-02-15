@@ -37,10 +37,13 @@ object CommonDeps {
     const val LEGACY =
         "androidx.legacy:legacy-support-v4:${Version.ANDROIDX_LEGACY_VERSION}"
 
-    // Dagger Core dependencies
-    const val DAGGER = "com.google.dagger:dagger:${Version.DAGGER_VERSION}"
-    const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Version.DAGGER_VERSION}"
-    const val DAGGER_ANNOTATION_PROCESSOR = "com.google.dagger:dagger-android-processor:${Version.DAGGER_VERSION}"
+    // Dagger Hilt
+    const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${Version.DAGGER_HILT_VERSION}"
+    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
+
+    // Dagger Hilt AndroidX
+    const val DAGGER_HILT_VIEWMODEL = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.DAGGER_HILT_ANDRIODX}"
+    const val DAGGER_HILT_ANDROIDX_HILT_COMPILER = "androidx.hilt:hilt-compiler:${Version.DAGGER_HILT_ANDRIODX}"
 
     // Coroutines
     const val COROUTINES_CORE =
@@ -86,6 +89,11 @@ object NetworkDeps {
     // Retrofit
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
     const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
+
+    // Moshi
+    const val RETROFIT_MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:${Version.CONVERTER_MOSHI_VERSION}"
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:${Version.MOSHI_VERSION}"
+    const val MOSHI_CODEGEN  = "com.squareup.moshi:moshi-kotlin-codegen:${Version.MOSHI_VERSION}"
 
     // Okhttp
     const val OK_HTTP3 = "com.squareup.okhttp3:okhttp:${Version.OK_HTTP3_VERSION}"
