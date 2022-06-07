@@ -20,6 +20,8 @@ object AndroidVersion {
 
 object Version {
 
+    const val GOOGLE_PLAY_VERSION = "1.10.0"
+
     const val CORE_KTX_VERSION = "1.3.2"
 
     // Appcompat

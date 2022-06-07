@@ -34,6 +34,8 @@ fun DependencyHandler.addAppModuleDependencies() {
 
     implementation(CommonDeps.MULTIDEX)
 
+    implementation(CommonDeps.GOOGLE_PLAY_CORE)
+
     // Tools Debuging
     api(platform(DebugDeps.FIREBASE_BOM))
     api(DebugDeps.FIREBASE_CRASHLYTICS)

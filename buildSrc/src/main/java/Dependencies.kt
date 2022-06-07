@@ -73,6 +73,9 @@ object CommonDeps {
 
     // Paging
     const val PAGING  = "androidx.paging:paging-runtime-ktx:${Version.PAGING_VERSION}"
+
+    // Google play
+    const val GOOGLE_PLAY_CORE = "com.google.android.play:core:${Version.GOOGLE_PLAY_VERSION}"
 }
 
 object DebugDeps {
